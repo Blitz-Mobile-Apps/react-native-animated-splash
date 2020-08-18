@@ -1,0 +1,43 @@
+
+{
+  "name": "react-native-animated-splash-screen",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "email": "alisajames048@gmail.com",
+    "url": "https://github.com/Blitz-Mobile-Apps/react-native-animated-splash-screen/issues"
+  },
+  "contributors": [
+    "alisajames048@gmail.com","mick.richard19@gmail.com","alex.evans1230@gmail.com"
+  ],
+  "publisher": "Blitz Mobile Apps",
+  "keywords": [
+    "react-native"
+  ],
+  "homepage": "https://github.com/Blitz-Mobile-Apps/react-native-easy-push-notifications/",
+  "keywords": [
+    "react-native",
+    "splash",
+    "animations",
+    "animated-splash",
+    "loader",
+    "native animations",
+    "easy splash",
+    "interactive",
+    "react-native-splash-screen",
+    "slide animation",
+    "hybrid mobile app",
+    "rotate animation",
+    "fade animation",
+    "scale animation"
+  ],
+  "author": "alisajames048@gmail.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  }
+}
