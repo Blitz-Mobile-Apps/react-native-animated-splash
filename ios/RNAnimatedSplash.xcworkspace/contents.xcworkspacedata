@@ -3,7 +3,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:RNAnimatedSplashScreen.xcodeproj">
+      location = "group:RNAnimatedSplash.xcodeproj">
    </FileRef>
 </Workspace>
   

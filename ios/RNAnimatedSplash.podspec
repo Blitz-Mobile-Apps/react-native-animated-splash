@@ -1,10 +1,10 @@
 
 Pod::Spec.new do |s|
-  s.name         = "RNAnimatedSplashScreen"
+  s.name         = "RNAnimatedSplash"
   s.version      = "1.0.1"
-  s.summary      = "RNAnimatedSplashScreen"
+  s.summary      = "RNAnimatedSplash"
   s.description  = <<-DESC
-                  RNAnimatedSplashScreen
+                  RNAnimatedSplash
                    DESC
   s.homepage     = ""
   s.license      = "MIT"

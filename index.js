@@ -1,6 +1,6 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNAnimatedSplashScreen } = NativeModules;
+const { RNAnimatedSplash } = NativeModules;
 
-export default RNAnimatedSplashScreen;
+export default RNAnimatedSplash;

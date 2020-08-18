@@ -1,7 +1,7 @@
 
-#import "RNAnimatedSplashScreen.h"
+#import "RNAnimatedSplash.h"
 
-@implementation RNAnimatedSplashScreen
+@implementation RNAnimatedSplash
 
 - (dispatch_queue_t)methodQueue
 {

@@ -1,4 +1,4 @@
-# [react-native-easy-push-notifications](https://www.npmjs.com/package/react-native-animated-splash-screen)
+# [react-native-easy-push-notifications](https://www.npmjs.com/package/react-native-animated-splash)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ![Supports Android and iOS](https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)

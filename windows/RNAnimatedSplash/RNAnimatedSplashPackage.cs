@@ -4,7 +4,7 @@ using ReactNative.UIManager;
 using System;
 using System.Collections.Generic;
 
-namespace Animated.Splash.Screen.RNAnimatedSplashScreen
+namespace Animated.Splash.RNAnimatedSplash
 {
     /// <summary>
     /// Package defining core framework modules (e.g., <see cref="UIManagerModule"/>).
@@ -12,7 +12,7 @@ namespace Animated.Splash.Screen.RNAnimatedSplashScreen
     /// other framework parts (e.g., with the list of packages to load view
     /// managers from).
     /// </summary>
-    public class RNAnimatedSplashScreenPackage : IReactPackage
+    public class RNAnimatedSplashPackage : IReactPackage
     {
         /// <summary>
         /// Creates the list of native modules to register with the react
@@ -24,7 +24,7 @@ namespace Animated.Splash.Screen.RNAnimatedSplashScreen
         {
             return new List<INativeModule>
             {
-                new RNAnimatedSplashScreenModule(),
+                new RNAnimatedSplashModule(),
             };
         }
 

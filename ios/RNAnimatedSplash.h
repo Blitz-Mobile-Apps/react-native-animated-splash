@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNAnimatedSplashScreen : NSObject <RCTBridgeModule>
+@interface RNAnimatedSplash : NSObject <RCTBridgeModule>
 
 @end
   

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNAnimatedSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAnimatedSplashScreen.m */; };
+		B3E7B58A1CC2AC0600A0062D /* RNAnimatedSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAnimatedSplash.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNAnimatedSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAnimatedSplashScreen.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNAnimatedSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnimatedSplashScreen.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNAnimatedSplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnimatedSplashScreen.m; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libRNAnimatedSplash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAnimatedSplash.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3E7B5881CC2AC0600A0062D /* RNAnimatedSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnimatedSplash.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* RNAnimatedSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnimatedSplash.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +42,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libRNAnimatedSplashScreen.a */,
+				134814201AA4EA6300B7C361 /* libRNAnimatedSplash.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,8 +50,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNAnimatedSplashScreen.h */,
-				B3E7B5891CC2AC0600A0062D /* RNAnimatedSplashScreen.m */,
+				B3E7B5881CC2AC0600A0062D /* RNAnimatedSplash.h */,
+				B3E7B5891CC2AC0600A0062D /* RNAnimatedSplash.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +59,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNAnimatedSplashScreen */ = {
+		58B511DA1A9E6C8500147676 /* RNAnimatedSplash */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAnimatedSplashScreen" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAnimatedSplash" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -71,9 +71,9 @@
 			);
 			dependencies = (
 			);
-			name = RNAnimatedSplashScreen;
+			name = RNAnimatedSplash;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNAnimatedSplashScreen.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRNAnimatedSplash.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -90,7 +90,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAnimatedSplashScreen" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAnimatedSplash" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -102,7 +102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNAnimatedSplashScreen */,
+				58B511DA1A9E6C8500147676 /* RNAnimatedSplash */,
 			);
 		};
 /* End PBXProject section */
@@ -112,7 +112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNAnimatedSplashScreen.m in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* RNAnimatedSplash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +211,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAnimatedSplashScreen;
+				PRODUCT_NAME = RNAnimatedSplash;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -227,7 +227,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAnimatedSplashScreen;
+				PRODUCT_NAME = RNAnimatedSplash;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -235,7 +235,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAnimatedSplashScreen" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAnimatedSplash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -244,7 +244,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAnimatedSplashScreen" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAnimatedSplash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

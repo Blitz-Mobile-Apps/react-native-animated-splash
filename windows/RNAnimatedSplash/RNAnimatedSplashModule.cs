@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 
-namespace Animated.Splash.Screen.RNAnimatedSplashScreen
+namespace Animated.Splash.RNAnimatedSplash
 {
     /// <summary>
     /// A module that allows JS to share data.
     /// </summary>
-    class RNAnimatedSplashScreenModule : NativeModuleBase
+    class RNAnimatedSplashModule : NativeModuleBase
     {
         /// <summary>
-        /// Instantiates the <see cref="RNAnimatedSplashScreenModule"/>.
+        /// Instantiates the <see cref="RNAnimatedSplashModule"/>.
         /// </summary>
-        internal RNAnimatedSplashScreenModule()
+        internal RNAnimatedSplashModule()
         {
 
         }
@@ -26,7 +26,7 @@ namespace Animated.Splash.Screen.RNAnimatedSplashScreen
         {
             get
             {
-                return "RNAnimatedSplashScreen";
+                return "RNAnimatedSplash";
             }
         }
     }
