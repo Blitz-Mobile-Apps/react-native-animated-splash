@@ -1,18 +1,24 @@
 
 package com.blitzapp.animatedsplash;
 
+import com.blitzapp.animatedsplash.animation.Splash;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 
 public class RNAnimatedSplashModule extends ReactContextBaseJavaModule {
 
-  private final ReactApplicationContext reactContext;
+  public static ReactApplicationContext reactContext;
 
-  public RNAnimatedSplashModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-    this.reactContext = reactContext;
+  public RNAnimatedSplashModule(ReactApplicationContext rc) {
+    super(rc);
+    reactContext = rc;
+  }
+
+  @ReactMethod
+  public void hide(){
+    Splash.hide(reactContext);
+
   }
 
   @Override
