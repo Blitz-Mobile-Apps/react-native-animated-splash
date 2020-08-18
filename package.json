@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-animated-splash",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,8 @@
     "hybrid mobile app",
     "rotate animation",
     "fade animation",
-    "scale animation"
+    "scale animation",
+    "cross platform"
   ],
   "author": "alisajames048@gmail.com",
   "license": "MIT",
