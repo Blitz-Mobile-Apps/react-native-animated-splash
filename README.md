@@ -10,11 +10,11 @@ React-Native-Animated-Splash-Screen is developed to help the react-native develo
 
 
 
-### Todos
+<!-- ### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
  - implement ios
 
 License
-----
+---- -->
 
 MIT 
