@@ -43,6 +43,7 @@ public class Splash {
     public static final String SLIDE = "SLIDE_ANIMATION";
     public static final String ROTATE = "ROTATE_ANIMATION";
     public static final String SCALE = "SCALE_ANIMATION";
+    public static final String FADE = "FADE_ANIMATION";
     public static final String DIALOGSLIDEDOWN = "SLIDEDOWN";
     public static final String DIALOGSLIDELEFT = "SLIDELEFT";
     public static final String DIALOGSLIDERIGHT = "SLIDERIGHT";
@@ -75,7 +76,7 @@ public class Splash {
 
         mHandler = new Handler();
     }
-    public static void setDialogAnimation(String animationType){
+    public static void setSplashHideAnimation(String animationType){
         if(animationType == "FADE") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.fade; //style id
         }
@@ -93,7 +94,7 @@ public class Splash {
     public static void setAnimationStatus(boolean animationStatus) {
         Splash.animationStatus = animationStatus;
     }
-    public static void setHideDelay(int hideDelay) {
+    public static void setSplashHideDelay(int hideDelay) {
         Splash.hideDelay = hideDelay;
     }
 
@@ -141,31 +142,31 @@ public class Splash {
     }
 
 
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
+    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject) {
         priority++;
         AddGroupObject.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLastObject, priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop,isLastObject, priority));
 
     }
 
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject, int groupCount) {
+    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject, int groupCount) {
         priority = groupCount;
 
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLastObject, priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop,isLastObject, priority));
 
     }
 
 
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float rotateStartDegree, float rotateEndDegree, boolean isLastObject) {
+    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
         priority++;
         AddGroupObject.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, rotateStartDegree, rotateEndDegree, isLastObject, priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
 
     }
 
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float rotateStartDegree, float rotateEndDegree, boolean isLastObject, int groupCount) {
+    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject, int groupCount) {
         priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, rotateStartDegree, rotateEndDegree, isLastObject, priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
 
     }
     public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
@@ -174,10 +175,10 @@ public class Splash {
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta));
 
     }
-    public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float rotateStartDegree, float rotateEndDegree) {
+    public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue) {
         isHideOnDialogAnimation=true;
 
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, rotateStartDegree, rotateEndDegree));
+        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue));
 
 
     }
@@ -189,14 +190,14 @@ public class Splash {
             Log.d(TAG, "runAnimation: in for loop");
             if (i < animateObjectLength - 1 && animatedObjectList.get(counter).getPriority() == animatedObjectList.get(counter + 1).getPriority()) {
                 Log.d(TAG, "runAnimation1: "+i+ animatedObjectList.get(counter).getAnimationType());
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), null,animatedObjectList.get(counter).isLastObject);
+                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), null,animatedObjectList.get(counter).isLoop,animatedObjectList.get(counter).isLastObject);
                 counter++;
 
             } else if (i < animateObjectLength - 1) {
 
                 Log.d(TAG, "runAnimation3: "+i+ animatedObjectList.get(counter).getAnimationType());
 
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter + 1).getObject(),animatedObjectList.get(counter).isLastObject);
+                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter + 1).getObject(),animatedObjectList.get(counter).isLoop,animatedObjectList.get(counter).isLastObject);
 //                counter++;
 
             }
@@ -208,7 +209,7 @@ public class Splash {
             else {
                 Log.d(TAG, "runAnimation2: "+i+ animatedObjectList.get(counter).getAnimationType());
 
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter).getObject(),animatedObjectList.get(counter).isLastObject);
+                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter).getObject(),animatedObjectList.get(counter).isLoop,animatedObjectList.get(counter).isLastObject);
                 counter++;
 
             }
@@ -218,16 +219,19 @@ public class Splash {
 
     }
 
-    public static void runSpecificAnimation(CreateImageObject object, String animationType, AnimateObject animation, CreateImageObject nextObject,Boolean isLasObject) {
+    public static void runSpecificAnimation(CreateImageObject object, String animationType, AnimateObject animation, CreateImageObject nextObject,Boolean isLoop, Boolean isLasObject) {
         switch (animationType) {
             case SLIDE:
-                animation.slideAnimation(object, nextObject,isLasObject);
+                animation.slideAnimation(object, nextObject,isLasObject,isLoop);
                 break;
             case ROTATE:
-                animation.rotateAnimation(object, nextObject,isLasObject);
+                animation.rotateAnimation(object, nextObject,isLasObject,isLoop);
                 break;
             case SCALE:
-                animation.scaleAnimation(object, nextObject,isLasObject);
+                animation.scaleAnimation(object, nextObject,isLasObject,isLoop);
+                break;
+            case FADE:
+                animation.fadeAnimation(object, nextObject,isLasObject,isLoop);
                 break;
         }
     }
@@ -241,6 +245,9 @@ public class Splash {
                 break;
             case SCALE:
                 animation.scaleAnimation(object);
+                break;
+            case FADE:
+                animation.fadeAnimation(object);
                 break;
         }
     }

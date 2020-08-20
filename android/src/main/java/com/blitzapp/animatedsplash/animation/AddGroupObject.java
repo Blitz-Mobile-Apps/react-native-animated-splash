@@ -40,12 +40,12 @@ public class AddGroupObject {
 
     public static Splash splash = new Splash();
 
-    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,isLastObject, groupCount);
+    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,isLoop,isLastObject, groupCount);
     }
 
-    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float rotateStartDegree, float rotateEndDegree, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, rotateStartDegree, rotateEndDegree,isLastObject, groupCount);
+    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, groupCount);
     }
 
 

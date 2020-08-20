@@ -20,6 +20,7 @@ public class CreateImageObject {
     private int width;
     private float positionX;
     private float positionY;
+    private float rotateDegree;
     private boolean visibility;
     public static Context context;
     private ImageView imageView;
@@ -30,11 +31,12 @@ public class CreateImageObject {
     public static final String FIT_END = "FIT_END";
     public static final String FIT_START = "FIT_START";
 
-    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility) {
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, String scaleType, boolean visibility) {
         this.context = applicationContext;
         this.imageSource = imageSource;
         this.height = (int) (height);
         this.width = (int) (width);
+        this.rotateDegree = (float) rotateDegree;
         this.positionX = (float) positionX;
         this.positionY = (float) positionY;
         this.visibility = visibility;
@@ -90,6 +92,7 @@ public class CreateImageObject {
     public View initializeObject() {
         imageView = new ImageView(context);
         imageView.setImageResource(imageSource);
+        imageView.setRotation(rotateDegree);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, height);
         imageView.setLayoutParams(params);
         imageView.setX(positionX);
