@@ -8,8 +8,16 @@
 
 React-Native-Animated-Splash-Screen is developed to help the react-native developers in speeding-up their development process. This package leverages the developer from implementing native animations by using our builtin classes for animation with easy to use api, all the animations run on native thread for smooth performance
 
+### Installation
+If you prefer **npm**,
+```sh
+$ npm install react-native-animated-splash --save
+```
 
-
+If you prefer **yarn**,
+```sh
+$ yarn add react-native-animated-splash
+```
 <!-- ### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
  - implement ios
