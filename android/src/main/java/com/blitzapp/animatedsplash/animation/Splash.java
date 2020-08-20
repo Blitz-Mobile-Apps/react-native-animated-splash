@@ -148,7 +148,24 @@ public class Splash {
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop,isLastObject, priority));
 
     }
+    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
+        priority++;
+        AddGroupObject.groupCount = priority;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, isLastObject, priority));
 
+    }
+    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
+        priority++;
+        AddGroupObject.groupCount = priority;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
+
+    }
+    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLastObject) {
+        priority++;
+        AddGroupObject.groupCount = priority;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false,isLastObject, priority));
+
+    }
     public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject, int groupCount) {
         priority = groupCount;
 
@@ -156,17 +173,22 @@ public class Splash {
 
     }
 
+    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject, int groupCount) {
+        priority = groupCount;
 
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
-        priority++;
-        AddGroupObject.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false,isLastObject, priority));
 
     }
+
 
     public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
+
+    }
+    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLastObject, int groupCount) {
+        priority = groupCount;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false,isLastObject, priority));
 
     }
     public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {

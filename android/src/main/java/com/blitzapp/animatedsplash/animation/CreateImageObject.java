@@ -12,25 +12,33 @@ import androidx.annotation.NonNull;
 import com.blitzapp.animatedsplash.RNAnimatedSplashModule;
 
 import static com.blitzapp.animatedsplash.animation.Splash.applicationContext;
+import static com.blitzapp.animatedsplash.animation.Splash.screenHeight;
+import static com.blitzapp.animatedsplash.animation.Splash.screenWidth;
 
 
 public class CreateImageObject {
     private Integer imageSource;
     private int height;
     private int width;
-    private float positionX;
-    private float positionY;
-    private float rotateDegree;
-    private boolean visibility;
+    private float positionX=0;
+    private float positionY=0;
+    private float rotateDegree=0;
+    private boolean visibility = true;
     public static Context context;
     private ImageView imageView;
-    public String scaleType = "FIT_XY";
+    public String scaleType = "FIT_CENTER";
     private static TextView textView;
     public static final String FIT_XY = "FIT_XY";
     public static final String FIT_CENTER = "FIT_CENTER";
     public static final String FIT_END = "FIT_END";
     public static final String FIT_START = "FIT_START";
-
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        Splash.addImagetoView(this);
+    }
     public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, String scaleType, boolean visibility) {
         this.context = applicationContext;
         this.imageSource = imageSource;
@@ -41,8 +49,33 @@ public class CreateImageObject {
         this.positionY = (float) positionY;
         this.visibility = visibility;
         this.scaleType = scaleType;
-    }
+        Splash.addImagetoView(this);
 
+    }
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        this.scaleType = scaleType;
+        Splash.addImagetoView(this);
+
+    }
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        this.scaleType = scaleType;
+        Splash.addImagetoView(this);
+
+    }
     public void setScaleType(String scaleType) {
         this.scaleType = scaleType;
     }
@@ -57,6 +90,14 @@ public class CreateImageObject {
 
     public void setImageSource(Integer imageSource) {
         this.imageSource = imageSource;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public void setHeight(float height) {
@@ -105,5 +146,12 @@ public class CreateImageObject {
         }
         return imageView;
     }
-
+  public static float getCenterX(double width){
+        float position = (screenWidth- (float)width)/2f;
+        return position;
+  }
+    public static float getCenterY(double height){
+        float position = (screenHeight- (float)height)/2f;
+        return position;
+    }
 }
