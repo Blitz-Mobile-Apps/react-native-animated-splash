@@ -74,7 +74,8 @@ $ yarn add react-native-animated-splash
 ### Note
 
 > add respective images from your drawable else it will give error
-> for some which are not defined, import them from library class.
+>
+> for some variables which appears not defined like "screenHeight", import them from library class.
 >
 
 <!-- ### Todos
