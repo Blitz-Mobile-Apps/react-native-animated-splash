@@ -71,7 +71,19 @@ $ yarn add react-native-animated-splash
 
     }
 ```
-### Note
+#### CreateImageObject available parameters
+
+ ```sh
+ CreateImageObject(imageSource, double height, double width)
+
+ CreateImageObject(imageSource, double height, double width, double positionX, double positionY, boolean visibility)
+ 
+ CreateImageObject(imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility)
+ 
+ CreateImageObject(imageSource, double height, double width, double positionX, double positionY, double rotateDegree, String scaleType, boolean visibility)
+```
+
+#### Important Note
 
 > add respective images from your drawable else it will give error
 >
