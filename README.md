@@ -18,6 +18,65 @@ If you prefer **yarn**,
 ```sh
 $ yarn add react-native-animated-splash
 ```
+
+
+## USAGE
+
+ ### Android
+ Following is the basic example of using react-native-animated-splash in your app. Go to your MainActivity.java file and add following code.
+ 
+ ```sh
+ 
+   public static Context context;
+  
+   public void onCreate(Bundle saved) {
+        super.onCreate(saved);
+        context = this.getApplicationContext();
+        initiateSplash();
+    }
+
+    public void initiateSplash() {
+        Splash splash = new Splash();
+        //create dialog
+        splash.createDialog(MainActivity.this);
+
+        //set background image to view
+        splash.setBackgroundColor(R.drawable.splashbg);
+        
+        // set splash hide animation
+        splash.setSplashHideAnimation(DIALOGSLIDELEFT);
+        
+        // set splash hide delay
+        splash.setSplashHideDelay(1000);
+        
+        // create and add images to view
+        CreateImageObject addObject1 = new CreateImageObject(R.drawable.header, screenHeight * 0.2, screenWidth, 0, 0, 0, FIT_XY, true);
+
+        CreateImageObject addObject2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.2, screenWidth, 0, screenHeight - screenHeight * 0.2, 0, FIT_XY, true);
+
+        CreateImageObject addObject3 = new CreateImageObject(R.drawable.logo, screenHeight * 0.13, screenWidth * 0.4, (screenWidth - screenWidth * 0.4) / 2, (screenHeight - screenHeight * 0.13) / 2, 0, FIT_CENTER, false);
+
+        // add animations with type
+        
+        // add group animation (animations added in group will run in parallel)
+        AddGroupObject gObject1 = new AddGroupObject();
+        gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
+
+        gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+
+         // add single animation (animations added in singleObject will run in sequentially)
+        splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+
+        splash.show();
+
+    }
+```
+### Note
+
+> add respective images from your drawable else it will give error
+> for some which are not defined, import them from library class.
+>
+
 <!-- ### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
  - implement ios
