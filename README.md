@@ -71,6 +71,13 @@ $ yarn add react-native-animated-splash
 
     }
 ```
+#### Important Note
+
+> add respective images from your drawable else it will give error
+>
+> for some variables which appears not defined like "screenHeight", import them from library class.
+>
+
 
 ### Methods Description
 | Methods | Description | Prameters | Import from |
@@ -80,7 +87,7 @@ $ yarn add react-native-animated-splash
 | setBackgroundImage | sets background image on splash screen| Integer (Enter drawable)| Splash |
 | setSplashHideAnimation | set animation for hide splash | CONSTANT (given for splash hide animation) | Splash |
 | setSplashHideDelay | sets delay before splash hide | Integer (Enter value in milliseconds) | Splash |
-| show | display splash and starts animations | none | Splash |
+| splashShow | display splash and starts animations | none | Splash |
 
 
 ### Splash Hide Animation Constants 
@@ -105,14 +112,6 @@ $ yarn add react-native-animated-splash
 | scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from CreateImageObject) |
 | visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Double |
 | rotateDegree | drawabloe image initial rotate degree | Double |
-
-#### Important Note
-
-> add respective images from your drawable else it will give error
->
-> for some variables which appears not defined like "screenHeight", import them from library class.
->
-
 
 
 ### Defining Animations
