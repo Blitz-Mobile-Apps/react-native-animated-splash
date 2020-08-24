@@ -90,6 +90,23 @@ $ yarn add react-native-animated-splash
 > for some variables which appears not defined like "screenHeight", import them from library class.
 >
 
+#### Defining Animations
+
+The animations you define works sequentially.
+You can define animations of two types.
+##### Type1 - Group Animation
+You need to use group animation when you need to run two or more animations simultaneously.
+Sample code for defining group animations:
+```sh
+        AddGroupObject gObject1 = new AddGroupObject();
+        gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
+
+        gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+```
+
+
+
+
 ### Animation Types
 
 | Animation | Description |
