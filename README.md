@@ -118,7 +118,7 @@ $ yarn add react-native-animated-splash
 ### Defining Animations
 
 The animations you define works sequentially.
-You can define animations of two types.
+You can define animations of three types.
 
 #### Type1 - Group Animation
 You need to use group animation when you need to run two or more animations simultaneously.
@@ -138,10 +138,10 @@ splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true
 splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
 ```
 
-#### Define Animation before hiding splash
+#### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just befor hiding of splash
  ```sh
- splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+ splash.animateObjectOnHide(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
  ```
 ### Animation parameters description
 
@@ -156,6 +156,9 @@ You can use animation on certain object to perform just befor hiding of splash
 | toYDelta | if type is SLIDE, final point at y-axis to end slide at| float |
 | fromValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
 | toValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
+| isLoop | run animation in loop or continuously | boolean |
+| isLastObject | set to true if animation is last one | boolean |
+
 
 ### Animation Types
 
