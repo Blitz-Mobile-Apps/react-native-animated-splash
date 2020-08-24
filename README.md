@@ -97,7 +97,7 @@ splash.setSplashHideDelay(1000);
 ```sh
  splash.setSplashHideAnimation(DIALOGSLIDELEFT);
  ```
-##### Dialog hide animations
+##### Splash hide animations
 | Animation | Description |
 | ------ | ------ |
 | DIALOGSLIDELEFT | hides splash while sliding to left.|
@@ -112,7 +112,7 @@ splash.setSplashHideDelay(1000);
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
 | imageSource | drawable image that you need to add on splash screen| Integer(double) |
-| height | hieght of image drawble| Double |
+| height | height of image drawable| Double |
 | width | width of image drawable| Double |
 | positionX | position of image drawable on x-axis on splash screen| Double |
 | positionY | position of image drawable on y-axis on splash screen| Double |
@@ -157,7 +157,19 @@ You can use animation on certain object to perform just befor hiding of splash
  ```sh
  splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
  ```
+#### Animation parameters description
 
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| object | object you created and placed on splash that you want to perform animation on| CreateImageObject |
+| animationType | hieght of image drawble| Double |
+| animationDuration | animation duration for specified animation| int |
+| fromXDelta | if type is SLIDE, initial point at x-axis to start slide from | float |
+| toXDelta | if type is SLIDE, final point at x-axis to end slide at| float |
+| fromYDelta | if type is SLIDE, initial point at y-axis to start slide from | float |
+| toYDelta | if type is SLIDE, final point at y-axis to end slide at| float |
+| fromValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
+| toValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
 ### Animation Types
 
 | Animation | Description |
