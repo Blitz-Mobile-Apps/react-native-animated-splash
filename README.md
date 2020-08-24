@@ -86,8 +86,8 @@ $ yarn add react-native-animated-splash
 | setSplashHideAnimation | set animation for hide splash | CONSTANT (given for splash hide animation) | Splash |
 | setSplashHideDelay | sets delay before splash hide | Integer (Enter value in milliseconds) | Splash |
 | splashShow | display splash and starts animations | none | Splash |
-
-
+| getCenterX | sets the image to center of view at x-axis | float (width of image)  | Splash |
+| getCenterY | sets the image to center of view at y-axis  | float (height of image) | Splash |
 ### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
