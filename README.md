@@ -26,12 +26,9 @@ $ yarn add react-native-animated-splash
  Following is the basic example of using react-native-animated-splash. Go to your MainActivity.java file and add following code.
  
  ```sh
- 
-   public static Context context;
   
    public void onCreate(Bundle saved) {
         super.onCreate(saved);
-        context = this.getApplicationContext();
         initiateSplash();
     }
 
