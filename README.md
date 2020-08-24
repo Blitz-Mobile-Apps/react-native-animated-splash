@@ -72,32 +72,18 @@ $ yarn add react-native-animated-splash
     }
 ```
 
+### Methods Description
+| Methods | Description | Prameters | Import from |
+| ------ | ------ | ------- | ------- |
+| createDialog | creates a view for splash | context (MainActivity.this) | Splash |
+| setBackgroundColor | sets background color on splash screen | string (Enter color hex code) | Splash |
+| setBackgroundImage | sets background image on splash screen| Integer (Enter drawable)| Splash |
+| setSplashHideAnimation | set animation for hide splash | CONSTANT (given for splash hide animation) | Splash |
+| setSplashHideDelay | sets delay before splash hide | Integer (Enter value in milliseconds) | Splash |
+| show | display splash and starts animations | none | Splash |
 
 
-#### Set Background on Splash
-You can set splash background in two ways
-
-##### Way1 - Set background color
-```sh
- splash.setBackgroundColor("#000000");
-```
-##### Way2 - Set background image
-```sh
- splash.setBackgroundImage(R.drawable.splashbg);
- ```
- 
-#### Set Delay before splash hide
-Enter value for delay in millisecond.
-```sh
-splash.setSplashHideDelay(1000);
-```
- 
- 
-#### Set Splash hide animation
-```sh
- splash.setSplashHideAnimation(DIALOGSLIDELEFT);
- ```
-##### Splash hide animations
+### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
 | DIALOGSLIDELEFT | hides splash while sliding to left.|
@@ -129,12 +115,12 @@ splash.setSplashHideDelay(1000);
 
 
 
-#### Defining Animations
+### Defining Animations
 
 The animations you define works sequentially.
 You can define animations of two types.
 
-##### Type1 - Group Animation
+#### Type1 - Group Animation
 You need to use group animation when you need to run two or more animations simultaneously.
 Sample code for defining group animations:
 
@@ -144,7 +130,7 @@ gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, fal
 gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
 ```
 
-##### Type2 - Single Animation
+#### Type2 - Single Animation
 Single animation can be used to run an animation in sequence.
 
 ```sh
@@ -157,7 +143,7 @@ You can use animation on certain object to perform just befor hiding of splash
  ```sh
  splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
  ```
-#### Animation parameters description
+### Animation parameters description
 
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
@@ -170,6 +156,7 @@ You can use animation on certain object to perform just befor hiding of splash
 | toYDelta | if type is SLIDE, final point at y-axis to end slide at| float |
 | fromValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
 | toValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
+
 ### Animation Types
 
 | Animation | Description |
