@@ -72,6 +72,8 @@ $ yarn add react-native-animated-splash
     }
 ```
 
+
+
 #### Set Background on Splash
 You can set splash background in two ways
 
@@ -83,11 +85,13 @@ You can set splash background in two ways
 ```sh
  splash.setBackgroundImage(R.drawable.splashbg);
  ```
-#### Set delay before splash hide
+ 
+#### Set Delay before splash hide
 Enter value for delay in millisecond.
 ```sh
 splash.setSplashHideDelay(1000);
 ```
+ 
  
 #### Set Splash hide animation
 ```sh
@@ -100,18 +104,21 @@ splash.setSplashHideDelay(1000);
 | DIALOGSLIDERIGHT | hides splash while sliding to right.|
 | DIALOGFADE | hides splash with fade effect.|
 | DIALOGSLIDEDOWN | hides splash while sliding to down.|
+
+ 
  
 #### CreateImageObject available parameters
 
- ```sh
- CreateImageObject(imageSource, double height, double width)
-
- CreateImageObject(imageSource, double height, double width, double positionX, double positionY, boolean visibility)
- 
- CreateImageObject(imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility)
- 
- CreateImageObject(imageSource, double height, double width, double positionX, double positionY, double rotateDegree, String scaleType, boolean visibility)
-```
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| imageSource | drawable image that you need to add on splash screen| Integer(double) |
+| height | hieght of image drawble| Double |
+| width | width of image drawable| Double |
+| positionX | position of image drawable on x-axis on splash screen| Double |
+| positionY | position of image drawable on y-axis on splash screen| Double |
+| scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from CreateImageObject) |
+| visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Double |
+| rotateDegree | drawabloe image initial rotate degree | Double |
 
 #### Important Note
 
@@ -120,10 +127,13 @@ splash.setSplashHideDelay(1000);
 > for some variables which appears not defined like "screenHeight", import them from library class.
 >
 
+
+
 #### Defining Animations
 
 The animations you define works sequentially.
 You can define animations of two types.
+
 ##### Type1 - Group Animation
 You need to use group animation when you need to run two or more animations simultaneously.
 Sample code for defining group animations:
@@ -142,7 +152,11 @@ splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true
 splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
 ```
 
-
+#### Define Animation before hiding splash
+You can use animation on certain object to perform just befor hiding of splash
+ ```sh
+ splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+ ```
 
 ### Animation Types
 
