@@ -111,12 +111,18 @@ public class Splash {
 
     }
 
-    public static void show() {
+    public static void splashShow() {
         Log.d(TAG, "createDialog: " + animatedObjectList.size());
         animateObjectLength = animatedObjectList.size();
-        runAnimation();
-
         dialog.show();
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                runAnimation();
+
+            }
+        }, 1000);
 
 
     }
