@@ -41,7 +41,7 @@ $ yarn add react-native-animated-splash
         splash.createDialog(MainActivity.this);
 
         //set background image to view
-        splash.setBackgroundColor(R.drawable.splashbg);
+        splash.setBackgroundImage(R.drawable.splashbg);
         
         // set splash hide animation
         splash.setSplashHideAnimation(DIALOGSLIDELEFT);
@@ -71,6 +71,19 @@ $ yarn add react-native-animated-splash
 
     }
 ```
+
+#### Set Background on Splash
+You can set splash background in two ways
+
+##### Way1 - Set background color
+```sh
+ splash.setBackgroundColor("#000000");
+```
+##### Way2 - Set background image
+```sh
+ splash.setBackgroundImage(R.drawable.splashbg);
+ ```
+
 #### CreateImageObject available parameters
 
  ```sh
@@ -104,6 +117,13 @@ gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, fal
 gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
 ```
 
+##### Type2 - Single Animation
+Single animation can be used to run an animation in sequence.
+
+```sh
+splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+```
 
 
 
