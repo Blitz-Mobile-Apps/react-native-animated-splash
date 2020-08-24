@@ -36,38 +36,39 @@ $ yarn add react-native-animated-splash
     }
 
     public void initiateSplash() {
-        Splash splash = new Splash();
+    
         //create dialog
         splash.createDialog(MainActivity.this);
 
-        //set background image to view
-        splash.setBackgroundImage(R.drawable.splashbg);
+        //set background color to view
+        setBackgroundColor("#101010");
         
         // set splash hide animation
-        splash.setSplashHideAnimation(DIALOGSLIDELEFT);
+        setSplashHideAnimation(DIALOGSLIDELEFT);
         
         // set splash hide delay
-        splash.setSplashHideDelay(1000);
+        setSplashHideDelay(1000);
         
         // create and add images to view
-        CreateImageObject addObject1 = new CreateImageObject(R.drawable.header, screenHeight * 0.2, screenWidth, 0, 0, 0, FIT_XY, true);
+        CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.64, screenWidth + screenWidth * 0.32, getCenterX(screenWidth + screenWidth * 0.32), getCenterY(screenHeight * 0.64), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.2, screenWidth, 0, screenHeight - screenHeight * 0.2, 0, FIT_XY, true);
+        CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.51, screenWidth + screenWidth * 0.07, getCenterX(screenWidth + screenWidth * 0.07), getCenterY(screenHeight * 0.51), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject3 = new CreateImageObject(R.drawable.logo, screenHeight * 0.13, screenWidth * 0.4, (screenWidth - screenWidth * 0.4) / 2, (screenHeight - screenHeight * 0.13) / 2, 0, FIT_CENTER, false);
+        CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.385, screenWidth * 0.8, getCenterX(screenWidth * 0.8), getCenterY(screenHeight * 0.385), 0, CreateImageObject.FIT_XY, false);
 
-        // add animations with type
+        CreateImageObject addObject4 = new CreateImageObject(R.drawable.logo, screenHeight * 0.26, screenWidth * 0.41, getCenterX(screenWidth * 0.41), getCenterY(screenHeight * 0.26), 0, CreateImageObject.FIT_CENTER, false);
+
+
+        // Add single animation
+        animateSingleObject(addObject1, FADE, 500, 0f, 1f, false);
         
-        // add group animation (animations added in group will run in parallel)
-        AddGroupObject gObject1 = new AddGroupObject();
-        gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
+        animateSingleObject(addObject2, FADE, 400, 0f, 1f, false);
+        
+        animateSingleObject(addObject3, FADE, 400, 0f, 1f, false);
 
-        gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+        animateSingleObject(addObject4, FADE, 400, 0f, 1f, false);
 
-         // add single animation (animations added in singleObject will run in sequentially)
-        splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
-
-        splash.show();
+        splashShow();
 
     }
 ```
