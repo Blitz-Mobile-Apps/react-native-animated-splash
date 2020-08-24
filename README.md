@@ -83,7 +83,24 @@ You can set splash background in two ways
 ```sh
  splash.setBackgroundImage(R.drawable.splashbg);
  ```
-
+#### Set delay before splash hide
+Enter value for delay in millisecond.
+```sh
+splash.setSplashHideDelay(1000);
+```
+ 
+#### Set Splash hide animation
+```sh
+ splash.setSplashHideAnimation(DIALOGSLIDELEFT);
+ ```
+##### Dialog hide animations
+| Animation | Description |
+| ------ | ------ |
+| DIALOGSLIDELEFT | hides splash while sliding to left.|
+| DIALOGSLIDERIGHT | hides splash while sliding to right.|
+| DIALOGFADE | hides splash with fade effect.|
+| DIALOGSLIDEDOWN | hides splash while sliding to down.|
+ 
 #### CreateImageObject available parameters
 
  ```sh
