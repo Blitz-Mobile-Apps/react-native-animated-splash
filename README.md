@@ -93,7 +93,7 @@ $ yarn add react-native-animated-splash
 
  
  
-#### CreateImageObject available parameters
+### CreateImageObject Parameters Description
 
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
