@@ -63,7 +63,7 @@ public class MainActivity extends ReactActivity {
 
     public void initiateSplash() {
     
-        //create dialog
+        // create dialog
         splash.createDialog(MainActivity.this);
 
         //set background color to view
