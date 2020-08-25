@@ -48,5 +48,11 @@ public class AddGroupObject {
         splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, groupCount);
     }
 
+    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false,isLastObject, groupCount);
+    }
 
+    public static void add(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLastObject) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, isLastObject, groupCount);
+    }
 }

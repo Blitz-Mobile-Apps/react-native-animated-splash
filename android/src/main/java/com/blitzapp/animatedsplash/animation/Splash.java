@@ -133,7 +133,7 @@ public class Splash {
 
     public static void setBackgroundImage(Integer drawable) {
 
-        view.setBackground(ContextCompat.getDrawable(RNAnimatedSplashModule.reactContext, drawable));
+        view.setBackground(ContextCompat.getDrawable(applicationContext, drawable));
     }
 
     public static void setBackgroundColor(String colorString) {
