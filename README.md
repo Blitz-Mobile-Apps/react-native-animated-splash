@@ -192,7 +192,7 @@ public class MainActivity extends ReactActivity {
 >
 
 >
-
+>
 
 ### Methods Description
 | Methods | Description | Prameters | Import from |
