@@ -25,7 +25,9 @@ $ yarn add react-native-animated-splash
 ## USAGE
 
  ### Android
- Following is the basic example of using react-native-animated-splash. Go to your MainActivity.java file and add following code.
+ Following are the basic examples of using react-native-animated-splash. Go to your MainActivity.java file and add following code.
+ 
+ #### Example Animation 1
  
  ```sh
     
@@ -76,11 +78,12 @@ public class MainActivity extends ReactActivity {
         setSplashHideDelay(1000);
         
         // create and add images to view
-        CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.64, screenWidth + screenWidth*0.32, CreateImageObject.getCenterX(screenWidth + screenWidth*0.32), CreateImageObject.getCenterY(screenHeight * 0.64), 0, CreateImageObject.FIT_XY, false);
+          CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.65, screenWidth + screenWidth * 0.31, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.31), CreateImageObject.getCenterY(screenHeight * 0.65), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.51, screenWidth + screenWidth*0.07, CreateImageObject.getCenterX(screenWidth + screenWidth*0.07), CreateImageObject.getCenterY(screenHeight * 0.51), 0, CreateImageObject.FIT_XY, false);
+        CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.52, screenWidth + screenWidth * 0.068, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.068), CreateImageObject.getCenterY(screenHeight * 0.52), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.385, screenWidth *0.8 , CreateImageObject.getCenterX(screenWidth *0.8), CreateImageObject.getCenterY(screenHeight * 0.385), 0, CreateImageObject.FIT_XY, false);
+        CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.386, screenWidth * 0.78, CreateImageObject.getCenterX(screenWidth * 0.78), CreateImageObject.getCenterY(screenHeight * 0.386), 0, CreateImageObject.FIT_XY, false);
+
 
         CreateImageObject addObject4 = new CreateImageObject(R.drawable.logo, screenHeight * 0.26, screenWidth *0.41 , CreateImageObject.getCenterX(screenWidth *0.41), CreateImageObject.getCenterY(screenHeight * 0.26), 0, CreateImageObject.FIT_CENTER, false);
         
@@ -99,8 +102,88 @@ public class MainActivity extends ReactActivity {
     }
 }
 
+
+```
+![](example2.gif)
+>
+>
+#### Example Animation 2
+
+```sh
+package com.example;
+
+import android.os.Bundle;
+
+
+import com.facebook.react.ReactActivity;
+import com.blitzapp.animatedsplash.animation.AddGroupObject;
+import com.blitzapp.animatedsplash.animation.CreateImageObject;
+
+import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDELEFT;
+import static com.blitzapp.animatedsplash.animation.Splash.SCALE;
+import static com.blitzapp.animatedsplash.animation.Splash.SLIDE;
+import static com.blitzapp.animatedsplash.animation.Splash.animateSingleObject;
+import static com.blitzapp.animatedsplash.animation.Splash.createDialog;
+import static com.blitzapp.animatedsplash.animation.Splash.screenHeight;
+import static com.blitzapp.animatedsplash.animation.Splash.screenWidth;
+import static com.blitzapp.animatedsplash.animation.Splash.setBackgroundImage;
+import static com.blitzapp.animatedsplash.animation.Splash.setSplashHideAnimation;
+import static com.blitzapp.animatedsplash.animation.Splash.setSplashHideDelay;
+import static com.blitzapp.animatedsplash.animation.Splash.splashShow;
+
+
+public class MainActivity extends ReactActivity {
+
+
+    @Override
+    protected String getMainComponentName() {
+        return "example";
+    }
+
+
+    public void onCreate(Bundle saved) {
+        super.onCreate(saved);
+        initiateSplash();
+    }
+
+    public void initiateSplash() {
+        
+        //create dialog
+        createDialog(MainActivity.this);
+
+        //set background
+        setBackgroundImage(R.drawable.splashbg);
+        
+        // set splash hide animation
+        setSplashHideAnimation(DIALOGSLIDELEFT);
+
+        // set splash hide delay
+        setSplashHideDelay(1500);
+
+        // Create and add images to view
+        CreateImageObject addObject1 = new CreateImageObject(R.drawable.header, screenHeight * 0.15, screenWidth, 0, 0, CreateImageObject.FIT_XY, false);
+        
+        CreateImageObject addObject2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.15, screenWidth, 0, screenHeight - screenHeight * 0.15, CreateImageObject.FIT_XY, false);
+        
+        CreateImageObject addObject3 = new CreateImageObject(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, CreateImageObject.getCenterX(screenWidth * 0.45), CreateImageObject.getCenterY(screenHeight * 0.18), CreateImageObject.FIT_XY, false);
+
+        // add group animation
+        AddGroupObject gObject1 = new AddGroupObject();
+        gObject1.add(addObject1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
+        gObject1.add(addObject2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+        
+        // add single animation
+        animateSingleObject(addObject3, SCALE, 780, 0.2f, 1f, 0.2f, 1f, true);
+
+        splashShow();
+
+    }
+}
 ```
 
+ ![](example1.gif)
+ >
+ >
 #### Important Note
 
 > add respective images from your drawable else it will give error
@@ -108,10 +191,8 @@ public class MainActivity extends ReactActivity {
 > for some variables which appears not defined like "screenHeight", import them from library class.
 >
 
-### Example Animations
-![](example1.gif)
 >
-![](example2.gif)
+
 
 ### Methods Description
 | Methods | Description | Prameters | Import from |
