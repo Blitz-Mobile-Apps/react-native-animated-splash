@@ -110,6 +110,7 @@ public class MainActivity extends ReactActivity {
 
 ### Example Animations
 ![](example1.gif)
+>
 ![](example2.gif)
 
 ### Methods Description
