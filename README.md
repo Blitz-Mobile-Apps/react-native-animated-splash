@@ -168,9 +168,9 @@ public class MainActivity extends ReactActivity {
         CreateImageObject addObject3 = new CreateImageObject(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, CreateImageObject.getCenterX(screenWidth * 0.45), CreateImageObject.getCenterY(screenHeight * 0.18), CreateImageObject.FIT_XY, false);
 
         // add group animation
-        AddGroupObject gObject1 = new AddGroupObject();
-        gObject1.add(addObject1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
-        gObject1.add(addObject2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+        AnimateGroupObject gObject1 = new AnimateGroupObject();
+        gObject1.addObject(addObject1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
+        gObject1.addObject(addObject2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
         
         // add single animation
         animateSingleObject(addObject3, SCALE, 780, 0.2f, 1f, 0.2f, 1f, true);
@@ -239,9 +239,9 @@ You need to use group animation when you need to run two or more animations simu
 Sample code for defining group animations:
 
 ```sh
-AddGroupObject gObject1 = new AddGroupObject();
-gObject1.add(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
-gObject1.add(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+AnimateGroupObject gObject1 = new AnimateGroupObject();
+gObject1.addObject(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
+gObject1.addObject(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
 ```
 
 #### Type2 - Single Animation
