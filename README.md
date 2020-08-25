@@ -179,12 +179,12 @@ You can use animation on certain object to perform just befor hiding of splash
 | object | object you created and placed on splash that you want to perform animation on| CreateImageObject |
 | animationType | hieght of image drawble| Double |
 | animationDuration | animation duration for specified animation| int |
-| fromXDelta | if type is SLIDE, initial point at x-axis to start slide from | float |
-| toXDelta | if type is SLIDE, final point at x-axis to end slide at| float |
-| fromYDelta | if type is SLIDE, initial point at y-axis to start slide from | float |
-| toYDelta | if type is SLIDE, final point at y-axis to end slide at| float |
-| fromValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
-| toValue | if type is SCALE,FADE,ROTATE, final point at y-axis to end slide at| float |
+| fromXDelta | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
+| toXDelta | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
+| fromYDelta | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
+| toYDelta | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
+| fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
+| toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | isLoop | run animation in loop or continuously | boolean |
 | isLastObject | set to true if animation is last one | boolean |
 
