@@ -168,7 +168,7 @@ splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true
 ```
 
 #### Type3 - Define Animation before hiding splash
-You can use animation on certain object to perform just befor hiding of splash
+You can use animation on certain object to perform just before hiding of splash
  ```sh
  splash.animateObjectOnHide(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
  ```
