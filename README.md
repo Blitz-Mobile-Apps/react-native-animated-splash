@@ -161,19 +161,19 @@ public class MainActivity extends ReactActivity {
         setSplashHideDelay(1500);
 
         // Create and add images to view
-        CreateImageObject addObject1 = new CreateImageObject(R.drawable.header, screenHeight * 0.15, screenWidth, 0, 0, CreateImageObject.FIT_XY, false);
+        CreateImageObject object1 = new CreateImageObject(R.drawable.header, screenHeight * 0.15, screenWidth, 0, 0, CreateImageObject.FIT_XY, false);
         
-        CreateImageObject addObject2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.15, screenWidth, 0, screenHeight - screenHeight * 0.15, CreateImageObject.FIT_XY, false);
+        CreateImageObject object2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.15, screenWidth, 0, screenHeight - screenHeight * 0.15, CreateImageObject.FIT_XY, false);
         
-        CreateImageObject addObject3 = new CreateImageObject(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, CreateImageObject.getCenterX(screenWidth * 0.45), CreateImageObject.getCenterY(screenHeight * 0.18), CreateImageObject.FIT_XY, false);
+        CreateImageObject object3 = new CreateImageObject(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, CreateImageObject.getCenterX(screenWidth * 0.45), CreateImageObject.getCenterY(screenHeight * 0.18), CreateImageObject.FIT_XY, false);
 
         // add group animation
-        AnimateGroupObject gObject1 = new AnimateGroupObject();
-        gObject1.addObject(addObject1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
-        gObject1.addObject(addObject2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+        AnimateGroupObject groupObject1 = new AnimateGroupObject();
+        groupObject1.addObject(object1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
+        groupObject1.addObject(object2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
         
         // add single animation
-        animateSingleObject(addObject3, SCALE, 780, 0.2f, 1f, 0.2f, 1f, true);
+        animateSingleObject(object3, SCALE, 780, 0.2f, 1f, 0.2f, 1f, true);
 
         splashShow();
 
@@ -239,9 +239,9 @@ You need to use group animation when you need to run two or more animations simu
 Sample code for defining group animations:
 
 ```sh
-AnimateGroupObject gObject1 = new AnimateGroupObject();
-gObject1.addObject(addObject1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
-gObject1.addObject(addObject2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+AnimateGroupObject groupObject1 = new AnimateGroupObject();
+groupObject1.addObject(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
+groupObject1.addObject(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
 ```
 
 #### Type2 - Single Animation
