@@ -16,7 +16,6 @@ import android.widget.FrameLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import com.blitzapp.animatedsplash.R;
-import com.blitzapp.animatedsplash.RNAnimatedSplashModule;
 import com.facebook.react.bridge.ReactContext;
 
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class Splash {
     public static List<AnimateObject> animatedObjectList = new ArrayList<>();
     public static List<AnimateObject> hideanimatedObjectList = new ArrayList<>();
 
-    public static List<AddGroupObject> groupObjectList = new ArrayList<>();
+    public static List<AnimateGroupObject> groupObjectList = new ArrayList<>();
     public static AnimateObject hideObject;
 
 
@@ -150,25 +149,25 @@ public class Splash {
 
     public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject) {
         priority++;
-        AddGroupObject.groupCount = priority;
+        AnimateGroupObject.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop,isLastObject, priority));
 
     }
     public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
         priority++;
-        AddGroupObject.groupCount = priority;
+        AnimateGroupObject.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, isLastObject, priority));
 
     }
     public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
         priority++;
-        AddGroupObject.groupCount = priority;
+        AnimateGroupObject.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, priority));
 
     }
     public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLastObject) {
         priority++;
-        AddGroupObject.groupCount = priority;
+        AnimateGroupObject.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false,isLastObject, priority));
 
     }
