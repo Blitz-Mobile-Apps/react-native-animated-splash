@@ -6,7 +6,9 @@
 [![Version](https://img.shields.io/npm/v/react-native-animated-splash)](https://www.npmjs.com/package/react-native-animated-splash)
 
 
-React-Native-Animated-Splash-Screen is developed to help the react-native developers in speeding-up their development process. This package leverages the developer from implementing native animations by using our builtin classes for animation with easy to use api, all the animations run on native thread for smooth performance
+React-Native-Animated-Splash is developed to help the react-native developers in speeding-up their development process. This package leverages the developer from implementing native animations by using our builtin classes for animation with easy to use api, all the animations run on native thread for smooth performance
+
+### Only available for Android, iOS will be available soon
 
 ### Installation
 If you prefer **npm**,
@@ -167,11 +169,9 @@ You can use animation on certain object to perform just befor hiding of splash
 | ROTATE | rotate image object starting from initial value to final value.|
 
 
-<!-- ### Todos
+### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
  - implement ios
 
 License
----- -->
-
 MIT 
