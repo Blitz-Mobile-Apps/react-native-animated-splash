@@ -25,9 +25,10 @@ $ yarn add react-native-animated-splash
 ## USAGE
 
  ### Android
+ >
  Following are the basic examples of using react-native-animated-splash. Go to your MainActivity.java file and add following code.
  
- #### Example Animation 1
+#### Example Animation 1
  
  ```sh
     
