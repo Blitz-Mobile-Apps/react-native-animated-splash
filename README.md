@@ -6,7 +6,9 @@
 [![Version](https://img.shields.io/npm/v/react-native-animated-splash)](https://www.npmjs.com/package/react-native-animated-splash)
 
 
-React-Native-Animated-Splash is developed to help the react-native developers in speeding-up their development process. This package leverages the developer from implementing native animations by using our builtin classes for animation with easy to use api, all the animations run on native thread for smooth performance
+React-Native-Animated-Splash is developed to help the react-native developers in speeding-up their development process. This package leverages the developer in implementing native animations by using our builtin classes for animation with easy to use api, all the animations run on native thread for smooth performance.
+##### Objective
+The main objective or the edge of this module is that, splash animation runs in parallel with loading of javascript, which means when animation is running, javascript is being loaded in parallel behind the scenes, moreover componentDidMount can also be called for any api hits before calling hide function of splash from react-native side.
 
 ### Only available for Android, iOS will be available soon
 
