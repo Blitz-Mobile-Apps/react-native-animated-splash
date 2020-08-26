@@ -75,13 +75,13 @@ public class MainActivity extends ReactActivity {
         setBackgroundColor("#101010");
         
         // set splash hide animation
-        setSplashHideAnimation(DIALOGSLIDELEFT);
+        setSplashHideAnimation(DIALOGSLIDEDOWN);
         
         // set splash hide delay
         setSplashHideDelay(1000);
         
         // create and add images to view
-         CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.65, screenWidth + screenWidth * 0.31, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.31), CreateImageObject.getCenterY(screenHeight * 0.65), 0, CreateImageObject.FIT_XY, false);
+        CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.65, screenWidth + screenWidth * 0.31, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.31), CreateImageObject.getCenterY(screenHeight * 0.65), 0, CreateImageObject.FIT_XY, false);
 
         CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.52, screenWidth + screenWidth * 0.068, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.068), CreateImageObject.getCenterY(screenHeight * 0.52), 0, CreateImageObject.FIT_XY, false);
 
