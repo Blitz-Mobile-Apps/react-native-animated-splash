@@ -107,6 +107,14 @@ public class MainActivity extends ReactActivity {
 
 
 ```
+Then call hide function of splash in your app, from react native side like this:
+ 
+ ```sh
+ import AnimatedSplash from "react-native-animated-splash";
+ 
+ AnimatedSplash.hide()
+ ```  
+ 
 ![](example2.gif)
 >
 >
@@ -183,7 +191,14 @@ public class MainActivity extends ReactActivity {
     }
 }
 ```
-
+Then call hide function of splash in your app, from react native side like this:
+ 
+ ```sh
+ import AnimatedSplash from "react-native-animated-splash";
+ 
+ AnimatedSplash.hide()
+ ```  
+ 
  ![](example1.gif)
  >
  >
@@ -285,6 +300,17 @@ You can use animation on certain object to perform just before hiding of splash
 | SCALE | scale image object starting from initial value to final value.|
 | FADE | fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
 | ROTATE | rotate image object starting from initial value to final value.|
+
+### Hide Splash in your app
+
+Call hide function of splash in your app, from react native side like this:
+ 
+ ```sh
+ import AnimatedSplash from "react-native-animated-splash";
+ 
+ AnimatedSplash.hide()
+ ```  
+ 
 
 ### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
