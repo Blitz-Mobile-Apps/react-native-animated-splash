@@ -115,7 +115,7 @@ Then call hide function of splash in your app, from react native side like this:
  AnimatedSplash.hide()
  ```  
  
-![](example2.gif)
+![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2.gif)
 >
 >
 #### Example Animation 2
@@ -199,7 +199,7 @@ Then call hide function of splash in your app, from react native side like this:
  AnimatedSplash.hide()
  ```  
  
- ![](example1.gif)
+ ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1.gif)
  >
  >
 #### Important Note
