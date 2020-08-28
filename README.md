@@ -85,7 +85,6 @@ public class MainActivity extends ReactActivity {
 
         CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.39, screenWidth * 0.76, CreateImageObject.getCenterX(screenWidth * 0.76), CreateImageObject.getCenterY(screenHeight * 0.39), 0, CreateImageObject.FIT_XY, false);
 
-
         CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.537, screenWidth + screenWidth * 0.06, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.06), CreateImageObject.getCenterY(screenHeight * 0.537), 0, CreateImageObject.FIT_XY, false);
 
         CreateImageObject addObject4 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.676, screenWidth + screenWidth * 0.29, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.29), CreateImageObject.getCenterY(screenHeight * 0.676), 0, CreateImageObject.FIT_XY, false);
