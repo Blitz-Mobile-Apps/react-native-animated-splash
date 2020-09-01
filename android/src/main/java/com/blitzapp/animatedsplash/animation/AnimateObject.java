@@ -305,7 +305,7 @@ public class AnimateObject {
 //        rotation.setDuration(animationDuration);
 //        view.setVisibility(View.VISIBLE);
 //        rotation.start();
-        RotateAnimation rotateAnimation = new RotateAnimation(startFromValue, endToValue., Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
+        RotateAnimation rotateAnimation = new RotateAnimation(startFromValue, endToValue, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
         rotateAnimation.setDuration(animationDuration);
         view.setVisibility(View.VISIBLE);
         rotateAnimation.setInterpolator(new LinearInterpolator());
