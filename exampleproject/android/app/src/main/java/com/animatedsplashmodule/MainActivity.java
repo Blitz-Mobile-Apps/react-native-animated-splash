@@ -3,6 +3,7 @@ package com.animatedsplashmodule;
 import android.os.Bundle;
 
 
+import com.blitzapp.animatedsplash.animation.AnimateGroupObject;
 import com.facebook.react.ReactActivity;
 import com.blitzapp.animatedsplash.animation.AddGroupObject;
 import com.blitzapp.animatedsplash.animation.CreateImageObject;
@@ -51,19 +52,22 @@ public class MainActivity extends ReactActivity {
 
         setSplashHideDelay(1500);
         // Create and add images to view
-        CreateImageObject addObject1 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.64, screenWidth + screenWidth * 0.32, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.32), CreateImageObject.getCenterY(screenHeight * 0.64), 0, CreateImageObject.FIT_XY, false);
+     CreateImageObject addObject1 = new CreateImageObject(R.drawable.logo, screenHeight * 0.24, screenWidth * 0.4, CreateImageObject.getCenterX(screenWidth * 0.41), CreateImageObject.getCenterY(screenHeight * 0.26), 0, CreateImageObject.FIT_CENTER, false);
 
-        CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.51, screenWidth + screenWidth * 0.07, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.07), CreateImageObject.getCenterY(screenHeight * 0.51), 0, CreateImageObject.FIT_XY, false);
+        CreateImageObject addObject2 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.39, screenWidth * 0.76, CreateImageObject.getCenterX(screenWidth * 0.76), CreateImageObject.getCenterY(screenHeight * 0.39), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval3, screenHeight * 0.385, screenWidth * 0.8, CreateImageObject.getCenterX(screenWidth * 0.8), CreateImageObject.getCenterY(screenHeight * 0.385), 0, CreateImageObject.FIT_XY, false);
 
-        CreateImageObject addObject4 = new CreateImageObject(R.drawable.logo, screenHeight * 0.26, screenWidth * 0.41, CreateImageObject.getCenterX(screenWidth * 0.41), CreateImageObject.getCenterY(screenHeight * 0.26), 0, CreateImageObject.FIT_CENTER, false);
+        CreateImageObject addObject3 = new CreateImageObject(R.drawable.oval2, screenHeight * 0.537, screenWidth + screenWidth * 0.06, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.06), CreateImageObject.getCenterY(screenHeight * 0.537), 0, CreateImageObject.FIT_XY, false);
 
+        CreateImageObject addObject4 = new CreateImageObject(R.drawable.oval1, screenHeight * 0.676, screenWidth + screenWidth * 0.29, CreateImageObject.getCenterX(screenWidth + screenWidth * 0.29), CreateImageObject.getCenterY(screenHeight * 0.676), 0, CreateImageObject.FIT_XY, false);
 
         //    // Add single animation
-        animateSingleObject(addObject1, FADE, 500, 0f, 1f, false);
+     AnimateGroupObject gObject1 = new AnimateGroupObject();
+        gObject1.addObject(addObject1, FADE, 400, 0f, 1f, false);
+        gObject1.addObject(addObject1, SCALE, 400, 0f, 1f, 0f, 1f, false);
 
-        animateSingleObject(addObject2, FADE, 400, 0f, 1f, false);
+        animateSingleObject(addObject2, FADE, 500, 0f, 1f, false);
+
         animateSingleObject(addObject3, FADE, 400, 0f, 1f, false);
 
         animateSingleObject(addObject4, FADE, 400, 0f, 1f, true);
