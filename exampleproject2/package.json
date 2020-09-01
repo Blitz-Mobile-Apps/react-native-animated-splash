@@ -1,0 +1,30 @@
+{
+  "name": "exampleproject2",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-native": "0.63.2",
+    "react-native-animated-splash": "^1.1.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/runtime": "^7.11.2",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.3.0",
+    "eslint": "^7.8.0",
+    "jest": "^26.4.2",
+    "metro-react-native-babel-preset": "^0.63.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
