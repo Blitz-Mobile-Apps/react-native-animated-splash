@@ -52,14 +52,14 @@ public class Splash {
     public static List<AnimateObject> animatedObjectList = new ArrayList<>();
     public static List<AnimateObject> hideanimatedObjectList = new ArrayList<>();
 
-    public static List<AnimateGroupObject> groupObjectList = new ArrayList<>();
+    public static List<GroupAnimation> groupObjectList = new ArrayList<>();
     public static AnimateObject hideObject;
 
 
     //    private static ImageView imageView;
     public static boolean animationStatus = false;
 
-    public static void createDialog(Context context) {
+    public static void createSplashView(Context context) {
         getWindowDimensions();
         applicationContext =context;
         // Create dialog to present view
@@ -141,44 +141,44 @@ public class Splash {
     }
 
 
-    public static void addImagetoView(CreateImageObject objects) {
+    public static void addImagetoView(AddImageView objects) {
         View View = objects.initializeObject();
         view.addView(View);
     }
 
 
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop) {
+    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop) {
         priority++;
-        AnimateGroupObject.groupCount = priority;
+        GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop, priority));
 
     }
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         priority++;
-        AnimateGroupObject.groupCount = priority;
+        GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false,  priority));
 
     }
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop) {
+    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop) {
         priority++;
-        AnimateGroupObject.groupCount = priority;
+        GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop, priority));
 
     }
-    public static void animateSingleObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
         priority++;
-        AnimateGroupObject.groupCount = priority;
+        GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int groupCount) {
+    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int groupCount) {
         priority = groupCount;
 
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop, priority));
 
     }
 
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta,  int groupCount) {
+    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
         priority = groupCount;
 
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
@@ -186,23 +186,23 @@ public class Splash {
     }
 
 
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, int groupCount) {
+    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop, priority));
 
     }
-    public static void animateObject(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
+    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
-    public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void animateObjectOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         isHideOnDialogAnimation=true;
 //        hideObject = new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta);
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta));
 
     }
-    public static void animateObjectOnHide(CreateImageObject object, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void animateObjectOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
         isHideOnDialogAnimation=true;
 
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue));
@@ -246,7 +246,7 @@ public class Splash {
 
     }
 
-    public static void runSpecificAnimation(CreateImageObject object, String animationType, AnimateObject animation, CreateImageObject nextObject,Boolean isLoop) {
+    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, AddImageView nextObject, Boolean isLoop) {
         switch (animationType) {
             case SLIDE:
                 animation.slideAnimation(object, nextObject, isLoop);
@@ -262,7 +262,7 @@ public class Splash {
                 break;
         }
     }
-    public static void runSpecificAnimation(CreateImageObject object, String animationType, AnimateObject animation, Boolean isTypeHide) {
+    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, Boolean isTypeHide) {
         switch (animationType) {
             case SLIDE:
                 animation.slideAnimation(object);

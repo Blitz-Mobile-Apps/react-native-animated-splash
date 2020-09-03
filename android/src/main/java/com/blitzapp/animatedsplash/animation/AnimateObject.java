@@ -1,9 +1,6 @@
 package com.blitzapp.animatedsplash.animation;
 
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -14,13 +11,10 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
-import com.blitzapp.animatedsplash.animation.CreateImageObject;
-
 import static android.content.ContentValues.TAG;
 import static com.blitzapp.animatedsplash.animation.Splash.animateObjectLength;
 import static com.blitzapp.animatedsplash.animation.Splash.animationhide;
 import static com.blitzapp.animatedsplash.animation.Splash.dismissDialog;
-import static com.blitzapp.animatedsplash.animation.Splash.hide;
 import static com.blitzapp.animatedsplash.animation.Splash.jsCalled;
 import static com.blitzapp.animatedsplash.animation.Splash.shouldHide;
 import static com.blitzapp.animatedsplash.animation.Splash.mHandler;
@@ -42,7 +36,7 @@ public class AnimateObject {
     private float scaleToX;
     private float scaleFromY;
     private float scaleToY;
-    public CreateImageObject object, nextObject;
+    public AddImageView object, nextObject;
 
     private int priority;
     public boolean isLastObject;
@@ -54,7 +48,7 @@ public class AnimateObject {
     private View animationView;
 
     // For translate animation
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int priority) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -69,7 +63,7 @@ public class AnimateObject {
         Log.d(TAG, "AnimateObject: priority " + this.priority);
     }
 
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -81,7 +75,7 @@ public class AnimateObject {
     }
 
     // For rotate animation
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromValue, float toValue, boolean isLoop, int priority) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromValue, float toValue, boolean isLoop, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -96,7 +90,7 @@ public class AnimateObject {
 
 
     // For rotate animation
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromValue, float toValue) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromValue, float toValue) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -105,7 +99,7 @@ public class AnimateObject {
         this.object = object;
     }
 
-    public CreateImageObject getNextObject() {
+    public AddImageView getNextObject() {
         return nextObject;
     }
 
@@ -113,7 +107,7 @@ public class AnimateObject {
         return animationType;
     }
 
-    public CreateImageObject getObject() {
+    public AddImageView getObject() {
         return object;
     }
 
@@ -174,7 +168,7 @@ public class AnimateObject {
         return endToValue;
     }
 
-    public void slideAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean isLoop) {
+    public void slideAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
 
         View view = object.getImageView();
 
@@ -266,7 +260,7 @@ public class AnimateObject {
 
     }
 
-    public void slideAnimation(CreateImageObject object) {
+    public void slideAnimation(AddImageView object) {
 
         View view = object.getImageView();
 
@@ -296,7 +290,7 @@ public class AnimateObject {
 
     }
 
-    public void rotateAnimation(CreateImageObject object) {
+    public void rotateAnimation(AddImageView object) {
         View view = object.getImageView();
 //        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
 //        rotation.setDuration(animationDuration);
@@ -329,7 +323,7 @@ public class AnimateObject {
         });
     }
 
-    public void fadeAnimation(CreateImageObject object) {
+    public void fadeAnimation(AddImageView object) {
 
         View view = object.getImageView();
         view.setAlpha(1);
@@ -360,7 +354,7 @@ public class AnimateObject {
 
     }
 
-    public void scaleAnimation(CreateImageObject object) {
+    public void scaleAnimation(AddImageView object) {
         View view = object.getImageView();
         ScaleAnimation scale = new ScaleAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
         scale.setDuration(animationDuration);
@@ -387,7 +381,7 @@ public class AnimateObject {
         });
     }
 
-    public void fadeAnimation(CreateImageObject object, final CreateImageObject nextObject,  Boolean isLoop) {
+    public void fadeAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
 
         View view = object.getImageView();
         view.setAlpha(1);
@@ -482,7 +476,7 @@ public class AnimateObject {
 
     }
 
-    public void rotateAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean isLoop) {
+    public void rotateAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
         View view = object.getImageView();
 //        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
 //        view.setVisibility(View.VISIBLE);
@@ -581,7 +575,7 @@ public class AnimateObject {
 
     }
 
-    public void scaleAnimation(CreateImageObject object, final CreateImageObject nextObject,  Boolean isLoop) {
+    public void scaleAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
         View view = object.getImageView();
         ScaleAnimation scale = new ScaleAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
         scale.setDuration(animationDuration);
