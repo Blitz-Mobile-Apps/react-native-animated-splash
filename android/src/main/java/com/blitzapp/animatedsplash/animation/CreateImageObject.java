@@ -23,6 +23,7 @@ public class CreateImageObject {
     private float positionX=0;
     private float positionY=0;
     private float rotateDegree=0;
+    private float opacity=1;
     private boolean visibility = true;
     public static Context context;
     private ImageView imageView;
@@ -39,6 +40,54 @@ public class CreateImageObject {
         this.width = (int) (width);
         Splash.addImagetoView(this);
     }
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        this.scaleType = scaleType;
+        Splash.addImagetoView(this);
+
+    }
+
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        this.scaleType = scaleType;
+        Splash.addImagetoView(this);
+    }
+
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.rotateDegree = (float) rotateDegree;
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        Splash.addImagetoView(this);
+    }
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, double opacity, boolean visibility) {
+        this.context = applicationContext;
+        this.imageSource = imageSource;
+        this.height = (int) (height);
+        this.width = (int) (width);
+        this.rotateDegree = (float) rotateDegree;
+        this.positionX = (float) positionX;
+        this.positionY = (float) positionY;
+        this.visibility = visibility;
+        this.opacity =  (float) opacity;
+        Splash.addImagetoView(this);
+    }
     public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, String scaleType, boolean visibility) {
         this.context = applicationContext;
         this.imageSource = imageSource;
@@ -52,30 +101,22 @@ public class CreateImageObject {
         Splash.addImagetoView(this);
 
     }
-    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, boolean visibility) {
+    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, double opacity, String scaleType, boolean visibility) {
         this.context = applicationContext;
         this.imageSource = imageSource;
         this.height = (int) (height);
         this.width = (int) (width);
+        this.rotateDegree = (float) rotateDegree;
         this.positionX = (float) positionX;
         this.positionY = (float) positionY;
         this.visibility = visibility;
         this.scaleType = scaleType;
+        this.opacity =  (float) opacity;
         Splash.addImagetoView(this);
 
     }
-    public CreateImageObject(@NonNull Integer imageSource, double height, double width, double positionX, double positionY, String scaleType, boolean visibility) {
-        this.context = applicationContext;
-        this.imageSource = imageSource;
-        this.height = (int) (height);
-        this.width = (int) (width);
-        this.positionX = (float) positionX;
-        this.positionY = (float) positionY;
-        this.visibility = visibility;
-        this.scaleType = scaleType;
-        Splash.addImagetoView(this);
 
-    }
+
     public void setScaleType(String scaleType) {
         this.scaleType = scaleType;
     }
@@ -138,6 +179,7 @@ public class CreateImageObject {
         imageView.setLayoutParams(params);
         imageView.setX(positionX);
         imageView.setY(positionY);
+        imageView.setAlpha(opacity);
         imageView.setScaleType(ImageView.ScaleType.valueOf(scaleType));
         if (visibility == true) {
             imageView.setVisibility(View.VISIBLE);

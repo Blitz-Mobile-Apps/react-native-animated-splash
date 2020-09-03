@@ -40,19 +40,19 @@ public class AnimateGroupObject {
 
     public static Splash splash = new Splash();
 
-    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,isLoop,isLastObject, groupCount);
+    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,isLoop, groupCount);
     }
 
-    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, isLoop,isLastObject, groupCount);
+    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, isLoop, groupCount);
     }
 
-    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false,isLastObject, groupCount);
+    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false, groupCount);
     }
 
-    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLastObject) {
-        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, isLastObject, groupCount);
+    public static void addObject(CreateImageObject createImageObject, String typeofanimation, int duration, float fromValue, float toValue) {
+        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, groupCount);
     }
 }

@@ -54,7 +54,7 @@ public class AnimateObject {
     private View animationView;
 
     // For translate animation
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, boolean isLastObject, int priority) {
+    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -66,7 +66,6 @@ public class AnimateObject {
 
         this.priority = priority;
         this.object = object;
-        this.isLastObject = isLastObject;
         Log.d(TAG, "AnimateObject: priority " + this.priority);
     }
 
@@ -82,7 +81,7 @@ public class AnimateObject {
     }
 
     // For rotate animation
-    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromValue, float toValue, boolean isLoop, boolean isLastObject, int priority) {
+    public AnimateObject(CreateImageObject object, String animationType, int animationDuration, float fromValue, float toValue, boolean isLoop, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -92,7 +91,6 @@ public class AnimateObject {
         this.endToValue = toValue;
         this.priority = priority;
         this.object = object;
-        this.isLastObject = isLastObject;
         Log.d(TAG, "AnimateObject: priority " + this.priority);
     }
 
@@ -176,7 +174,7 @@ public class AnimateObject {
         return endToValue;
     }
 
-    public void slideAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean last, Boolean isLoop) {
+    public void slideAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean isLoop) {
 
         View view = object.getImageView();
 
@@ -189,7 +187,6 @@ public class AnimateObject {
         }
 
         view.startAnimation(slideImage);
-        final boolean isLastObject = last;
         slideImage.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -211,8 +208,8 @@ public class AnimateObject {
 
                 } else {
 
-                    Log.d(TAG, "shouldHide slide:isLastObject" + isLastObject);
-                    if (isLastObject) {
+                    Log.d(TAG, "shouldHide slide:isLastObject" + animateObjectLength);
+                    if (counter == animateObjectLength) {
                         shouldHide = true;
                         if (jsCalled == true) {
                             Log.d(TAG, "shouldHide slide:jsCalled" + jsCalled);
@@ -305,7 +302,7 @@ public class AnimateObject {
 //        rotation.setDuration(animationDuration);
 //        view.setVisibility(View.VISIBLE);
 //        rotation.start();
-        RotateAnimation rotateAnimation = new RotateAnimation(startFromValue, endToValue, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
+        RotateAnimation rotateAnimation = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
         rotateAnimation.setDuration(animationDuration);
         view.setVisibility(View.VISIBLE);
         rotateAnimation.setInterpolator(new LinearInterpolator());
@@ -335,6 +332,7 @@ public class AnimateObject {
     public void fadeAnimation(CreateImageObject object) {
 
         View view = object.getImageView();
+        view.setAlpha(1);
         Animation fadeIn = new AlphaAnimation(startFromValue, endToValue);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
         fadeIn.setDuration(animationDuration);
@@ -389,9 +387,10 @@ public class AnimateObject {
         });
     }
 
-    public void fadeAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean last, Boolean isLoop) {
+    public void fadeAnimation(CreateImageObject object, final CreateImageObject nextObject,  Boolean isLoop) {
 
         View view = object.getImageView();
+        view.setAlpha(1);
         Animation fadeIn = new AlphaAnimation(startFromValue, endToValue);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
         fadeIn.setDuration(animationDuration);
@@ -401,7 +400,6 @@ public class AnimateObject {
             fadeIn.setRepeatCount((int) Double.POSITIVE_INFINITY);
         }
         view.startAnimation(fadeIn);
-        final boolean isLastObject = last;
 
         fadeIn.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -424,8 +422,10 @@ public class AnimateObject {
 
                 } else {
 
-                    Log.d(TAG, "shouldHide slide:" + isLastObject);
-                    if (isLastObject) {
+                    Log.d(TAG, "shouldHide slide:" + animateObjectLength);
+                    if (counter == animateObjectLength) {
+                        Log.d(TAG, "in last animation fade:" + counter);
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
@@ -482,7 +482,7 @@ public class AnimateObject {
 
     }
 
-    public void rotateAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean last, Boolean isLoop) {
+    public void rotateAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean isLoop) {
         View view = object.getImageView();
 //        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
 //        view.setVisibility(View.VISIBLE);
@@ -502,7 +502,6 @@ public class AnimateObject {
             rotateAnimation.setRepeatCount((int) Double.POSITIVE_INFINITY);
         }
         view.startAnimation(rotateAnimation);
-        final boolean isLastObject = last;
         rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -524,8 +523,8 @@ public class AnimateObject {
 
                 } else {
 
-                    Log.d(TAG, "shouldHide rotate:" + isLastObject);
-                    if (isLastObject) {
+                    Log.d(TAG, "shouldHide rotate:" + animateObjectLength);
+                    if (counter == animateObjectLength) {
                         shouldHide = true;
                         if (jsCalled == true) {
 
@@ -582,7 +581,7 @@ public class AnimateObject {
 
     }
 
-    public void scaleAnimation(CreateImageObject object, final CreateImageObject nextObject, Boolean last, Boolean isLoop) {
+    public void scaleAnimation(CreateImageObject object, final CreateImageObject nextObject,  Boolean isLoop) {
         View view = object.getImageView();
         ScaleAnimation scale = new ScaleAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
         scale.setDuration(animationDuration);
@@ -592,7 +591,6 @@ public class AnimateObject {
             scale.setRepeatCount((int) Double.POSITIVE_INFINITY);
         }
         view.startAnimation(scale);
-        final boolean isLastObject = last;
         scale.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -615,8 +613,8 @@ public class AnimateObject {
 
                 } else {
 
-                    Log.d(TAG, "shouldHide scale:" + isLastObject);
-                    if (isLastObject) {
+                    Log.d(TAG, "shouldHide scale:" + animateObjectLength);
+                    if (counter == animateObjectLength) {
                         Log.d(TAG, "onAnimationEnd: " + jsCalled);
                         shouldHide = true;
                         if (jsCalled == true) {
