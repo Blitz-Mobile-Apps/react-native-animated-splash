@@ -196,13 +196,13 @@ public class Splash {
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
-    public static void animateObjectOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void performAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         isHideOnDialogAnimation=true;
 //        hideObject = new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta);
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta));
 
     }
-    public static void animateObjectOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void performAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
         isHideOnDialogAnimation=true;
 
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue));
