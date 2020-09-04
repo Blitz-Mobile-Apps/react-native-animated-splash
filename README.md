@@ -96,11 +96,11 @@ public class MainActivity extends ReactActivity {
         group1.performGroupAnimation(logoimage, SCALE, 400, 0f, 1f, 0f, 1f, false);
         
         // add single animation
-        performSingleAnimation(image1, FADE, 500, 0f, 1f, false);
+        performSingleAnimation(image1, FADE, 500, 0f, 1f);
 
-        performSingleAnimation(image2, FADE, 400, 0f, 1f, false);
+        performSingleAnimation(image2, FADE, 400, 0f, 1f);
 
-        performSingleAnimation(image3, FADE, 400, 0f, 1f, true);
+        performSingleAnimation(image3, FADE, 400, 0f, 1f);
 
         splashShow();
 
@@ -180,12 +180,12 @@ public class MainActivity extends ReactActivity {
 
         // add group animation
          GroupAnimation group1 = new GroupAnimation();
-        group1.performGroupAnimation(image1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
-        group1.performGroupAnimation(image2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+        group1.performGroupAnimation(image1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f);
+        group1.performGroupAnimation(image2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f);
         
         
         // add single animation
-        performSingleAnimation(logoimage, SCALE, 780, 0.2f, 1f, 0.2f, 1f, false);
+        performSingleAnimation(logoimage, SCALE, 780, 0.2f, 1f, 0.2f, 1f);
 
         splashShow();
 
@@ -216,7 +216,7 @@ Then call hide function of splash in your app, from react native side like this:
 ### Methods Description
 | Methods | Description | Prameters | Import from |
 | ------ | ------ | ------- | ------- |
-| createDialog | creates a view for splash | context (MainActivity.this) | Splash |
+| createSplashView | creates a view for splash | context (MainActivity.this) | Splash |
 | setBackgroundColor | sets background color on splash screen | string (Enter color hex code) | Splash |
 | setBackgroundImage | sets background image on splash screen| Integer (Enter drawable)| Splash |
 | setSplashHideAnimation | set animation for hide splash | CONSTANT (given for splash hide animation) | Splash |
@@ -246,7 +246,7 @@ Then call hide function of splash in your app, from react native side like this:
 | scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from CreateImageObject) |
 | visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Double |
 | rotateDegree | drawabloe image initial rotate degree | Double |
-
+| opacity | initial opacity for image. Value ranges from 0-1 | float |
 
 ### Defining Animations
 
@@ -258,23 +258,23 @@ You need to use group animation when you need to run two or more animations simu
 Sample code for defining group animations:
 
 ```sh
-AnimateGroupObject groupObject1 = new AnimateGroupObject();
-groupObject1.addObject(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f,false, false);
-groupObject1.addObject(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f,false, false);
+GroupAnimation group1 = new GroupAnimation();
+group1.performGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
+group1.performGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
 ```
 
 #### Type2 - Single Animation
 Single animation can be used to run an animation in sequence.
 
 ```sh
-splash.animateSingleObject(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
-splash.animateSingleObject(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+performSingleAnimation(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+performSingleAnimation(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
 ```
 
 #### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just before hiding of splash
  ```sh
- splash.animateObjectOnHide(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f,false,true);
+ performAnimationOnHide(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
  ```
 ### Animation parameters description
 
@@ -290,7 +290,6 @@ You can use animation on certain object to perform just before hiding of splash
 | fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | isLoop | run animation in loop or continuously | boolean |
-| isLastObject | set to true if animation is last one | boolean |
 
 
 ### Animation Types
