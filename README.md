@@ -234,7 +234,7 @@ Then call hide function of splash in your app, from react native side like this:
 
  
  
-### CreateImageObject Parameters Description
+### AddImageView Parameters Description
 
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
@@ -246,7 +246,31 @@ Then call hide function of splash in your app, from react native side like this:
 | scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from CreateImageObject) |
 | visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Double |
 | rotateDegree | drawabloe image initial rotate degree | Double |
-| opacity | initial opacity for image. Value ranges from 0-1 | float |
+| opacity | set initial opacity for image. Value ranges from 0-1 | Double |
+
+Adding basic image to view
+```sh
+AddImageView(Integer imageSource, double height, double width)
+```
+Adding image with position values and set initial visibility of image.
+```sh
+AddImageView(Integer imageSource, double height, double width, double positionX, double positionY, boolean visibility)
+```
+Adding image with scaleType for image
+```sh
+ AddImageView(Integer imageSource, double height, double width, double positionX, double positionY, (CONSTANT) scaleType, boolean visibility) 
+ ```
+ Adding image with initial rotateDegree
+ ```sh
+ AddImageView(Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, (CONSTANT) scaleType, boolean visibility)
+ ```
+ Adding image with initial opacity 
+ ```sh
+ AddImageView(Integer imageSource, double height, double width, double positionX, double positionY, double rotateDegree, double opacity, (CONSTANT) scaleType, boolean visibility)
+ ```
+ 
+
+
 
 ### Defining Animations
 
