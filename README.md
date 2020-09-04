@@ -224,6 +224,7 @@ Then call hide function of splash in your app, from react native side like this:
 | splashShow | display splash and starts animations | none | Splash |
 | getCenterX | sets the image to center of view at x-axis | float (width of image)  | Splash |
 | getCenterY | sets the image to center of view at y-axis  | float (height of image) | Splash |
+
 ### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
@@ -315,6 +316,22 @@ You can use animation on certain object to perform just before hiding of splash
 | toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | isLoop | run animation in loop or continuously | boolean |
 
+##### Defining SLIDE or SCALE animation
+```sh
+performSingleAnimation(AddImageView image, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta)
+```
+OR
+```sh
+performSingleAnimation(AddImageView image, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop)
+```
+##### Defining FADE or ROTATE animation
+```sh
+performSingleAnimation(AddImageView image, String typeofanimation, int duration, float fromValue, float toValue)
+```
+OR
+```sh
+performSingleAnimation(AddImageView image, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop)
+```
 
 ### Animation Types
 
