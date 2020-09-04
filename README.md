@@ -128,15 +128,15 @@ package com.example;
 import android.os.Bundle;
 
 
+import com.blitzapp.animatedsplash.animation.AddImageView;
+import com.blitzapp.animatedsplash.animation.GroupAnimation;
 import com.facebook.react.ReactActivity;
-import com.blitzapp.animatedsplash.animation.AddGroupObject;
-import com.blitzapp.animatedsplash.animation.CreateImageObject;
 
 import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDELEFT;
 import static com.blitzapp.animatedsplash.animation.Splash.SCALE;
 import static com.blitzapp.animatedsplash.animation.Splash.SLIDE;
-import static com.blitzapp.animatedsplash.animation.Splash.animateSingleObject;
-import static com.blitzapp.animatedsplash.animation.Splash.createDialog;
+import static com.blitzapp.animatedsplash.animation.Splash.createSplashView;
+import static com.blitzapp.animatedsplash.animation.Splash.performSingleAnimation;
 import static com.blitzapp.animatedsplash.animation.Splash.screenHeight;
 import static com.blitzapp.animatedsplash.animation.Splash.screenWidth;
 import static com.blitzapp.animatedsplash.animation.Splash.setBackgroundImage;
@@ -162,7 +162,7 @@ public class MainActivity extends ReactActivity {
     public void initiateSplash() {
         
         //create dialog
-        createDialog(MainActivity.this);
+        createSplashView(MainActivity.this);
 
         //set background
         setBackgroundImage(R.drawable.splashbg);
@@ -174,19 +174,18 @@ public class MainActivity extends ReactActivity {
         setSplashHideDelay(1500);
 
         // Create and add images to view
-        CreateImageObject object1 = new CreateImageObject(R.drawable.header, screenHeight * 0.15, screenWidth, 0, 0, CreateImageObject.FIT_XY, false);
-        
-        CreateImageObject object2 = new CreateImageObject(R.drawable.footer, screenHeight * 0.15, screenWidth, 0, screenHeight - screenHeight * 0.15, CreateImageObject.FIT_XY, false);
-        
-        CreateImageObject object3 = new CreateImageObject(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, CreateImageObject.getCenterX(screenWidth * 0.45), CreateImageObject.getCenterY(screenHeight * 0.18), CreateImageObject.FIT_XY, false);
+ AddImageView image1 = new AddImageView(R.drawable.header, screenHeight * 0.15, screenWidth, 0, 0, FIT_XY, false);
+        AddImageView image2 = new AddImageView(R.drawable.footer, screenHeight * 0.15, screenWidth, 0, screenHeight - screenHeight * 0.15, FIT_XY, false);
+        AddImageView logoimage = new AddImageView(R.drawable.logo2, screenHeight * 0.18, screenWidth * 0.45, getCenterX(screenWidth * 0.45), getCenterY(screenHeight * 0.18), FIT_XY, false);
 
         // add group animation
-        AnimateGroupObject groupObject1 = new AnimateGroupObject();
-        groupObject1.addObject(object1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
-        groupObject1.addObject(object2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+         GroupAnimation group1 = new GroupAnimation();
+        group1.performGroupAnimation(image1, SLIDE, 780, 0f, 0f, -screenHeight * 0.15f, 0f, false);
+        group1.performGroupAnimation(image2, SLIDE, 780, 0f, 0f, screenHeight * 0.15f, 0f, false);
+        
         
         // add single animation
-        animateSingleObject(object3, SCALE, 780, 0.2f, 1f, 0.2f, 1f, true);
+        performSingleAnimation(logoimage, SCALE, 780, 0.2f, 1f, 0.2f, 1f, false);
 
         splashShow();
 
