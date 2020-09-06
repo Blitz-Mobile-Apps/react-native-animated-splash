@@ -216,40 +216,40 @@ Then call hide function of splash in your app, from react native side like this:
 ### Methods Description
 
 * createSplashView(context)
-  creates a view for splash
+> creates a view for splash
 
   * context: determine the context of your app, give context like "MainActivity.this"
  
 * setBackgroundColor(colorCode)
-  sets background color on splash screen
+> sets background color on splash screen
 
   * colorCode: determine the color for background, give color value in string like this "#FFFFFF"
 
 * setBackgroundImage(drawable)
-  sets background image on splash screen
+> sets background image on splash screen
 
   * drawable: determine the image for background, give any drawble image.
   
 * setSplashHideAnimation(animationType)
-  set animation for hiding of splash
+> set animation for hiding of splash
 
-  * animationType: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section.
+  * animationType: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section in this document.
   
 * setSplashHideDelay(delay)
-  sets delay before splash hide
+> sets delay before splash hide
 
   * delay: determine the delay value before splash hide, enter value in milliseconds.
   
 * splashShow()
-  display splash and starts animations
+> display splash and starts animations
 
 * getCenterX(widthOfImage)
-  sets the image to center of view at x-axis
+> sets the image to center of view at x-axis
 
   * widthOfImage: determines the center on splash view at x-axis with respect to width of image, enter width of image which you want to set in center.
   
 * getCenterY(heightOfImage)
-  sets the image to center of view at y-axis
+> sets the image to center of view at y-axis
 
   * heightOfImage: determines the center on splash view at y-axis with respect to height of image, enter height of image which you want to set in center.
   
@@ -274,36 +274,35 @@ Then call hide function of splash in your app, from react native side like this:
 | positionY | position of image drawable on y-axis on splash screen| Double |
 | scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from AddImageView) |
 | visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Boolean |
-| rotateDegree | drawabloe image initial rotate degree | Double |
+| rotateDegree | drawable image initial rotate degree | Double |
 | opacity | set initial opacity for image. Value ranges from 0-1 | Double |
 
 * AddImageView(drawableImage, height, width) 
-Adding basic image to view with default options
+> Adding basic image to view with default options
 
   * drawableImage: determine the drawable image you need to add on splash view.
   * height: determines the height of drawble image.
   * width: determines the width of drawable image.
 
 * AddImageView(drawableImage, height, width, positionX, positionY, visibility)
-Adding image with position values and set initial visibility of image.
+> Adding image with position values and set initial visibility of image.
 
-  ...
   * positionX: determine position of image drawable on x-axis on splash screen.
   * positionY determine position of image drawable on y-axis on splash screen.
   * visibility:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
 
 * AddImageView(drawableImage, height, width, positionX, positionY, scaleType, visibility)
-Adding image with scaleType for image.
+> Adding image with scaleType for image.
 
   * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported from AddImageView).
   
 * AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, scaleType, visibility)
-Adding image with initial rotateDegree
+> Adding image with initial rotateDegree
  
   * rotateDegree: determeines image's initial rotate degree. Default value is 0.
  
 * AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, opacity, scaleType, visibility)
-Adding image with initial opacity 
+> Adding image with initial opacity 
  
   * opacity: determeines image's initial opacity value. Default value is 1.
 
@@ -329,14 +328,14 @@ group1.performGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f
 Single animation can be used to run an animation in sequence.
 
 ```sh
-performSingleAnimation(addObject3, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
-performSingleAnimation(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+performSingleAnimation(imageview1, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
 ```
 
 #### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just before hiding of splash
  ```sh
- performAnimationOnHide(addObject4, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+ performAnimationOnHide(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
  ```
 ### Animation Methods Description
 
@@ -356,7 +355,7 @@ You can use animation on certain object to perform just before hiding of splash
 ##### Defining SLIDE or SCALE animation
 
 * performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta)
-for SLIDE or SCALE animation
+> for SLIDE or SCALE animation
 
   * imageview: determine the image view you already added to perform animation on.
   * typeofanimation: determines the type of animation you want to perform.
@@ -367,14 +366,14 @@ for SLIDE or SCALE animation
   * toYDelta: final point at y-axis to end animation.
   
 * performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop)
-for SLIDE or SCALE animation continue looping
+> for SLIDE or SCALE animation continue looping
 
   * isLoop: run animation in loop or continuously.
   
 ##### Defining FADE or ROTATE animation
 
 * performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue)
-for FADE or ROTATE animation
+> for FADE or ROTATE animation
 
   * imageview: determine the image view you already added to perform animation on.
   * typeofanimation: determines the type of animation you want to perform.
@@ -383,7 +382,7 @@ for FADE or ROTATE animation
   * toValue: final value for animation
 
 * performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue, isLoop)
-for FADE or ROTATE animation continue looping
+> for FADE or ROTATE animation continue looping
 
   * isLoop: run animation in loop or continuously.
 
