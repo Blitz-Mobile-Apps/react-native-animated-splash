@@ -299,12 +299,12 @@ Then call hide function of splash in your app, from react native side like this:
 * AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, scaleType, visibility)  
   Adding image with initial rotateDegree
  
-  * rotateDegree: determeines image's initial rotate degree. Default value is 0.
+  * rotateDegree: determines image's initial rotate degree. Default value is 0.
  
 * AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, opacity, scaleType, visibility)  
   Adding image with initial opacity 
  
-  * opacity: determeines image's initial opacity value. Default value is 1.
+  * opacity: determines image's initial opacity value. Default value is 1.
 
 
 
