@@ -333,14 +333,14 @@ performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
 ```
 
 #### Type3 - Define Animation before hiding splash
-You can use animation on certain object to perform just before hiding of splash
+You can use animation on certain object to perform just before hiding of splash.
  ```sh
  performHideSingleAnimation(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
  ```
  
  #### Type4 - Define Group Animation before hiding splash
 You need to use group animation when you need to run two or more animations simultaneously.
-Sample code for defining group animations:
+You can use this animation to animate group of images together just before hiding of splash.
 
 ```sh
 HideGroupAnimation hidegroup1 = new HideGroupAnimation();
