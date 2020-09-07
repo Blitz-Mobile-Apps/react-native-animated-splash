@@ -312,7 +312,7 @@ Then call hide function of splash in your app, from react native side like this:
 ### Defining Animations
 
 The animations you define works sequentially.
-You can define animations of three types.
+You can define animations of four types.
 
 #### Type1 - Group Animation
 You need to use group animation when you need to run two or more animations simultaneously.
@@ -335,8 +335,18 @@ performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
 #### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just before hiding of splash
  ```sh
- performAnimationOnHide(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+ performHideSingleAnimation(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
  ```
+ 
+ #### Type4 - Define Group Animation before hiding splash
+You need to use group animation when you need to run two or more animations simultaneously.
+Sample code for defining group animations:
+
+```sh
+HideGroupAnimation hidegroup1 = new HideGroupAnimation();
+hidegroup1.performHideGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
+hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
+```
 ### Animation Methods Description
 
 | Parameter | Description | Type |
@@ -385,6 +395,12 @@ You can use animation on certain object to perform just before hiding of splash
   for FADE or ROTATE animation continue looping
 
   * isLoop: run animation in loop or continuously.
+
+##### Note
+
+> The above animation mehtod description is same for all four types of animation. Either you are doing group animations, single animations or animations before hide of splash view.
+
+>
 
 ### Animation Types
 
