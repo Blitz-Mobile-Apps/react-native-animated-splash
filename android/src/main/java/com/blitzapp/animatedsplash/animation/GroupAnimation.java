@@ -41,18 +41,23 @@ public class GroupAnimation {
     public static Splash splash = new Splash();
 
     public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop) {
+
         splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,isLoop, groupCount);
     }
 
     public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop) {
+
         splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, isLoop, groupCount);
     }
 
     public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+
         splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false, groupCount);
     }
 
     public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromValue, float toValue) {
+        Log.d(TAG, "performGroupAnimation: ");
+
         splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, groupCount);
     }
 }

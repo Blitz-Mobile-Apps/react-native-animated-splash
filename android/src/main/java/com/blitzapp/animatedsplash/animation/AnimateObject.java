@@ -1,20 +1,24 @@
 package com.blitzapp.animatedsplash.animation;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
 import static android.content.ContentValues.TAG;
 import static com.blitzapp.animatedsplash.animation.Splash.animateObjectLength;
 import static com.blitzapp.animatedsplash.animation.Splash.animationhide;
 import static com.blitzapp.animatedsplash.animation.Splash.dismissDialog;
+import static com.blitzapp.animatedsplash.animation.Splash.hideanimateObjectLength;
+import static com.blitzapp.animatedsplash.animation.Splash.hideanimatedObjectList;
+import static com.blitzapp.animatedsplash.animation.Splash.hidecounter;
 import static com.blitzapp.animatedsplash.animation.Splash.jsCalled;
 import static com.blitzapp.animatedsplash.animation.Splash.shouldHide;
 import static com.blitzapp.animatedsplash.animation.Splash.mHandler;
@@ -32,10 +36,7 @@ public class AnimateObject {
     private float toXDelta;
     private float fromYDelta;
     private float toYDelta;
-    private float scaleFromX;
-    private float scaleToX;
-    private float scaleFromY;
-    private float scaleToY;
+
     public AddImageView object, nextObject;
 
     private int priority;
@@ -63,7 +64,7 @@ public class AnimateObject {
         Log.d(TAG, "AnimateObject: priority " + this.priority);
     }
 
-    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
@@ -71,6 +72,7 @@ public class AnimateObject {
         this.toXDelta = toXDelta;
         this.fromYDelta = fromYDelta;
         this.toYDelta = toYDelta;
+        this.priority = priority;
         this.object = object;
     }
 
@@ -90,12 +92,13 @@ public class AnimateObject {
 
 
     // For rotate animation
-    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromValue, float toValue) {
+    public AnimateObject(AddImageView object, String animationType, int animationDuration, float fromValue, float toValue, int priority) {
         this.animationType = animationType;
         this.animationDuration = animationDuration;
         this.setFillAfter = true;
         this.startFromValue = fromValue;
         this.endToValue = toValue;
+        this.priority = priority;
         this.object = object;
     }
 
@@ -133,22 +136,6 @@ public class AnimateObject {
 
     public float getToYDelta() {
         return toYDelta;
-    }
-
-    public float getScaleFromX() {
-        return scaleFromX;
-    }
-
-    public float getScaleToX() {
-        return scaleToX;
-    }
-
-    public float getScaleFromY() {
-        return scaleFromY;
-    }
-
-    public float getScaleToY() {
-        return scaleToY;
     }
 
     public boolean isLastObject() {
@@ -197,7 +184,6 @@ public class AnimateObject {
 
 
                     runAnimation();
-//                    counter++;
 
 
                 } else {
@@ -211,13 +197,12 @@ public class AnimateObject {
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
                         } else {
-                            counter++;
 
                             return;
                         }
@@ -236,23 +221,23 @@ public class AnimateObject {
 
                     runAnimation();
                 } else {
-                    Log.d(TAG, "shouldHide rotate:" + isLastObject);
-                    if (isLastObject) {
+                    if (counter == animateObjectLength) {
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-//                    counter++;
-                            return;
                         }
+                    } else {
+
+                        return;
                     }
                 }
             }
@@ -260,7 +245,7 @@ public class AnimateObject {
 
     }
 
-    public void slideAnimation(AddImageView object) {
+    public void slideAnimation(AddImageView object, final AddImageView nextObject) {
 
         View view = object.getImageView();
 
@@ -277,7 +262,23 @@ public class AnimateObject {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Splash.dismissDialog();
+                if (nextObject != null && hidecounter < hideanimateObjectLength) {
+
+                    Log.d(TAG, "onAnimationEnd rotate next: " + counter);
+
+
+                    animationhide();
+//                    return;
+
+
+                } else {
+                    if (hidecounter == hideanimateObjectLength) {
+                        dismissDialog();
+                    } else {
+
+                        return;
+                    }
+                }
 
             }
 
@@ -290,92 +291,120 @@ public class AnimateObject {
 
     }
 
-    public void rotateAnimation(AddImageView object) {
+    public void rotateAnimation(AddImageView object, final AddImageView nextObject) {
         View view = object.getImageView();
-//        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
-//        rotation.setDuration(animationDuration);
-//        view.setVisibility(View.VISIBLE);
-//        rotation.start();
-        RotateAnimation rotateAnimation = new RotateAnimation(startFromValue, endToValue, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
-        rotateAnimation.setDuration(animationDuration);
+
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
+        rotation.setInterpolator(new LinearInterpolator());
+        rotation.setDuration(animationDuration);
         view.setVisibility(View.VISIBLE);
-        rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setFillAfter(true);
 
-        view.startAnimation(rotateAnimation);
-        rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
+        rotation.start();
+
+        rotation.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (nextObject != null && hidecounter < hideanimateObjectLength) {
 
+
+                    animationhide();
+
+
+                } else {
+                    if (hidecounter == hideanimateObjectLength) {
+                        dismissDialog();
+                    } else {
+
+                        return;
+                    }
+                }
             }
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Splash.dismissDialog();
 
-            }
-
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
         });
     }
 
-    public void fadeAnimation(AddImageView object) {
+    public void fadeAnimation(AddImageView object, final AddImageView nextObject) {
 
         View view = object.getImageView();
         view.setAlpha(1);
-        Animation fadeIn = new AlphaAnimation(startFromValue, endToValue);
-        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(view, "alpha", startFromValue, endToValue);
+        fadeIn.setInterpolator(new LinearInterpolator()); //add this
         fadeIn.setDuration(animationDuration);
-        fadeIn.setFillAfter(setFillAfter);
         view.setVisibility(View.VISIBLE);
-        view.startAnimation(fadeIn);
-        fadeIn.setAnimationListener(new Animation.AnimationListener() {
+        if (isLoop) {
+            fadeIn.setRepeatCount(ValueAnimator.INFINITE);
+        }
+        fadeIn.start();
+        fadeIn.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
-                Splash.dismissDialog();
+            public void onAnimationEnd(Animator animation) {
+                if (nextObject != null && hidecounter < hideanimateObjectLength) {
+
+
+                    animationhide();
+
+
+                } else {
+                    if (hidecounter == hideanimateObjectLength) {
+                        dismissDialog();
+                    } else {
+
+                        return;
+                    }
+                }
 
             }
 
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
 
     }
 
-    public void scaleAnimation(AddImageView object) {
+    public void scaleAnimation(AddImageView object, final AddImageView nextObject) {
         View view = object.getImageView();
-        ScaleAnimation scale = new ScaleAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
+        ObjectAnimator scale = ObjectAnimator.ofPropertyValuesHolder(view,
+                PropertyValuesHolder.ofFloat("scaleX", fromXDelta, toXDelta),
+                PropertyValuesHolder.ofFloat("scaleY", fromYDelta, toYDelta));
         scale.setDuration(animationDuration);
-        scale.setFillAfter(true);
         view.setVisibility(View.VISIBLE);
-        view.startAnimation(scale);
-
-        scale.setAnimationListener(new Animation.AnimationListener() {
+        scale.start();
+        scale.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
-                dismissDialog();
+            public void onAnimationEnd(Animator animation) {
+
+                if (nextObject != null && hidecounter < hideanimateObjectLength) {
+
+
+                    animationhide();
+                } else {
+                    if (hidecounter == hideanimateObjectLength) {
+                        dismissDialog();
+                    } else {
+
+                        return;
+                    }
+                }
 
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
@@ -385,24 +414,22 @@ public class AnimateObject {
 
         View view = object.getImageView();
         view.setAlpha(1);
-        Animation fadeIn = new AlphaAnimation(startFromValue, endToValue);
-        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(view, "alpha", startFromValue, endToValue);
+        fadeIn.setInterpolator(new LinearInterpolator()); //add this
         fadeIn.setDuration(animationDuration);
-        fadeIn.setFillAfter(setFillAfter);
         view.setVisibility(View.VISIBLE);
         if (isLoop) {
-            fadeIn.setRepeatCount((int) Double.POSITIVE_INFINITY);
+            fadeIn.setRepeatCount(ValueAnimator.INFINITE);
         }
-        view.startAnimation(fadeIn);
-
-        fadeIn.setAnimationListener(new Animation.AnimationListener() {
+        fadeIn.start();
+        fadeIn.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
+            public void onAnimationEnd(Animator animation) {
                 Log.d(TAG, "shouldHide slide: " + counter + "length");
 
                 if (nextObject != null && counter < animateObjectLength) {
@@ -411,14 +438,10 @@ public class AnimateObject {
 
 
                     runAnimation();
-//                    counter++;
 
 
                 } else {
-
-                    Log.d(TAG, "shouldHide slide:" + animateObjectLength);
                     if (counter == animateObjectLength) {
-                        Log.d(TAG, "in last animation fade:" + counter);
 
                         shouldHide = true;
                         if (jsCalled == true) {
@@ -426,25 +449,24 @@ public class AnimateObject {
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-                            counter++;
-
-                            return;
                         }
+                    } else {
 
+                        return;
                     }
                 }
+
 
             }
 
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationRepeat(Animator animation) {
 
                 if (nextObject != null && counter < animateObjectLength) {
 
@@ -452,23 +474,23 @@ public class AnimateObject {
 
                     runAnimation();
                 } else {
-                    Log.d(TAG, "shouldHide rotate:" + isLastObject);
-                    if (isLastObject) {
+                    if (counter == animateObjectLength) {
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-//                    counter++;
-                            return;
                         }
+                    } else {
+
+                        return;
                     }
                 }
             }
@@ -478,72 +500,59 @@ public class AnimateObject {
 
     public void rotateAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
         View view = object.getImageView();
-//        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
-//        view.setVisibility(View.VISIBLE);
-//
-//        rotation.setDuration(animationDuration);
-//        rotation.setInterpolator(new LinearInterpolator());
-//        rotation.start();
-////        rotation.setFillAfter(true);
-//
-
-        RotateAnimation rotateAnimation = new RotateAnimation(startFromValue, endToValue, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
-        rotateAnimation.setDuration(animationDuration);
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
+        rotation.setDuration(animationDuration);
         view.setVisibility(View.VISIBLE);
-        rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setFillAfter(true);
         if (isLoop) {
-            rotateAnimation.setRepeatCount((int) Double.POSITIVE_INFINITY);
+//            rotation.setRepeatMode(ValueAnimator.RESTART);
+            rotation.setRepeatCount(ValueAnimator.INFINITE);
+            rotation.setInterpolator(new LinearInterpolator());
         }
-        view.startAnimation(rotateAnimation);
-        rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
+        rotation.start();
+
+        rotation.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
+            public void onAnimationEnd(Animator animation) {
                 Log.d(TAG, "shouldHide rotate: " + counter + "length");
-
                 if (nextObject != null && counter < animateObjectLength) {
 
-                    Log.d(TAG, "onAnimationEnd rotate: " + nextObject);
+                    Log.d(TAG, "onAnimationEnd rotate next: " + counter);
 
 
                     runAnimation();
-//                    counter++;
 
 
                 } else {
-
-                    Log.d(TAG, "shouldHide rotate:" + animateObjectLength);
                     if (counter == animateObjectLength) {
+                        Log.d(TAG, "onAnimationEnd: " + jsCalled);
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-                            counter++;
-
-                            return;
                         }
-
+                    } else {
+                        return;
                     }
                 }
 
+
             }
 
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationRepeat(Animator animation) {
 
                 if (nextObject != null && counter < animateObjectLength) {
 
@@ -551,23 +560,23 @@ public class AnimateObject {
 
                     runAnimation();
                 } else {
-                    Log.d(TAG, "shouldHide rotate:" + isLastObject);
-                    if (isLastObject) {
+                    if (counter == animateObjectLength) {
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-//                    counter++;
-                            return;
                         }
+                    } else {
+
+                        return;
                     }
                 }
             }
@@ -576,23 +585,27 @@ public class AnimateObject {
     }
 
     public void scaleAnimation(AddImageView object, final AddImageView nextObject, Boolean isLoop) {
+
         View view = object.getImageView();
-        ScaleAnimation scale = new ScaleAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 0.5f);
+        ObjectAnimator scale = ObjectAnimator.ofPropertyValuesHolder(view,
+                PropertyValuesHolder.ofFloat("scaleX", fromXDelta, toXDelta),
+                PropertyValuesHolder.ofFloat("scaleY", fromYDelta, toYDelta));
         scale.setDuration(animationDuration);
-        scale.setFillAfter(true);
+//        scale.setFillAfter(true);
         view.setVisibility(View.VISIBLE);
+        scale.setInterpolator(new LinearInterpolator());
         if (isLoop) {
             scale.setRepeatCount((int) Double.POSITIVE_INFINITY);
         }
-        view.startAnimation(scale);
-        scale.setAnimationListener(new Animation.AnimationListener() {
+        scale.start();
+        scale.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(Animation animation) {
+            public void onAnimationEnd(Animator animation) {
                 Log.d(TAG, "shouldHide scale check:" + animateObjectLength);
                 if (nextObject != null && counter < animateObjectLength) {
 
@@ -602,67 +615,62 @@ public class AnimateObject {
                     Log.d(TAG, "onAnimationEnd: scaling " + counter);
 
                     runAnimation();
-//                    counter++;
 
 
                 } else {
-
-                    Log.d(TAG, "shouldHide scale:" + animateObjectLength);
                     if (counter == animateObjectLength) {
-                        Log.d(TAG, "onAnimationEnd: " + jsCalled);
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-                            counter++;
-
-                            return;
                         }
+                    } else {
 
+                        return;
                     }
-
                 }
 
 
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationRepeat(Animator animation) {
                 if (nextObject != null && counter < animateObjectLength) {
 
                     Log.d(TAG, "onAnimationEnd rotate: " + nextObject);
 
                     runAnimation();
                 } else {
-                    Log.d(TAG, "shouldHide rotate:" + isLastObject);
-                    if (isLastObject) {
+                    if (counter == animateObjectLength) {
+
                         shouldHide = true;
                         if (jsCalled == true) {
 
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    animationhide(savedReactContext);
+                                    animationhide();
 
                                 }
                             }, Splash.hideDelay);
 
-                        } else {
-//                    counter++;
-                            return;
                         }
+                    } else {
+
+                        return;
                     }
                 }
             }
         });
+
     }
 }
 

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+
 import com.blitzapp.animatedsplash.R;
 import com.facebook.react.bridge.ReactContext;
 
@@ -35,8 +36,12 @@ public class Splash {
     private static Button exitBtn;
     public static boolean jsCalled = false;
     public static int counter = 0;
+    public static int hidecounter = 0;
     public static int priority = 0;
+    public static int hidepriority = 0;
     public static int animateObjectLength;
+    public static int hideanimateObjectLength;
+
     private static ConstraintLayout mainBackground;
     public static FrameLayout view;
     public static final String SLIDE = "SLIDE_ANIMATION";
@@ -48,7 +53,7 @@ public class Splash {
     public static final String DIALOGSLIDERIGHT = "SLIDERIGHT";
     public static final String DIALOGFADE = "FADE";
     public static int hideDelay = 1;
-    public static boolean isHideOnDialogAnimation =false;
+    public static boolean isHideOnDialogAnimation = false;
     public static List<AnimateObject> animatedObjectList = new ArrayList<>();
     public static List<AnimateObject> hideanimatedObjectList = new ArrayList<>();
 
@@ -61,7 +66,7 @@ public class Splash {
 
     public static void createSplashView(Context context) {
         getWindowDimensions();
-        applicationContext =context;
+        applicationContext = context;
         // Create dialog to present view
         dialog = new Dialog(context, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
 //        setDialogAnimation(DIALOGFADE);
@@ -75,17 +80,15 @@ public class Splash {
 
         mHandler = new Handler();
     }
-    public static void setSplashHideAnimation(String animationType){
-        if(animationType == "FADE") {
+
+    public static void setSplashHideAnimation(String animationType) {
+        if (animationType == "FADE") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.fade; //style id
-        }
-        else if(animationType == "SLIDEDOWN"){
+        } else if (animationType == "SLIDEDOWN") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.slideDown; //style id
-        }
-        else if(animationType == "SLIDELEFT"){
+        } else if (animationType == "SLIDELEFT") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.slideLeft; //style id
-        }
-        else if(animationType == "SLIDERIGHT"){
+        } else if (animationType == "SLIDERIGHT") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.slideRight; //style id
         }
     }
@@ -93,6 +96,7 @@ public class Splash {
     public static void setAnimationStatus(boolean animationStatus) {
         Splash.animationStatus = animationStatus;
     }
+
     public static void setSplashHideDelay(int hideDelay) {
         Splash.hideDelay = hideDelay;
     }
@@ -113,6 +117,7 @@ public class Splash {
     public static void splashShow() {
         Log.d(TAG, "createDialog: " + animatedObjectList.size());
         animateObjectLength = animatedObjectList.size();
+        hideanimateObjectLength = hideanimatedObjectList.size();
         dialog.show();
 
         mHandler.postDelayed(new Runnable() {
@@ -153,34 +158,36 @@ public class Splash {
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop, priority));
 
     }
+
     public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         priority++;
         GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false,  priority));
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
 
     }
+
     public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, boolean isLoop) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop, priority));
 
     }
+
     public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
+
     public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean isLoop, int groupCount) {
         priority = groupCount;
-
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop, priority));
 
     }
 
     public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
         priority = groupCount;
-
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
 
     }
@@ -191,55 +198,66 @@ public class Splash {
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, isLoop, priority));
 
     }
+
     public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
-    public static void performAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
-        isHideOnDialogAnimation=true;
+
+    public static void performHideSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+        isHideOnDialogAnimation = true;
+        hidepriority++;
+        HideGroupAnimation.hidegroupCount = hidepriority;
 //        hideObject = new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta);
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta));
-
-    }
-    public static void performAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
-        isHideOnDialogAnimation=true;
-
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue));
-
+        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,hidepriority));
 
     }
 
+    public static void performHideSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
+        isHideOnDialogAnimation = true;
+        hidepriority++;
+        HideGroupAnimation.hidegroupCount = hidepriority;
+        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue,hidepriority));
+
+
+    }
+    public static void performGroupAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
+        isHideOnDialogAnimation = true;
+        hidepriority = groupCount;
+        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,hidepriority));
+
+    }
+
+    public static void performGroupAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
+        isHideOnDialogAnimation = true;
+        hidepriority = groupCount;
+        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue,hidepriority));
+
+
+    }
     public static void runAnimation() {
 //
-
         for (int i = counter; i < animateObjectLength; i++) {
-            Log.d(TAG, "runAnimation: in for loop");
             if (i < animateObjectLength - 1 && animatedObjectList.get(counter).getPriority() == animatedObjectList.get(counter + 1).getPriority()) {
-                Log.d(TAG, "runAnimation1: "+i+ animatedObjectList.get(counter).getAnimationType());
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), null,animatedObjectList.get(counter).isLoop);
+
+                runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), null, animatedObjectList.get(i).isLoop);
                 counter++;
 
             } else if (i < animateObjectLength - 1) {
 
-                Log.d(TAG, "runAnimation3: "+i+ animatedObjectList.get(counter).getAnimationType());
 
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter + 1).getObject(),animatedObjectList.get(counter).isLoop);
-//                counter++;
-
-            }
-//            else if (i == animateObjectLength-1) {
-//                Log.d(TAG, "runAnimation4: "+i+ animatedObjectList.get(counter).getAnimationType());
-//                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), null,true);
-////                counter++;
-//            }
-            else {
-                Log.d(TAG, "runAnimation2: "+i+ animatedObjectList.get(counter).getAnimationType());
-
-                runSpecificAnimation(animatedObjectList.get(counter).getObject(), animatedObjectList.get(counter).getAnimationType(), animatedObjectList.get(counter), animatedObjectList.get(counter).getObject(),animatedObjectList.get(counter).isLoop);
+                runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getObject(), animatedObjectList.get(i).isLoop);
                 counter++;
+                break;
 
+            } else {
+
+                    runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i).getObject(),animatedObjectList.get(i).isLoop);
+                counter++;
             }
+
+
 
         }
 
@@ -262,22 +280,24 @@ public class Splash {
                 break;
         }
     }
-    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, Boolean isTypeHide) {
+
+    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, AddImageView nextObject) {
         switch (animationType) {
             case SLIDE:
-                animation.slideAnimation(object);
+                animation.slideAnimation(object,nextObject);
                 break;
             case ROTATE:
-                animation.rotateAnimation(object);
+                animation.rotateAnimation(object,nextObject);
                 break;
             case SCALE:
-                animation.scaleAnimation(object);
+                animation.scaleAnimation(object,nextObject);
                 break;
             case FADE:
-                animation.fadeAnimation(object);
+                animation.fadeAnimation(object,nextObject);
                 break;
         }
     }
+
     public static void hide(ReactContext rc) {
         jsCalled = true;
         final ReactContext reactContext = rc;
@@ -287,30 +307,46 @@ public class Splash {
 
                 @Override
                 public void run() {
-                    animationhide(reactContext);
+                    animationhide();
 
                 }
-            },hideDelay);
-        }
-        else{
-            animationhide(reactContext);
+            }, hideDelay);
+        } else {
+            animationhide();
         }
     }
-    public static void animationhide(ReactContext reactContext) {
+
+    public static void animationhide() {
 
         Log.d(TAG, "hidecalled: ");
         if (shouldHide == true && jsCalled == true) {
-            if(isHideOnDialogAnimation ==true){
+            if (isHideOnDialogAnimation == true) {
 //                runSpecificAnimation(hideObject.getObject(),hideObject.getAnimationType(),hideObject,true);
-                for (int i = 0; i < hideanimatedObjectList.size(); i++) {
-                    runSpecificAnimation(hideanimatedObjectList.get(i).getObject(),hideanimatedObjectList.get(i).getAnimationType(),hideanimatedObjectList.get(i),true);
+                for (int i = hidecounter; i < hideanimateObjectLength; i++) {
+                    if (i < hideanimateObjectLength - 1 && hideanimatedObjectList.get(hidecounter).getPriority() == hideanimatedObjectList.get(hidecounter + 1).getPriority()) {
+                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
+                   hidecounter++;
+                    }
+                    else if (i < hideanimateObjectLength - 1) {
+
+
+                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), hideanimatedObjectList.get(i + 1).getObject());
+                        hidecounter++;
+                        break;
+
+                    } else {
+
+
+                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i),null);
+                        hidecounter++;
+                    }
 
                 }
-            }
-            else dialog.dismiss();
+            } else dialog.dismiss();
 
         }
     }
+
     public static void dismissDialog() {
 
         dialog.dismiss();
