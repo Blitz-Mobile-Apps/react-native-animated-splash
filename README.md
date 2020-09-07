@@ -334,6 +334,7 @@ performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
 
 #### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just before hiding of splash.
+This type of animation is intersting, you can use this animation to make a last glance of animation just before hiding of splash view.
  ```sh
  performHideSingleAnimation(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
  ```
