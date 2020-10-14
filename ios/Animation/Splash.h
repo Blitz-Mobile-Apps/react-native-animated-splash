@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "AppDelegate.h"
 #import "AddImageView.h"
 @class AddImageView;
 NS_ASSUME_NONNULL_BEGIN
@@ -40,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount loop:(bool)isLoop;
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount loop:(bool)isLoop;
+-(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount;
+-(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount;
 
 -(void)performHideSingleAnimation:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toX :(CGFloat)toY;
 -(void)performHideSingleAnimation:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toValue;

@@ -22,6 +22,8 @@
     _imageview = image;
     _animationType = animationtype;
     _animationDuration = animationDuration/1000;
+    _fromXDelta = fromX;
+          _fromYDelta = fromY;
     _toXDelta = toX;
     _toYDelta = toY;
     _priority = priority;
@@ -44,6 +46,8 @@
     _imageview = image;
     _animationType = animationtype;
     _animationDuration = animationDuration/1000;
+    _fromXDelta = fromX;
+       _fromYDelta = fromY;
     _toXDelta = toX;
     _toYDelta = toY;
     _priority = priority;
@@ -52,7 +56,7 @@
   return self;
 }
 -(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority{
- 
+
     _imageview = image;
     _animationType = animationtype;
     _animationDuration = animationDuration/1000;
@@ -60,7 +64,7 @@
     _toValue = toVal;
     _priority = priority;
     _isLoop = isLoop;
-  
+    // NSLog(@"animate object this %d",_fromValue);
   return self;
 }
 -(AddImageView *)getObject{
@@ -104,7 +108,7 @@
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
      imagev.hidden = NO;
-     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
+//     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
      [UIView animateWithDuration:_animationDuration delay:0.0 options:nil animations:^{
         imagev.transform = CGAffineTransformScale(imagev.transform,_toXDelta, _toYDelta);
   } completion:^(BOOL finished){
@@ -149,7 +153,7 @@
    });
 }
 -(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject{
-
+NSLog(@"in loop fade in");
   
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
@@ -209,7 +213,7 @@
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
      imagev.hidden = NO;
-     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
+//     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
      [UIView animateWithDuration:_animationDuration delay:0.0 options:isLoop?UIViewAnimationOptionCurveLinear:nil animations:^{
         imagev.transform = CGAffineTransformScale(imagev.transform,_toXDelta, _toYDelta);
   } completion:^(BOOL finished){
@@ -264,7 +268,7 @@
    });
 }
 -(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop{
- 
+  //  NSLog(@"in loop fade %f",_toValue);
   
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;

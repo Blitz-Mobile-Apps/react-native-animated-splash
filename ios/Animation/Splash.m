@@ -148,14 +148,14 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 }
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount loop:(bool)isLoop{
 //  NSLog(@"Groupo count splash %d",groupcount);
-//  NSLog(@"in perform anim %@",object);
+  // NSLog(@"in perform anim group %@",object);
   priority = groupcount;
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object animationType:typeOfAnimation duration:duration fromX:fromX toX:toX fromY:fromY toY:toY loop:isLoop :priority]];
 }
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount loop:(bool)isLoop{
 
 //  NSLog(@"Groupo count splash val %d",groupcount);
-//  NSLog(@"in perform anim %@",object);
+  // NSLog(@"in perform anim fade %@",object);
   priority = groupcount;
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue loop:isLoop :priority]];
 }
@@ -202,9 +202,9 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
   int listlength = [animatedObjectList count];
  
   for (int i=counter; i<listlength; i++) {
-
+//  NSLog(@"if1");
     if(i < animatedObjectLength -1 && [[animatedObjectList objectAtIndex:counter]getPriority] == [[animatedObjectList objectAtIndex:counter+1]getPriority]){
-   
+        // NSLog(@"if11");
       [self runSpecificAnimation:[[animatedObjectList objectAtIndex:i]getObject] :[[animatedObjectList objectAtIndex:i]getAnimationtype] :[animatedObjectList objectAtIndex:i] :nil :[[animatedObjectList objectAtIndex:i]getisLoop]];
       counter++;
     }
@@ -224,7 +224,8 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 }
 
 -(void)runSpecificAnimation:(AddImageView*)imageobject :(int)animationType :(AnimateObject*)animation :(AddImageView*)nextObject :(bool)isLoop{
-  switch (animationType) {
+  NSLog(@"ifspecific1");
+    switch (animationType) {
     case 1:
       [animation slideAnimation:imageobject :nextObject :isLoop];
       break;
@@ -235,6 +236,7 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
       [animation scaleAnimation:imageobject :nextObject :isLoop];
       break;
       case 4:
+            // NSLog(@"ifspecific4");
       [animation fadeAnimation:imageobject :nextObject :isLoop];
       break;
     default:
@@ -300,7 +302,7 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 }
 -(void)dismissSplashDialog{
   hidingfinal = true;
-  [UIView animateWithDuration:1.2 delay:0 options:nil animations:^{
+    [UIView animateWithDuration:1.1 delay:0 options:nil animations:^{
     if(splashHideAnimationType == 1){
       self.view.alpha = 0;
     }
