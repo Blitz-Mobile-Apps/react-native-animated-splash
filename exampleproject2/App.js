@@ -31,6 +31,7 @@ import {
 import AnimatedSplash from "react-native-animated-splash";
 class App extends React.Component {
   componentDidMount() {
+    console.log("Animation",AnimatedSplash);
     AnimatedSplash.hide()
   }
   render() {
@@ -44,10 +45,12 @@ class App extends React.Component {
     <View style={styles.subview}>
     <Text style={styles.text}>WELCOME TO KATTY</Text>
     <TextInput style={styles.input}
+     placeholderTextColor="#CBCBCB"
     placeholder="Enter email"
     />
      <TextInput style={styles.input}
     placeholder="Enter password"
+    placeholderTextColor="#CBCBCB"
     />
     <View style={styles.button2}>
     <Text style={styles.buttonText}>LOGIN</Text>

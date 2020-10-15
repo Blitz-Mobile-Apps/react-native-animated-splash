@@ -43,6 +43,34 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  Splash *splash = [[Splash alloc] init];
+    
+    
+    [splash createSplashView:self.window];
+
+    [splash setBackgroundImage:@"splashBg"];
+    
+    [splash setSplashHideAnimation:SPLASHSLIDELEFT];
+    
+    [splash setSplashHideDelay:1500];
+
+   AddImageView *headerImage = [[AddImageView alloc] initImage:@"header" width:screenWidth height:screenHeight*0.18 positionX:0 positionY:-screenHeight*0.18 visibility:false scaleType:FIT_XY];
+      
+   AddImageView *footerImage = [[AddImageView alloc] initImage:@"footer" width:screenWidth height:screenHeight*0.18 positionX:0 positionY:screenHeight visibility:false scaleType:FIT_XY];
+   
+     AddImageView *logoImage = [[AddImageView alloc] initImage:@"logo2" width:screenWidth * 0.095 height:screenHeight * 0.05 positionX:[splash getCenterX:screenWidth * 0.095] positionY:[splash getCenterY:screenHeight * 0.05]  visibility:false scaleType:FIT_XY];
+    
+
+      GroupAnimation *group1 = [[GroupAnimation alloc] init];
+      
+   [group1 performGroupAnimation:headerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:screenHeight*0.18];
+     
+    [group1 performGroupAnimation:footerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
+     
+   [splash performSingleAnimation:logoImage animationType:SCALE duration:500 fromX:0 toX:5.5 fromY:0 toY:4];
+    
+      [splash splashShow];
   return YES;
 }
 

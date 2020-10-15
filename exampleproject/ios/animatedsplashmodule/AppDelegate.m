@@ -59,7 +59,7 @@ static void InitializeFlipper(UIApplication *application) {
   
       AddImageView *circle1 = [[AddImageView alloc] initImage:@"oval1" width:screenWidth*0.76 height:screenHeight*0.39 positionX:[splash getCenterX:screenWidth*0.76] positionY:[splash getCenterY:screenHeight*0.39] visibility:false scaleType:FIT_CENTER];
   
-    AddImageView *circle2 = [[AddImageView alloc] initImage:@"oval2" width:screenWidth + screenWidth * 0.05 height:screenHeight * 0.47 positionX:[splash getCenterX:screenWidth + screenWidth * 0.05] positionY:[splash getCenterY:screenHeight * 0.47] visibility:false scaleType:FIT_CENTER];
+    AddImageView *circle2 = [[AddImageView alloc] initImage:@"oval2" width:screenWidth + screenWidth * 0.12 height:screenHeight * 0.53 positionX:[splash getCenterX:screenWidth + screenWidth * 0.12] positionY:[splash getCenterY:screenHeight * 0.53] visibility:false scaleType:FIT_CENTER];
   
      AddImageView *circle3 = [[AddImageView alloc] initImage:@"oval3" width:screenWidth + screenWidth * 0.29 height:screenHeight * 0.676 positionX:[splash getCenterX:screenWidth + screenWidth * 0.29] positionY:[splash getCenterY:screenHeight * 0.676] visibility:false scaleType:FIT_CENTER];
   

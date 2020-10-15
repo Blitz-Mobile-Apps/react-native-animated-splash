@@ -44,9 +44,11 @@ class App extends React.Component {
       <View style={styles.subview}>
       <Text style={styles.text}>WELCOME TO MUSIC</Text>
       <TextInput style={styles.input}
+      placeholderTextColor="#CBCBCB"
       placeholder="Enter email"
       />
        <TextInput style={styles.input}
+      placeholderTextColor="#CBCBCB"
       placeholder="Enter password"
       />
       <View style={styles.button}>
