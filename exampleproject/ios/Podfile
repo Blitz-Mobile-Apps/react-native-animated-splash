@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '12.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 def add_flipper_pods!(versions = {})
@@ -77,6 +77,7 @@ target 'animatedsplashmodule' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNAnimatedSplash', :path => '../node_modules/react-native-animated-splash'
   target 'animatedsplashmoduleTests' do
     inherit! :complete
     # Pods for testing

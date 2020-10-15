@@ -43,6 +43,41 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+    Splash *splash = [[Splash alloc] init];
+  
+  
+    [splash createSplashView:self.window];
+  
+    [splash setBackgroundColor:@"101010"];
+  
+    [splash setSplashHideAnimation:SPLASHSLIDEDOWN];
+  
+    [splash setSplashHideDelay:1500];
+  
+     AddImageView *logoimage = [[AddImageView alloc] initImage:@"logo1" width:screenWidth*0.08 height:screenHeight*0.04 positionX:[splash getCenterX:screenWidth*0.08] positionY:[splash getCenterY:screenHeight*0.04] visibility:false scaleType:FIT_CENTER];
+  
+      AddImageView *circle1 = [[AddImageView alloc] initImage:@"oval1" width:screenWidth*0.76 height:screenHeight*0.39 positionX:[splash getCenterX:screenWidth*0.76] positionY:[splash getCenterY:screenHeight*0.39] visibility:false scaleType:FIT_CENTER];
+  
+    AddImageView *circle2 = [[AddImageView alloc] initImage:@"oval2" width:screenWidth + screenWidth * 0.05 height:screenHeight * 0.47 positionX:[splash getCenterX:screenWidth + screenWidth * 0.05] positionY:[splash getCenterY:screenHeight * 0.47] visibility:false scaleType:FIT_CENTER];
+  
+     AddImageView *circle3 = [[AddImageView alloc] initImage:@"oval3" width:screenWidth + screenWidth * 0.29 height:screenHeight * 0.676 positionX:[splash getCenterX:screenWidth + screenWidth * 0.29] positionY:[splash getCenterY:screenHeight * 0.676] visibility:false scaleType:FIT_CENTER];
+  
+  
+      GroupAnimation *group1 = [[GroupAnimation alloc] init];
+  
+      [group1 performGroupAnimation:logoimage typeofanimation:FADE duration:800 fromValue:0 toValue:1];
+  
+      [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 fromX:0 toX:4.9 fromY:0 toY:4.9];
+  
+      [splash performSingleAnimation:circle1 animationType:FADE duration:500 fromValue:0 toValue:1];
+  
+      [splash performSingleAnimation:circle2 animationType:FADE duration:400 fromValue:0 toValue:1];
+  
+      [splash performSingleAnimation:circle3 animationType:FADE duration:400 fromValue:0 toValue:1];
+  
+      [splash splashShow];
+  
   return YES;
 }
 
