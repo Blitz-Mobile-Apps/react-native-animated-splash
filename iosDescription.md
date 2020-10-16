@@ -382,7 +382,7 @@ HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
   * fromValue: starting value for animation.
   * toValue: final value for animation
 
-* `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1 loop:true];` 
+* `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1 loop:true];`   
   for FADE or ROTATE animation continue looping
 
   * isLoop: run animation in loop or continuously.
