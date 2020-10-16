@@ -107,7 +107,6 @@ Then call hide function of splash in your app, from react native side like this:
  ```  
  
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1.gif?raw=true)
-![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1ios.gif?raw=true)
 >
 >
 #### Example Animation 2
@@ -191,7 +190,6 @@ Then call hide function of splash in your app, from react native side like this:
  ```  
  
  ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2.gif?raw=true)
-  ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2ios.gif?raw=true)
  >
  >
 #### Important Note
