@@ -204,40 +204,40 @@ Then call hide function of splash in your app, from react native side like this:
 
 ### Methods Description
 
-* createSplashView(context)  
-  creates a view for splash
+* createSplashView:currentView
+  creates a view for splash 
 
-  * context: determine the context of your app, give context like "MainActivity.this"
+  * currentView: determine the current view of your app, give view like "self.window"
  
-* setBackgroundColor(colorCode)  
+* setBackgroundColor:colorCode  
   sets background color on splash screen
 
-  * colorCode: determine the color for background, give color value in string like this "#FFFFFF"
+  * colorCode: determine the color for background, give color value in string like this @"FFFFFF"
 
-* setBackgroundImage(drawable)  
+* setBackgroundImage:imageAsset  
   sets background image on splash screen
 
-  * drawable: determine the image for background, give any drawble image.
+  * imageAsset: determine the image for background, give any image asset that is in you project.
   
-* setSplashHideAnimation(animationType)  
+* setSplashHideAnimation:animationType  
   set animation for hiding of splash
 
   * animationType: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section in this document.
   
-* setSplashHideDelay(delay)  
+* setSplashHideDelay:delay    
   sets delay before splash hide
 
   * delay: determine the delay value before splash hide, enter value in milliseconds.
   
-* splashShow()  
+* splashShow  
   display splash and starts animations
 
-* getCenterX(widthOfImage)  
+* getCenterX:widthOfImage   
   sets the image to center of view at x-axis
 
   * widthOfImage: determines the center on splash view at x-axis with respect to width of image, enter width of image which you want to set in center.
   
-* getCenterY(heightOfImage)  
+* getCenterY:heightOfImage  
   sets the image to center of view at y-axis
 
   * heightOfImage: determines the center on splash view at y-axis with respect to height of image, enter height of image which you want to set in center.
@@ -245,10 +245,10 @@ Then call hide function of splash in your app, from react native side like this:
 ### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
-| DIALOGSLIDELEFT | hides splash while sliding to left.|
-| DIALOGSLIDERIGHT | hides splash while sliding to right.|
-| DIALOGFADE | hides splash with fade effect.|
-| DIALOGSLIDEDOWN | hides splash while sliding to down.|
+| SPLASHSLIDELEFT | hides splash while sliding to left.|
+| SPLASHSLIDERIGHT | hides splash while sliding to right.|
+| SPLASHFADE | hides splash with fade effect.|
+| SPLASHSLIDEDOWN | hides splash while sliding to down.|
 
  
  
@@ -261,39 +261,40 @@ Then call hide function of splash in your app, from react native side like this:
 | width | width of image drawable| Double |
 | positionX | position of image drawable on x-axis on splash screen| Double |
 | positionY | position of image drawable on y-axis on splash screen| Double |
-| scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from AddImageView) |
+| scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported) |
 | visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Boolean |
 | rotateDegree | drawable image initial rotate degree | Double |
 | opacity | set initial opacity for image. Value ranges from 0-1 | Double |
 
-* AddImageView(drawableImage, height, width)  
+*  AddImageView `*`headerImage = [[AddImageView alloc] initImage:imageAsset width:float height:float]; 
   Adding basic image to view with default options
 
-  * drawableImage: determine the drawable image you need to add on splash view.
+  * imageAsset: determine the drawable image you need to add on splash view.
   * height: determines the height of drawble image.
   * width: determines the width of drawable image.
 
-* AddImageView(drawableImage, height, width, positionX, positionY, visibility)  
+* AddImageView `*`headerImage = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool];
   Adding image with position values and set initial visibility of image.
 
   * positionX: determine position of image drawable on x-axis on splash screen.
   * positionY determine position of image drawable on y-axis on splash screen.
   * visibility:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
 
-* AddImageView(drawableImage, height, width, positionX, positionY, scaleType, visibility)  
+* AddImageView `*`headerImage = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT];
   Adding image with scaleType for image.
 
-  * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported from AddImageView).
+  * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported).
   
-* AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, scaleType, visibility)  
-  Adding image with initial rotateDegree
- 
-  * rotateDegree: determines image's initial rotate degree. Default value is 0.
- 
-* AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, opacity, scaleType, visibility)  
+* AddImageView `*`headerImage = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT opacity:float];
   Adding image with initial opacity 
  
   * opacity: determines image's initial opacity value. Default value is 1.
+  
+ 
+* AddImageView `*`headerImage = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT opacity:float rotateDegree:float];
+  Adding image with initial rotateDegree
+ 
+  * rotateDegree: determines image's initial rotate degree. Default value is 0.
 
 
 
