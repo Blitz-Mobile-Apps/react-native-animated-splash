@@ -53,7 +53,7 @@
   
   [group1 performGroupAnimation:logoimage typeofanimation:FADE duration:800 fromValue:0 toValue:1];
   
-  [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 fromX:0 toX:4.9 fromY:0 toY:4.9];
+  [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 scaleX:4.9 scaleY:4.9];
       
   
   [splash performSingleAnimation:circle1 animationType:FADE duration:500 fromValue:0 toValue:1];
@@ -127,7 +127,7 @@ Then call hide function of splash in your app, from react native side like this:
      
    [group1 performGroupAnimation:footerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
      
-   [splash performSingleAnimation:logoImage animationType:SCALE duration:500 fromX:0 toX:5.5 fromY:0 toY:4];
+   [splash performSingleAnimation:logoImage animationType:SCALE duration:500 scaleX:5.5 scaleY:4];
     
    [splash splashShow];
    
