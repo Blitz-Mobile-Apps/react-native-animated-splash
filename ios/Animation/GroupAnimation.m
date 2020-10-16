@@ -41,4 +41,14 @@ int groupcount = 0;
 
 
 }
+-(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY {
+
+  [splashClassInstance animateGroupObject:object animationType:typeOfAnimation duration:duration scaleX:scaleX scaleY:scaleY :groupcount loop:false];
+
+}
+-(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop{
+  [splashClassInstance animateGroupObject:object animationType:typeOfAnimation duration:duration scaleX:scaleX scaleY:scaleY :groupcount loop:isLoop];
+
+
+}
 @end

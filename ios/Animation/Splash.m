@@ -191,6 +191,15 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
   [hideanimatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue :hidePriority]];
 }
 
+-(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY{
+//  NSLog(@"in perform anim %@",object);
+//  NSLog(@"Groupo count splash %d",groupcount);
+  _isHideOnDialogAnimation = true;
+  hidePriority++;
+  hidegroupCount = hidePriority;
+  [hideanimatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration scaleX:scaleX scaleY:scaleY :hidePriority]];
+}
+
 -(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount{
 //  NSLog(@"Groupo count splash %d",groupcount);
 //  NSLog(@"in perform anim %@",object);
@@ -208,7 +217,15 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //  [hideanimatedObjectList addObject:[[AnimateObject alloc] initWithImage:object :typeOfAnimation :duration :toValue :hidePriority]];
   [hideanimatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue :hidePriority]];
 }
+-(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount{
 
+//  NSLog(@"Groupo count splash val %d",groupcount);
+//  NSLog(@"in perform anim %@",object);
+  _isHideOnDialogAnimation = true;
+  hidePriority = groupcount;
+//  [hideanimatedObjectList addObject:[[AnimateObject alloc] initWithImage:object :typeOfAnimation :duration :toValue :hidePriority]];
+  [hideanimatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration scaleX:scaleX scaleY:scaleY :hidePriority]];
+}
 
 -(void)runAnimation{
   animatedObjectLength = [animatedObjectList count];

@@ -42,13 +42,17 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount loop:(bool)isLoop;
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount;
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount;
+-(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount loop:(bool)isLoop;
+-(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount;
 
--(void)performHideSingleAnimation:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toX :(CGFloat)toY;
--(void)performHideSingleAnimation:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toValue;
+-(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY;
+-(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue;
+-(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY;
+
 
 -(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount;
 -(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount;
-
+-(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount;
 
 -(void)hide;
 -(void)runAnimation;
