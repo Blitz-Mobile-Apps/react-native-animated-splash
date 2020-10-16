@@ -24,7 +24,7 @@ $ yarn add react-native-animated-splash
 ```
 
 
-#### [Android Usage with Method Descriptions](./androidDesction.md)
+#### [Android Usage with Method Descriptions](./androidDescription.md)
 ###  Android Examples
  
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1.gif?raw=true)
