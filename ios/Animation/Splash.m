@@ -172,7 +172,13 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
   priority = groupcount;
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue loop:isLoop :priority]];
 }
+-(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount loop:(bool)isLoop{
 
+//  NSLog(@"Groupo count splash val %d",groupcount);
+  // NSLog(@"in perform anim fade %@",object);
+  priority = groupcount;
+  [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration scaleX:scaleX scaleY:scaleY loop:isLoop :priority]];
+}
 
 -(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY{
 //  NSLog(@"in perform anim %@",object);

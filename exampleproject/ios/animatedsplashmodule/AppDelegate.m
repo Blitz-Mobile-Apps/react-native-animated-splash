@@ -70,11 +70,11 @@ static void InitializeFlipper(UIApplication *application) {
   
       [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 scaleX:4.9 scaleY:4.9];
   
-      [splash performSingleAnimation:circle1 animationType:FADE duration:500 fromValue:0 toValue:1];
+      [splash performSingleAnimation:circle1 typeofanimation:FADE duration:500 fromValue:0 toValue:1];
   
-      [splash performSingleAnimation:circle2 animationType:FADE duration:400 fromValue:0 toValue:1];
+      [splash performSingleAnimation:circle2 typeofanimation:FADE duration:400 fromValue:0 toValue:1];
   
-      [splash performSingleAnimation:circle3 animationType:FADE duration:400 fromValue:0 toValue:1];
+      [splash performSingleAnimation:circle3 typeofanimation:FADE duration:400 fromValue:0 toValue:1];
   
       [splash splashShow];
   
