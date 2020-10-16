@@ -10,7 +10,7 @@ React-Native-Animated-Splash is developed to help the react-native developers in
 ##### Objective
 The main objective or the edge of this module is that, splash animation runs in parallel with loading of javascript, which means when animation is running, javascript is being loaded in parallel behind the scenes, moreover componentDidMount can also be called for any api hits before calling hide function of splash from react-native side.
 
-### Only available for Android, iOS will be available soon
+### For Ios and Android
 
 ### Installation
 If you prefer **npm**,
