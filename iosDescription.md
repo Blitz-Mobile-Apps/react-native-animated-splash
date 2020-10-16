@@ -176,19 +176,33 @@ HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
 | `toValue` | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | `loop` | run animation in loop or continuously | boolean |
 
-##### Defining SLIDE or SCALE animation
+##### Defining SLIDE animation
 
 * `[splash performSingleAnimation:imagename1 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];`
 
   * `imageview`: determine the image view you already added to perform animation on.
   * `typeofanimation`: determines the type of animation you want to perform.
   * `animationDuration`: determines animation duration.
-  * `fromXDelta`: initial point at x-axis to start animation.
-  * `toXDelta`: final point at x-axis to end animation.
-  * `fromYDelta`: initial point at y-axis to start animation.
-  * `toYDelta`: final point at y-axis to end animation.
+  * `fromX`: initial point at x-axis to start animation.
+  * `toX`: final point at x-axis to end animation.
+  * `fromY`: initial point at y-axis to start animation.
+  * `toY`: final point at y-axis to end animation.
   
 * `[splash performSingleAnimation:imagename2 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18 loop:true];`
+
+  * `loop`: run animation in loop or continuously.
+  
+  ##### Defining SCALE animation
+
+* `[splash performSingleAnimation:imagename1 typeofanimation:SCALE duration:800 scaleX:5.5 scaleY:4];`
+
+  * `imageview`: determine the image view you already added to perform animation on.
+  * `typeofanimation`: determines the type of animation you want to perform.
+  * `animationDuration`: determines animation duration.
+  * `scaleX`: scale value for width of image, it will scale in multiple of its original value (in this case image will scale 5.5 time its original width).
+  * `scaleY`: scale value for height of image, it will scale in multiple of its original value (in this case image will scale 4 time its original height).
+  
+* `[splash performSingleAnimation:imagename1 typeofanimation:SCALE duration:800 scaleX:5.5 scaleY:4 loop:true];`
 
   * `loop`: run animation in loop or continuously.
   
@@ -218,7 +232,7 @@ HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
 | Animation | Description |
 | ------ | ------ |
 | `SLIDE` | slide image object to given x and y axis.|
-| `SCALE` | scale image object starting from initial value to final value.|
+| `SCALE` | scale image object in multiples of its original value.|
 | `FADE` | fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
 | `ROTATE` | rotate image object starting from initial value to final value.|
 
