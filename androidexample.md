@@ -18,7 +18,7 @@ import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.blitzapp.animatedsplash.animation.GroupAnimation;
 import com.blitzapp.animatedsplash.animation.AddImageView;
-import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDEDOWN;
+import static com.blitzapp.animatedsplash.animation.Splash.SPLASHSLIDEDOWN;
 import static com.blitzapp.animatedsplash.animation.Splash.FADE;
 import static com.blitzapp.animatedsplash.animation.Splash.performSingleAnimation;
 import static com.blitzapp.animatedsplash.animation.Splash.createSplashView;
@@ -51,7 +51,7 @@ public class MainActivity extends ReactActivity {
         setBackgroundColor("#101010");
         
         // set splash hide animation
-        setSplashHideAnimation(DIALOGSLIDEDOWN);
+        setSplashHideAnimation(SPLASHSLIDEDOWN);
         
         // set splash hide delay
         setSplashHideDelay(1500);
@@ -108,7 +108,7 @@ import com.blitzapp.animatedsplash.animation.AddImageView;
 import com.blitzapp.animatedsplash.animation.GroupAnimation;
 import com.facebook.react.ReactActivity;
 
-import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDELEFT;
+import static com.blitzapp.animatedsplash.animation.Splash.SPLASHSLIDELEFT;
 import static com.blitzapp.animatedsplash.animation.Splash.SCALE;
 import static com.blitzapp.animatedsplash.animation.Splash.SLIDE;
 import static com.blitzapp.animatedsplash.animation.Splash.createSplashView;
@@ -144,7 +144,7 @@ public class MainActivity extends ReactActivity {
         setBackgroundImage(R.drawable.splashbg);
         
         // set splash hide animation
-        setSplashHideAnimation(DIALOGSLIDELEFT);
+        setSplashHideAnimation(SPLASHSLIDELEFT);
 
         // set splash hide delay
         setSplashHideDelay(1500);
