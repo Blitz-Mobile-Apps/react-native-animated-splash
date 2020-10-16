@@ -27,14 +27,14 @@ $ yarn add react-native-animated-splash
 pod 'RNAnimatedSplash', :path => '../node_modules/react-native-animated-splash'
 ```
 
-#### Android Usage with Method Descriptions [Here](./androidDescription.md)
+#### Android Usage with Method Descriptions [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/androidDescription.md)
 ###  Android Examples
  
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1.gif?raw=true)
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2.gif?raw=true)
 >
 >
-#### Ios Usage with Method Descriptions [Here](./iosDescription.md)
+#### Ios Usage with Method Descriptions [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosDescription.md)
 ###  Ios Examples
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1ios.gif?raw=true)
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2ios.gif?raw=true)
