@@ -57,10 +57,10 @@ $ yarn add react-native-animated-splash
 ### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
-| DIALOGSLIDELEFT | hides splash while sliding to left.|
-| DIALOGSLIDERIGHT | hides splash while sliding to right.|
-| DIALOGFADE | hides splash with fade effect.|
-| DIALOGSLIDEDOWN | hides splash while sliding to down.|
+| SPLASHSLIDELEFT | hides splash while sliding to left.|
+| SPLASHSLIDERIGHT | hides splash while sliding to right.|
+| SPLASHFADE | hides splash with fade effect.|
+| SPLASHSLIDEDOWN | hides splash while sliding to down.|
 
  
  
@@ -162,7 +162,7 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
 | toYDelta | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
 | fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| isLoop | run animation in loop or continuously | boolean |
+| loop | run animation in loop or continuously | boolean |
 
 ##### Defining SLIDE or SCALE animation
 
@@ -177,10 +177,10 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
   * fromYDelta: initial point at y-axis to start animation.
   * toYDelta: final point at y-axis to end animation.
   
-* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop)  
+* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop)  
   for SLIDE or SCALE animation continue looping
 
-  * isLoop: run animation in loop or continuously.
+  * loop: run animation in loop or continuously.
   
 ##### Defining FADE or ROTATE animation
 
@@ -193,10 +193,10 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
   * fromValue: starting value for animation.
   * toValue: final value for animation
 
-* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue, isLoop)  
+* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue, loop)  
   for FADE or ROTATE animation continue looping
 
-  * isLoop: run animation in loop or continuously.
+  * loop: run animation in loop or continuously.
 
 ##### Note
 
