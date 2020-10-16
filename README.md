@@ -22,7 +22,10 @@ If you prefer **yarn**,
 ```sh
 $ yarn add react-native-animated-splash
 ```
-
+#### For Ios add this line in your podfile
+```sh
+pod 'RNAnimatedSplash', :path => '../node_modules/react-native-animated-splash'
+```
 
 #### Android Usage with Method Descriptions [Here](./androidDescription.md)
 ###  Android Examples
