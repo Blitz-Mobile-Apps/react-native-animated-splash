@@ -266,32 +266,32 @@ Then call hide function of splash in your app, from react native side like this:
 | rotateDegree | drawable image initial rotate degree | Double |
 | opacity | set initial opacity for image. Value ranges from 0-1 | Double |
 
-*  AddImageView `*`imageAsset = [[AddImageView alloc] initImage:imageAsset width:float height:float];   
+*  AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float`];   
    Adding basic image to view with default options
 
    * imageAsset: determine the drawable image you need to add on splash view.
    * height: determines the height of drawble image.
    * width: determines the width of drawable image.
 
-* AddImageView `*`imageAsset = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool];  
+* AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool`];  
   Adding image with position values and set initial visibility of image.
 
   * positionX: determine position of image drawable on x-axis on splash screen.
   * positionY determine position of image drawable on y-axis on splash screen.
   * visibility:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
 
-* AddImageView `*`imageAsset = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT];  
+* AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:CONSTANT];  
   Adding image with scaleType for image.
 
   * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported).
   
-* AddImageView `*`imageAsset = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT opacity:float];  
+* AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:`CONSTANT` opacity:`float`];  
   Adding image with initial opacity 
  
   * opacity: determines image's initial opacity value. Default value is 1.
   
  
-* AddImageView `*`imageAsset = [[AddImageView alloc] initImage:imageAsset width:float height:float positionX:float positionY:float visibility:bool scaleType:CONSTANT opacity:float rotateDegree:float];  
+* AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:`CONSTANT` opacity:`float` rotateDegree:`float`];  
   Adding image with initial rotateDegree
  
   * rotateDegree: determines image's initial rotate degree. Default value is 0.
