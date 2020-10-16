@@ -269,32 +269,32 @@ Then call hide function of splash in your app, from react native side like this:
 *  AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float`];   
    Adding basic image to view with default options
 
-   * imageAsset: determine the drawable image you need to add on splash view.
-   * height: determines the height of drawble image.
-   * width: determines the width of drawable image.
+   * `imageAsset`: determine the drawable image you need to add on splash view.
+   * `height`: determines the height of drawble image.
+   * `width`: determines the width of drawable image.
 
 * AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool`];  
   Adding image with position values and set initial visibility of image.
 
-  * positionX: determine position of image drawable on x-axis on splash screen.
-  * positionY determine position of image drawable on y-axis on splash screen.
-  * visibility:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
+  * `positionX`: determine position of image drawable on x-axis on splash screen.
+  * `positionY`: determine position of image drawable on y-axis on splash screen.
+  * `visibility`:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
 
 * AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:CONSTANT];  
   Adding image with scaleType for image.
 
-  * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported).
+  * `scaleType`: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported).
   
 * AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:`CONSTANT` opacity:`float`];  
   Adding image with initial opacity 
  
-  * opacity: determines image's initial opacity value. Default value is 1.
+  * `opacity`: determines image's initial opacity value. Default value is 1.
   
  
 * AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float` positionX:`float` positionY:`float` visibility:`bool` scaleType:`CONSTANT` opacity:`float` rotateDegree:`float`];  
   Adding image with initial rotateDegree
  
-  * rotateDegree: determines image's initial rotate degree. Default value is 0.
+  * `rotateDegree`: determines image's initial rotate degree. Default value is 0.
 
 
 
@@ -345,47 +345,47 @@ HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
 
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
-| imageview | imageview you created and placed on splash that you want to perform animation on| CreateImageObject |
-| typeofanimation | determines the type of animation you want to perform, you can read possible types CONSTANTS from Animation Type section.
-| animationDuration | animation duration for specified animation| int |
-| fromX | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
-| toX | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
-| fromY | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
-| toY | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
-| fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| loop | run animation in loop or continuously | boolean |
+| `imageview` | imageview you created and placed on splash that you want to perform animation on| CreateImageObject |
+| `typeofanimation` | determines the type of animation you want to perform, you can read possible types CONSTANTS from Animation Type section.
+| `animationDuration` | animation duration for specified animation| int |
+| `fromX` | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
+| `toX` | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
+| `fromY` | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
+| `toY` | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
+| `fromValue` | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
+| `toValue` | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
+| `loop` | run animation in loop or continuously | boolean |
 
 ##### Defining SLIDE or SCALE animation
 
 * `[splash performSingleAnimation:imagename1 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];`
 
-  * imageview: determine the image view you already added to perform animation on.
-  * typeofanimation: determines the type of animation you want to perform.
-  * animationDuration: determines animation duration.
-  * fromXDelta: initial point at x-axis to start animation.
-  * toXDelta: final point at x-axis to end animation.
-  * fromYDelta: initial point at y-axis to start animation.
-  * toYDelta: final point at y-axis to end animation.
+  * `imageview`: determine the image view you already added to perform animation on.
+  * `typeofanimation`: determines the type of animation you want to perform.
+  * `animationDuration`: determines animation duration.
+  * `fromXDelta`: initial point at x-axis to start animation.
+  * `toXDelta`: final point at x-axis to end animation.
+  * `fromYDelta`: initial point at y-axis to start animation.
+  * `toYDelta`: final point at y-axis to end animation.
   
 * `[splash performSingleAnimation:imagename2 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18 loop:true];`
 
-  * loop: run animation in loop or continuously.
+  * `loop`: run animation in loop or continuously.
   
 ##### Defining FADE or ROTATE animation
 
 * `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1];`
 
-  * imageview: determine the image view you already added to perform animation on.
-  * typeofanimation: determines the type of animation you want to perform.
-  * animationDuration: determines animation duration.
-  * fromValue: starting value for animation.
-  * toValue: final value for animation
+  * `imageview`: determine the image view you already added to perform animation on.
+  * `typeofanimation`: determines the type of animation you want to perform.
+  * `animationDuration`: determines animation duration.
+  * `fromValue`: starting value for animation.
+  * `toValue`: final value for animation
 
 * `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1 loop:true];`   
   for FADE or ROTATE animation continue looping
 
-  * isLoop: run animation in loop or continuously.
+  * `loop`: run animation in loop or continuously.
 
 ##### Note
 
@@ -397,10 +397,10 @@ HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
 
 | Animation | Description |
 | ------ | ------ |
-| SLIDE | slide image object to given x and y axis.|
-| SCALE | scale image object starting from initial value to final value.|
-| FADE | fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
-| ROTATE | rotate image object starting from initial value to final value.|
+| `SLIDE` | slide image object to given x and y axis.|
+| `SCALE` | scale image object starting from initial value to final value.|
+| `FADE` | fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
+| `ROTATE` | rotate image object starting from initial value to final value.|
 
 ### Hide Splash in your app
 
