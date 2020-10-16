@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) CGFloat toXDelta;
 @property (nonatomic) CGFloat toYDelta;
 @property (nonatomic) CGFloat toValue;
+@property (nonatomic) CGFloat scaleX;
+@property (nonatomic) CGFloat scaleY;
 @property (nonatomic) int animationType;
 @property (nonatomic) bool isLoop;
 @property (nonatomic) float animationDuration;
@@ -30,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)priority;
 -(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal :(int)priority;
 -(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
+-(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal :(int)priority;
+-(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
 -(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop :(int)priority;
 
 -(void)slideAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject;

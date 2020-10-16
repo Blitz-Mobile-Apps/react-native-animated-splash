@@ -68,8 +68,8 @@ static void InitializeFlipper(UIApplication *application) {
      
     [group1 performGroupAnimation:footerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
      
-   [splash performSingleAnimation:logoImage animationType:SCALE duration:500 fromX:0 toX:5.5 fromY:0 toY:4];
-    
+    [splash performSingleAnimation:logoImage typeofanimation:SCALE duration:500 scaleX:5.5 scaleY:4];
+     
       [splash splashShow];
   return YES;
 }

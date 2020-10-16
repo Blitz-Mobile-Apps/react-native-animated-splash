@@ -116,7 +116,7 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //  NSLog(@"in view color");
   [background addSubview: [object initializeObject]];
 }
--(void)performSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY{
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY{
 //  NSLog(@"in perform anim %@",object);
 //  NSLog(@"Groupo count splash %d",groupcount);
   priority++;
@@ -124,7 +124,7 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //  [animatedObjectList addObject:[[AnimateObject alloc] initWithImage:object :typeOfAnimation :duration :toX :toY loop:false :priority]];
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object animationType:typeOfAnimation duration:duration fromX:fromX toX:toX fromY:fromY toY:toY loop:false :priority]];
 }
--(void)performSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue{
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue{
 //  NSLog(@"in perform anim %@",object);
 //  NSLog(@"Groupo count splash %d",groupcount);
   priority++;
@@ -132,20 +132,33 @@ self.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //  [animatedObjectList addObject:[[AnimateObject alloc] initWithImage:object :typeOfAnimation :duration :toValue loop:false :priority]];
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue loop:false :priority]];
 }
--(void)performSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop{
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop{
 //  NSLog(@"in perform anim %@",object);
 //  NSLog(@"Groupo count splash %d",groupcount);
   priority++;
   groupcount = priority;
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object animationType:typeOfAnimation duration:duration fromX:fromX toX:toX fromY:fromY toY:toY loop:isLoop :priority]];
 }
--(void)performSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue loop:(bool)isLoop{
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue loop:(bool)isLoop{
 //  NSLog(@"in perform anim %@",object);
 //  NSLog(@"Groupo count splash %d",groupcount);
   priority++;
   groupcount = priority;
   [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration fromVal:fromValue toVal:toValue loop:isLoop :priority]];
 }
+
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY{
+      priority++;
+      groupcount = priority;
+    //  [animatedObjectList addObject:[[AnimateObject alloc] initWithImage:object :typeOfAnimation :duration :toValue loop:false :priority]];
+      [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration scaleX:scaleX scaleY:scaleY loop:false :priority]];
+}
+-(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop{
+    priority++;
+    groupcount = priority;
+    [animatedObjectList addObject:[[AnimateObject alloc] initimage:object :typeOfAnimation :duration scaleX:scaleX scaleY:scaleY loop:isLoop :priority]];
+}
+
 -(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount loop:(bool)isLoop{
 //  NSLog(@"Groupo count splash %d",groupcount);
   // NSLog(@"in perform anim group %@",object);

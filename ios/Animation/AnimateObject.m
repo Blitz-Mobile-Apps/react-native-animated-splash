@@ -67,6 +67,28 @@
     // NSLog(@"animate object this %d",_fromValue);
   return self;
 }
+
+-(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)priority{
+    _imageview = image;
+      _animationType = animationtype;
+      _animationDuration = animationDuration/1000;
+      _scaleX = scaleX;
+      _scaleY = scaleY;
+      _priority = priority;
+   
+      // NSLog(@"animate object this %d",_fromValue);
+    return self;
+}
+-(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop :(int)priority{
+    _imageview = image;
+    _animationType = animationtype;
+    _animationDuration = animationDuration/1000;
+    _scaleX = scaleX;
+    _scaleY = scaleY;
+    _priority = priority;
+     _isLoop = isLoop;
+       return self;
+}
 -(AddImageView *)getObject{
   return _imageview;
 }
@@ -110,7 +132,7 @@
      imagev.hidden = NO;
 //     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
      [UIView animateWithDuration:_animationDuration delay:0.0 options:nil animations:^{
-        imagev.transform = CGAffineTransformScale(imagev.transform,_toXDelta, _toYDelta);
+        imagev.transform = CGAffineTransformScale(imagev.transform,_scaleX, _scaleY);
   } completion:^(BOOL finished){
     if (nextObject != nil && hidecounter < hideanimatedObjectLength) {
       [splashClassInstance runAnimation];
@@ -215,7 +237,7 @@ NSLog(@"in loop fade in");
      imagev.hidden = NO;
 //     imagev.transform = CGAffineTransformScale(imagev.transform,_fromXDelta, _fromYDelta);
      [UIView animateWithDuration:_animationDuration delay:0.0 options:isLoop?UIViewAnimationOptionCurveLinear:nil animations:^{
-        imagev.transform = CGAffineTransformScale(imagev.transform,_toXDelta, _toYDelta);
+        imagev.transform = CGAffineTransformScale(imagev.transform,_scaleX, _scaleY);
   } completion:^(BOOL finished){
     if(nextObject != nil && counter < animatedObjectLength){
     [splashClassInstance runAnimation];
