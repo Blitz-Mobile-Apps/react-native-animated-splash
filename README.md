@@ -428,6 +428,7 @@ Call hide function of splash in your app, from react native side like this:
 ### Todos
 We aim to make this package even more robust and powerful by adding following features in the upcoming releases:
  - implement ios
+ [Contribution guidelines for this project](/iosUsage.md)
 
 License
 MIT 
