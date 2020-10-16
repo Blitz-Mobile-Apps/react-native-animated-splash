@@ -2,7 +2,7 @@
 
 ### React-Native-Animated-Splash -- Ios Description
 
-#### Check Ios Example Code [HERE]()
+#### Check Ios Example Code [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosexample.md)
 
 ### Installation
 If you prefer **npm**,
