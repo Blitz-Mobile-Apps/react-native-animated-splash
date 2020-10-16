@@ -204,51 +204,51 @@ Then call hide function of splash in your app, from react native side like this:
 
 ### Methods Description
 
-* createSplashView:currentView
+* createSplashView:`currentView`  
   creates a view for splash 
 
-  * currentView: determine the current view of your app, give view like "self.window"
+  * `currentView`: determine the current view of your app, give view like "self.window"
  
-* setBackgroundColor:colorCode  
+* setBackgroundColor:`colorCode`    
   sets background color on splash screen
 
-  * colorCode: determine the color for background, give color value in string like this @"FFFFFF"
+  * `colorCode`: determine the color for background, give color value in string like this @"FFFFFF"
 
-* setBackgroundImage:imageAsset  
+* setBackgroundImage:`imageAsset`  
   sets background image on splash screen
 
-  * imageAsset: determine the image for background, give any image asset that is in you project.
+  * `imageAsset`: determine the image for background, give any image asset that is in you project.
   
-* setSplashHideAnimation:animationType  
+* setSplashHideAnimation:`animationType`  
   set animation for hiding of splash
 
-  * animationType: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section in this document.
+  * `animationType`: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section in this document.
   
-* setSplashHideDelay:delay    
+* setSplashHideDelay:`delay`    
   sets delay before splash hide
 
-  * delay: determine the delay value before splash hide, enter value in milliseconds.
+  * `delay`: determine the delay value before splash hide, enter value in milliseconds.
   
 * splashShow  
   display splash and starts animations
 
-* getCenterX:widthOfImage   
+* getCenterX:`widthOfImage`   
   sets the image to center of view at x-axis
 
-  * widthOfImage: determines the center on splash view at x-axis with respect to width of image, enter width of image which you want to set in center.
+  * `widthOfImage`: determines the center on splash view at x-axis with respect to width of image, enter width of image which you want to set in center.
   
-* getCenterY:heightOfImage  
+* getCenterY:`heightOfImage`  
   sets the image to center of view at y-axis
 
-  * heightOfImage: determines the center on splash view at y-axis with respect to height of image, enter height of image which you want to set in center.
+  * `heightOfImage`: determines the center on splash view at y-axis with respect to height of image, enter height of image which you want to set in center.
   
 ### Splash Hide Animation Constants 
 | Animation | Description |
 | ------ | ------ |
-| SPLASHSLIDELEFT | hides splash while sliding to left.|
-| SPLASHSLIDERIGHT | hides splash while sliding to right.|
-| SPLASHFADE | hides splash with fade effect.|
-| SPLASHSLIDEDOWN | hides splash while sliding to down.|
+| `SPLASHSLIDELEFT` | hides splash while sliding to left.|
+| `SPLASHSLIDERIGHT` | hides splash while sliding to right.|
+| `SPLASHFADE` | hides splash with fade effect.|
+| `SPLASHSLIDEDOWN` | hides splash while sliding to down.|
 
  
  
@@ -256,15 +256,15 @@ Then call hide function of splash in your app, from react native side like this:
 
 | Parameter | Description | Type |
 | ------ | ------ | ------- |
-| imageSource | drawable image that you need to add on splash screen| Integer(double) |
-| height | height of image drawable| Double |
-| width | width of image drawable| Double |
-| positionX | position of image drawable on x-axis on splash screen| Double |
-| positionY | position of image drawable on y-axis on splash screen| Double |
-| scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported) |
-| visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Boolean |
-| rotateDegree | drawable image initial rotate degree | Double |
-| opacity | set initial opacity for image. Value ranges from 0-1 | Double |
+| `imageAsset` | drawable image that you need to add on splash screen| Integer(double) |
+| `height` | height of image drawable| Double |
+| `width` | width of image drawable| Double |
+| `positionX` | position of image drawable on x-axis on splash screen| Double |
+| `positionY` | position of image drawable on y-axis on splash screen| Double |
+| `scaleType` | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported) |
+| `visibility` | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Boolean |
+| `rotateDegree` | drawable image initial rotate degree | Double |
+| `opacity` | set initial opacity for image. Value ranges from 0-1 | Double |
 
 *  AddImageView `*`imagename = [[AddImageView alloc] initImage:`imageAsset` width:`float` height:`float`];   
    Adding basic image to view with default options
@@ -309,24 +309,25 @@ You need to use group animation when you need to run two or more animations simu
 Sample code for defining group animations:
 
 ```sh
-GroupAnimation group1 = new GroupAnimation();
-group1.performGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
-group1.performGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
+GroupAnimation *group1 = [[GroupAnimation alloc] init];
+[group1 performGroupAnimation:imagename1 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:screenHeight*0.18];
+[group1 performGroupAnimation:imagename2 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
 ```
 
 #### Type2 - Single Animation
 Single animation can be used to run an animation in sequence.
 
 ```sh
-performSingleAnimation(imageview1, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
-performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1];
+
+[splash performSingleAnimation:imagename2 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
 ```
 
 #### Type3 - Define Animation before hiding splash
 You can use animation on certain object to perform just before hiding of splash.
 This type of animation is intersting, you can use this animation to make a last glance of animation just before hiding of splash view.
  ```sh
- performHideSingleAnimation(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
+[splash performHideSingleAnimation:logoImage animationType:SLIDE duration:500 fromX:0 toX:5.5 fromY:0 toY:4];
  ```
  
  #### Type4 - Define Group Animation before hiding splash
@@ -334,9 +335,11 @@ You need to use group animation when you need to run two or more animations simu
 You can use this animation to animate group of images together just before hiding of splash.
 
 ```sh
-HideGroupAnimation hidegroup1 = new HideGroupAnimation();
-hidegroup1.performHideGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
-hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
+HideGroupAnimation *group1 = [[HideGroupAnimation alloc] init];
+      
+[group1 performHideGroupAnimation:headerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:screenHeight*0.18];
+     
+[group1 performHideGroupAnimation:footerImage typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];
 ```
 ### Animation Methods Description
 
@@ -345,18 +348,17 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
 | imageview | imageview you created and placed on splash that you want to perform animation on| CreateImageObject |
 | typeofanimation | determines the type of animation you want to perform, you can read possible types CONSTANTS from Animation Type section.
 | animationDuration | animation duration for specified animation| int |
-| fromXDelta | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
-| toXDelta | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
-| fromYDelta | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
-| toYDelta | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
+| fromX | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
+| toX | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
+| fromY | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
+| toY | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
 | fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
 | toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| isLoop | run animation in loop or continuously | boolean |
+| loop | run animation in loop or continuously | boolean |
 
 ##### Defining SLIDE or SCALE animation
 
-* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta)  
-  for SLIDE or SCALE animation
+* `[splash performSingleAnimation:imagename1 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18];`
 
   * imageview: determine the image view you already added to perform animation on.
   * typeofanimation: determines the type of animation you want to perform.
@@ -366,15 +368,13 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
   * fromYDelta: initial point at y-axis to start animation.
   * toYDelta: final point at y-axis to end animation.
   
-* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta, isLoop)  
-  for SLIDE or SCALE animation continue looping
+* `[splash performSingleAnimation:imagename2 typeofanimation:SLIDE duration:800 fromX:0 toX:0 fromY:0 toY:-screenHeight * 0.18 loop:true];`
 
-  * isLoop: run animation in loop or continuously.
+  * loop: run animation in loop or continuously.
   
 ##### Defining FADE or ROTATE animation
 
-* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue)  
-  for FADE or ROTATE animation
+* `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1];`
 
   * imageview: determine the image view you already added to perform animation on.
   * typeofanimation: determines the type of animation you want to perform.
@@ -382,7 +382,7 @@ hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 
   * fromValue: starting value for animation.
   * toValue: final value for animation
 
-* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue, isLoop)  
+* `[splash performSingleAnimation:imagename1 animationType:FADE duration:500 fromValue:0 toValue:1 loop:true];` 
   for FADE or ROTATE animation continue looping
 
   * isLoop: run animation in loop or continuously.
