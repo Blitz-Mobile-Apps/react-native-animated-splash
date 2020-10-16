@@ -31,7 +31,7 @@ $ yarn add react-native-animated-splash
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2.gif?raw=true)
 >
 >
-#### [Ios Usage with Method Descriptions](./IosDesction.md)
+#### [Ios Usage with Method Descriptions](./IosDescription.md)
 ###  Ios Examples
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1ios.gif?raw=true)
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2ios.gif?raw=true)
