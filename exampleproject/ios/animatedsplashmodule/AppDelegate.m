@@ -68,7 +68,7 @@ static void InitializeFlipper(UIApplication *application) {
   
       [group1 performGroupAnimation:logoimage typeofanimation:FADE duration:800 fromValue:0 toValue:1];
   
-      [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 fromX:0 toX:4.9 fromY:0 toY:4.9];
+      [group1 performGroupAnimation:logoimage typeofanimation:SCALE duration:400 scaleX:4.9 scaleY:4.9];
   
       [splash performSingleAnimation:circle1 animationType:FADE duration:500 fromValue:0 toValue:1];
   

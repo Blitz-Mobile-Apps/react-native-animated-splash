@@ -7,8 +7,7 @@ import com.blitzapp.animatedsplash.animation.AddImageView;
 import com.blitzapp.animatedsplash.animation.GroupAnimation;
 import com.facebook.react.ReactActivity;
 
-import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDEDOWN;
-import static com.blitzapp.animatedsplash.animation.Splash.DIALOGSLIDELEFT;
+import static com.blitzapp.animatedsplash.animation.Splash.SPLASHSLIDEDOWN;
 import static com.blitzapp.animatedsplash.animation.Splash.FADE;
 import static com.blitzapp.animatedsplash.animation.Splash.SCALE;
 import static com.blitzapp.animatedsplash.animation.Splash.SLIDE;
@@ -47,7 +46,7 @@ public class MainActivity extends ReactActivity {
 
         //Set Background
         setBackgroundColor("#101010");
-        setSplashHideAnimation(DIALOGSLIDEDOWN);
+        setSplashHideAnimation(SPLASHSLIDEDOWN);
 
         setSplashHideDelay(1500);
         // Create and add images to view

@@ -6,7 +6,7 @@ import com.blitzapp.animatedsplash.animation.AddImageView;
 import com.blitzapp.animatedsplash.animation.GroupAnimation;
 import com.facebook.react.ReactActivity;
 
-import static com.blitzapp.animatedsplash.animation.Splash.SLIDESLIDELEFT;
+import static com.blitzapp.animatedsplash.animation.Splash.SPLASHSLIDELEFT;
 import static com.blitzapp.animatedsplash.animation.Splash.ROTATE;
 import static com.blitzapp.animatedsplash.animation.Splash.SCALE;
 import static com.blitzapp.animatedsplash.animation.Splash.SLIDE;
@@ -42,7 +42,7 @@ public class MainActivity extends ReactActivity {
         createSplashView(MainActivity.this);
 
         setBackgroundImage(R.drawable.splashbg);
-        setSplashHideAnimation(SLIDESLIDELEFT);
+        setSplashHideAnimation(SPLASHSLIDELEFT);
 
         setSplashHideDelay(1500);
 

@@ -32,4 +32,10 @@ int hidegroupCount = 0;
   [splashClassInstance performGroupAnimationOnHide:object animationType:typeOfAnimation duration:duration fromValue:fromValue toValue:toValue :hidegroupCount];
 
 }
+-(void)performHideGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY{
+
+//  [splashClassInstance performGroupAnimationOnHide:object :typeOfAnimation :duration :toX :groupcount];
+  [splashClassInstance performGroupAnimationOnHide:object animationType:typeOfAnimation duration:duration scaleX:scaleX scaleY:scaleY :hidegroupCount];
+
+}
 @end
