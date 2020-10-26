@@ -146,66 +146,86 @@ public class Splash {
     }
 
 
-    public static void addImagetoView(AddImageView objects) {
+    public static void addImagetoView(AnimatedImage objects) {
+        View View = objects.initializeObject();
+        view.addView(View);
+    }
+    public static void addTexttoView(AnimatedText objects) {
         View View = objects.initializeObject();
         view.addView(View);
     }
 
-
-    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop) {
+    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
 
     }
 
-    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
 
     }
+    public static void performSingleAnimation(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+        priority++;
+        GroupAnimation.groupCount = priority;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
+        Log.d(TAG, "performSingleAnimation: this object"+object);
 
-    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop) {
+
+    }
+    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
 
     }
 
-    public static void performSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue) {
         priority++;
         GroupAnimation.groupCount = priority;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
 
-    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop, int groupCount) {
+    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
+    }
+    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop, int groupCount) {
+        priority = groupCount;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
+    }
+    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
+        priority = groupCount;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
 
     }
-
-    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
+    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
 
     }
 
-
-    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop, int groupCount) {
+    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
 
     }
+    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop, int groupCount) {
+        priority = groupCount;
+        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
 
-    public static void animateObject(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
+    }
+    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
         priority = groupCount;
         animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
 
     }
 
-    public static void performHideSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void performHideSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
         isHideOnDialogAnimation = true;
         hidepriority++;
         HideGroupAnimation.hidegroupCount = hidepriority;
@@ -214,7 +234,7 @@ public class Splash {
 
     }
 
-    public static void performHideSingleAnimation(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void performHideSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue) {
         isHideOnDialogAnimation = true;
         hidepriority++;
         HideGroupAnimation.hidegroupCount = hidepriority;
@@ -222,14 +242,14 @@ public class Splash {
 
 
     }
-    public static void performGroupAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
+    public static void performGroupAnimationOnHide(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
         isHideOnDialogAnimation = true;
         hidepriority = groupCount;
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,hidepriority));
 
     }
 
-    public static void performGroupAnimationOnHide(AddImageView object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
+    public static void performGroupAnimationOnHide(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
         isHideOnDialogAnimation = true;
         hidepriority = groupCount;
         hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue,hidepriority));
@@ -239,32 +259,67 @@ public class Splash {
     public static void runAnimation() {
 //
         for (int i = counter; i < animateObjectLength; i++) {
-            if (i < animateObjectLength - 1 && animatedObjectList.get(counter).getPriority() == animatedObjectList.get(counter + 1).getPriority()) {
+//            Log.d(TAG, "in runAnimation"+animatedObjectList.get(2).isTextType()+"Texttype"+animatedObjectList.get(2).getTextObject());
 
-                runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), null, animatedObjectList.get(i).isLoop);
+            if (i < animateObjectLength - 1 && animatedObjectList.get(counter).getPriority() == animatedObjectList.get(counter + 1).getPriority()) {
+                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
+                if(animatedObjectList.get(i).isTextType()){
+                    if(animatedObjectList.get(i+1).isTextType()) {
+                        runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedText) null, animatedObjectList.get(i).isLoop);
+                    }
+                    else {
+                        runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedImage) null, animatedObjectList.get(i).isLoop);
+
+                    }
+                }
+                else{
+                    if(animatedObjectList.get(i+1).isTextType()) {
+
+                        runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedText) null, animatedObjectList.get(i).isLoop);
+                    }
+                    else{
+                        runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedImage) null, animatedObjectList.get(i).isLoop);
+
+                    }
+                }
+
                 counter++;
 
             } else if (i < animateObjectLength - 1) {
+                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
 
 
-                runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getObject(), animatedObjectList.get(i).isLoop);
+                if(animatedObjectList.get(i).isTextType()){
+                    runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getTextObject(), animatedObjectList.get(i).isLoop);
+
+                }
+                else{
+                    runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getObject(), animatedObjectList.get(i).isLoop);
+
+                }
                 counter++;
                 break;
 
             } else {
+                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
 
+                if(animatedObjectList.get(i).isTextType()){
+                    runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i).getTextObject(),animatedObjectList.get(i).isLoop);
+
+                }
+                else{
                     runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i).getObject(),animatedObjectList.get(i).isLoop);
+
+                }
                 counter++;
             }
-
-
 
         }
 
 
     }
 
-    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, AddImageView nextObject, Boolean isLoop) {
+    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedImage nextObject, Boolean isLoop) {
         switch (animationType) {
             case SLIDE:
                 animation.slideAnimation(object, nextObject, isLoop);
@@ -280,8 +335,64 @@ public class Splash {
                 break;
         }
     }
+    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedText nextObject, Boolean isLoop) {
+        switch (animationType) {
+            case SLIDE:
+                animation.slideAnimation(object, nextObject, isLoop);
+                break;
+            case ROTATE:
+                animation.rotateAnimation(object, nextObject, isLoop);
+                break;
+            case SCALE:
+                animation.scaleAnimation(object, nextObject, isLoop);
+                break;
+            case FADE:
+                animation.fadeAnimation(object, nextObject, isLoop);
+                break;
+        }
+    }
+    public static void runSpecificAnimation(AnimatedText object, String animationType, AnimateObject animation, AnimatedText nextObject, Boolean isLoop) {
+        Log.d(TAG, "runSpecificAnimation: text");
+        switch (animationType) {
+            case SLIDE:
+                Log.d(TAG, "runSpecificAnimation: textslide");
 
-    public static void runSpecificAnimation(AddImageView object, String animationType, AnimateObject animation, AddImageView nextObject) {
+                animation.slideAnimation(object, nextObject, isLoop);
+                break;
+            case ROTATE:
+                animation.rotateAnimation(object, nextObject, isLoop);
+                break;
+            case SCALE:
+                animation.scaleAnimation(object, nextObject, isLoop);
+                break;
+            case FADE:
+                animation.fadeAnimation(object, nextObject, isLoop);
+                break;
+
+        }
+    }
+    public static void runSpecificAnimation(AnimatedText object, String animationType, AnimateObject animation, AnimatedImage nextObject, Boolean isLoop) {
+        Log.d(TAG, "runSpecificAnimation: image");
+        switch (animationType) {
+            case SLIDE:
+                Log.d(TAG, "runSpecificAnimation: textslide");
+
+                animation.slideAnimation(object, nextObject, isLoop);
+                break;
+            case ROTATE:
+                animation.rotateAnimation(object, nextObject, isLoop);
+                break;
+            case SCALE:
+                animation.scaleAnimation(object, nextObject, isLoop);
+                break;
+            case FADE:
+                animation.fadeAnimation(object, nextObject, isLoop);
+                break;
+
+
+        }
+    }
+    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedImage nextObject) {
         switch (animationType) {
             case SLIDE:
                 animation.slideAnimation(object,nextObject);
@@ -325,7 +436,15 @@ public class Splash {
                 for (int i = hidecounter; i < hideanimateObjectLength; i++) {
                     if (i < hideanimateObjectLength - 1 && hideanimatedObjectList.get(hidecounter).getPriority() == hideanimatedObjectList.get(hidecounter + 1).getPriority()) {
                         runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
-                   hidecounter++;
+                        if(hideanimatedObjectList.get(i).isTextType()){
+                            runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
+
+                        }
+                        else{
+                            runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
+
+                        }
+                        hidecounter++;
                     }
                     else if (i < hideanimateObjectLength - 1) {
 

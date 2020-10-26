@@ -22,7 +22,7 @@ public class GroupAnimation {
     private float scaleToX;
     private float scaleFromY;
     private float scaleToY;
-    private AddImageView object;
+    private AnimatedImage object;
     public static int groupCount = 0;
     public static int groupinnerCount = 0;
     public boolean isLastObject=false;
@@ -40,22 +40,32 @@ public class GroupAnimation {
 
     public static Splash splash = new Splash();
 
-    public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop) {
+    public static void performGroupAnimation(AnimatedImage createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop) {
 
         splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,loop, groupCount);
     }
 
-    public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean loop) {
+    public static void performGroupAnimation(AnimatedImage createImageObject, String typeofanimation, int duration, float fromValue, float toValue, boolean loop) {
 
         splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, loop, groupCount);
     }
 
-    public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+    public static void performGroupAnimation(AnimatedImage createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
 
         splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false, groupCount);
     }
 
-    public static void performGroupAnimation(AddImageView createImageObject, String typeofanimation, int duration, float fromValue, float toValue) {
+    public static void performGroupAnimation(AnimatedImage createImageObject, String typeofanimation, int duration, float fromValue, float toValue) {
+        Log.d(TAG, "performGroupAnimation: ");
+
+        splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, groupCount);
+    }
+    public static void performGroupAnimation(AnimatedText createImageObject, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
+
+        splash.animateObject(createImageObject, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,false, groupCount);
+    }
+
+    public static void performGroupAnimation(AnimatedText createImageObject, String typeofanimation, int duration, float fromValue, float toValue) {
         Log.d(TAG, "performGroupAnimation: ");
 
         splash.animateObject(createImageObject, typeofanimation, duration, fromValue, toValue, false, groupCount);
