@@ -22,7 +22,14 @@ If you prefer **yarn**,
 ```sh
 $ yarn add react-native-animated-splash
 ```
-#### For Ios add this line in your podfile
+#### For Ios bump deployment version to 12.0+ in Xcode and podfile
+
+```sh
+platform :ios, '12.0'
+```
+
+#### Also add this line in your podfile
+
 ```sh
 pod 'RNAnimatedSplash', :path => '../node_modules/react-native-animated-splash'
 ```
