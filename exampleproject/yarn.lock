@@ -3102,9 +3102,9 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 glob-parent@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
-  integrity sha512-FnI+VGOpnlGHWZxthPGR+QhR78fuiK0sNLkHQv+bL9fQi57lNNdquIbna/WrfROrolq8GK5Ek6BiMwqL/voRYQ==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+  integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
 
@@ -5485,10 +5485,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-animated-splash@^1.1.1:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/react-native-animated-splash/-/react-native-animated-splash-1.1.3.tgz#608067ebbd52c889e70859ed388ea768d4c2fd4a"
-  integrity sha512-PaMdNqaUXaTYv/fA+LDiqFNoYJiXyO7Wt7ZxMRwKgXlp3O9MSyW3Poj8s4P4Ww2iqZEscxuLiRLlBT8xHWHsuQ==
+react-native-animated-splash@^1.3.4:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/react-native-animated-splash/-/react-native-animated-splash-1.3.6.tgz#2897e3e0ef569febe0b7800dd973a8a62add571d"
+  integrity sha512-jigSwPSCWGU4YfVYXJu4L38uz7IuKRsd6SRJ8ZRVh4YKYjbAFjlFMIou1fEIA75Q6A3XNgKggbh+K0g7Dlj90w==
 
 react-native@0.62.2:
   version "0.62.2"
