@@ -4811,9 +4811,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mixin-deep@^1.2.0:
   version "1.3.2"
@@ -5485,10 +5485,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-animated-splash@^1.1.1:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/react-native-animated-splash/-/react-native-animated-splash-1.1.3.tgz#608067ebbd52c889e70859ed388ea768d4c2fd4a"
-  integrity sha512-PaMdNqaUXaTYv/fA+LDiqFNoYJiXyO7Wt7ZxMRwKgXlp3O9MSyW3Poj8s4P4Ww2iqZEscxuLiRLlBT8xHWHsuQ==
+react-native-animated-splash@^1.3.4:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/react-native-animated-splash/-/react-native-animated-splash-1.3.6.tgz#2897e3e0ef569febe0b7800dd973a8a62add571d"
+  integrity sha512-jigSwPSCWGU4YfVYXJu4L38uz7IuKRsd6SRJ8ZRVh4YKYjbAFjlFMIou1fEIA75Q6A3XNgKggbh+K0g7Dlj90w==
 
 react-native@0.62.2:
   version "0.62.2"
