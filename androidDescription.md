@@ -5,7 +5,7 @@
 
 ## React-Native-Animated-Splash -- iOS Description
 
-Check the [Example Application](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/androidexample.md) for reference.
+Check the [Example Application](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/v2/androidexample.md) for reference.
 
   
 
