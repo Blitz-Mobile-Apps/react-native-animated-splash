@@ -1,6 +1,15 @@
 package com.blitzapp.animatedsplash.animation;
 
 
+import static android.content.ContentValues.TAG;
+import static com.blitzapp.animatedsplash.AnimationsList.animationListHead;
+import static com.blitzapp.animatedsplash.AnimationsList.animationsList;
+import static com.blitzapp.animatedsplash.animation.Constants.FADE;
+import static com.blitzapp.animatedsplash.animation.Constants.ROTATE;
+import static com.blitzapp.animatedsplash.animation.Constants.SCALE;
+import static com.blitzapp.animatedsplash.animation.Constants.SLIDE;
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,10 +29,11 @@ import com.blitzapp.animatedsplash.R;
 import com.facebook.react.bridge.ReactContext;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static android.content.ContentValues.TAG;
-import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 public class Splash {
     public static ReactContext savedReactContext = null;
@@ -41,47 +51,40 @@ public class Splash {
     public static int hidepriority = 0;
     public static int animateObjectLength;
     public static int hideanimateObjectLength;
+    public static boolean allExecuted = false;
+    public static boolean allHideExecuted = false;
 
     private static ConstraintLayout mainBackground;
     public static FrameLayout view;
-    public static final String SLIDE = "SLIDE_ANIMATION";
-    public static final String ROTATE = "ROTATE_ANIMATION";
-    public static final String SCALE = "SCALE_ANIMATION";
-    public static final String FADE = "FADE_ANIMATION";
-    public static final String SPLASHSLIDEDOWN = "SLIDEDOWN";
-    public static final String SPLASHSLIDELEFT = "SLIDELEFT";
-    public static final String SPLASHSLIDERIGHT = "SLIDERIGHT";
-    public static final String SPLASHFADE = "FADE";
+
     public static int hideDelay = 1;
     public static boolean isHideOnDialogAnimation = false;
-    public static List<AnimateObject> animatedObjectList = new ArrayList<>();
-    public static List<AnimateObject> hideanimatedObjectList = new ArrayList<>();
+    //    public static List<List<ObjectAnimation>> animatedObjectList = new ArrayList<>();
+    public static LinkedList<Object> animatedObjectList = new LinkedList<>();
+    public static List<ObjectAnimation> hideanimatedObjectList = new ArrayList<>();
 
     public static List<GroupAnimation> groupObjectList = new ArrayList<>();
-    public static AnimateObject hideObject;
+    public static ObjectAnimation hideObject;
 
-
-    //    private static ImageView imageView;
     public static boolean animationStatus = false;
 
-    public static void createSplashView(Context context) {
+
+    public Splash(Context context) {
         getWindowDimensions();
         applicationContext = context;
         // Create dialog to present view
         dialog = new Dialog(context, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
-//        setDialogAnimation(DIALOGFADE);
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.Custom; //style id
         dialog.setCancelable(false);
         view = new FrameLayout(context);
         dialog.setContentView(view);
         view.getLayoutParams().height = screenHeight;
         view.getLayoutParams().width = screenWidth;
         setView();
-
+//        animationList = new com.blitzapp.animatedsplash.LinkedList();
         mHandler = new Handler();
     }
 
-    public static void setSplashHideAnimation(String animationType) {
+    public void setSplashHideAnimation(String animationType) {
         if (animationType == "FADE") {
             dialog.getWindow().getAttributes().windowAnimations = R.style.fade; //style id
         } else if (animationType == "SLIDEDOWN") {
@@ -93,12 +96,12 @@ public class Splash {
         }
     }
 
-    public static void setAnimationStatus(boolean animationStatus) {
-        Splash.animationStatus = animationStatus;
+    public void setAnimationStatus(boolean animationStatus) {
+        this.animationStatus = animationStatus;
     }
 
-    public static void setSplashHideDelay(int hideDelay) {
-        Splash.hideDelay = hideDelay;
+    public void setSplashHideDelay(int hideDelay) {
+        this.hideDelay = hideDelay;
     }
 
     private static void getWindowDimensions() {
@@ -114,300 +117,95 @@ public class Splash {
 
     }
 
-    public static void splashShow() {
+    public void ShowSplash() {
         Log.d(TAG, "createDialog: " + animatedObjectList.size());
-        animateObjectLength = animatedObjectList.size();
+        animateObjectLength = animatedObjectList.size() - 1;
         hideanimateObjectLength = hideanimatedObjectList.size();
         dialog.show();
 
-        mHandler.postDelayed(new Runnable() {
+        new Runnable() {
             @Override
             public void run() {
                 runAnimation();
-
             }
-        }, 1000);
-
-
+        }.run();
     }
-
-//    public static void hide() {
-//        dialog.dismiss();
-//    }
 
     public static void setBackgroundImage(Integer drawable) {
 
         view.setBackground(ContextCompat.getDrawable(applicationContext, drawable));
     }
 
-    public static void setBackgroundColor(String colorString) {
+    public void setBackgroundColor(String colorString) {
 
         view.setBackgroundColor(Color.parseColor(colorString));
     }
 
+    public void addAnimatedImage(AnimatedObject objects) {
 
-    public static void addImagetoView(AnimatedImage objects) {
-        View View = objects.initializeObject();
-        view.addView(View);
+            View View = objects.initializeObject();
+            view.addView(View);
+
     }
+
+    public void addStaticImage(AnimatedObject objects)  {
+
+            View View = objects.initializeObject();
+            view.addView(View);
+
+    }
+
     public static void addTexttoView(AnimatedText objects) {
         View View = objects.initializeObject();
         view.addView(View);
     }
 
-    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop) {
-        priority++;
-        GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
-
-    }
-
-    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
-        priority++;
-        GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
-
-    }
-    public static void performSingleAnimation(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
-        priority++;
-        GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
-        Log.d(TAG, "performSingleAnimation: this object"+object);
-
-
-    }
-    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop) {
-        priority++;
-        GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
-
-    }
-
-    public static void performSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue) {
-        priority++;
-        GroupAnimation.groupCount = priority;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
-
-    }
-
-    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
-    }
-    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, boolean loop, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop, priority));
-    }
-    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
-
-    }
-    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta, false, priority));
-
-    }
-
-    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
-
-    }
-    public static void animateObject(AnimatedText object, String typeofanimation, int duration, float fromValue, float toValue, boolean loop, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, loop, priority));
-
-    }
-    public static void animateObject(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
-        priority = groupCount;
-        animatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue, false, priority));
-
-    }
-
-    public static void performHideSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta) {
-        isHideOnDialogAnimation = true;
-        hidepriority++;
-        HideGroupAnimation.hidegroupCount = hidepriority;
-//        hideObject = new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta);
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,hidepriority));
-
-    }
-
-    public static void performHideSingleAnimation(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue) {
-        isHideOnDialogAnimation = true;
-        hidepriority++;
-        HideGroupAnimation.hidegroupCount = hidepriority;
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue,hidepriority));
-
-
-    }
-    public static void performGroupAnimationOnHide(AnimatedImage object, String typeofanimation, int duration, float fromXDelta, float toXDelta, float fromYDelta, float toYDelta, int groupCount) {
-        isHideOnDialogAnimation = true;
-        hidepriority = groupCount;
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromXDelta, toXDelta, fromYDelta, toYDelta,hidepriority));
-
-    }
-
-    public static void performGroupAnimationOnHide(AnimatedImage object, String typeofanimation, int duration, float fromValue, float toValue, int groupCount) {
-        isHideOnDialogAnimation = true;
-        hidepriority = groupCount;
-        hideanimatedObjectList.add(new AnimateObject(object, typeofanimation, duration, fromValue, toValue,hidepriority));
-
-
-    }
     public static void runAnimation() {
-//
-        for (int i = counter; i < animateObjectLength; i++) {
-//            Log.d(TAG, "in runAnimation"+animatedObjectList.get(2).isTextType()+"Texttype"+animatedObjectList.get(2).getTextObject());
-
-            if (i < animateObjectLength - 1 && animatedObjectList.get(counter).getPriority() == animatedObjectList.get(counter + 1).getPriority()) {
-                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
-                if(animatedObjectList.get(i).isTextType()){
-                    if(animatedObjectList.get(i+1).isTextType()) {
-                        runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedText) null, animatedObjectList.get(i).isLoop);
-                    }
-                    else {
-                        runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedImage) null, animatedObjectList.get(i).isLoop);
-
-                    }
-                }
-                else{
-                    if(animatedObjectList.get(i+1).isTextType()) {
-
-                        runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedText) null, animatedObjectList.get(i).isLoop);
-                    }
-                    else{
-                        runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), (AnimatedImage) null, animatedObjectList.get(i).isLoop);
-
-                    }
-                }
-
-                counter++;
-
-            } else if (i < animateObjectLength - 1) {
-                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
-
-
-                if(animatedObjectList.get(i).isTextType()){
-                    runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getTextObject(), animatedObjectList.get(i).isLoop);
-
-                }
-                else{
-                    runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i + 1).getObject(), animatedObjectList.get(i).isLoop);
-
-                }
-                counter++;
-                break;
-
-            } else {
-                Log.d(TAG, "runAnimationtype: "+animatedObjectList.get(i).isTextType());
-
-                if(animatedObjectList.get(i).isTextType()){
-                    runSpecificAnimation(animatedObjectList.get(i).getTextObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i).getTextObject(),animatedObjectList.get(i).isLoop);
-
-                }
-                else{
-                    runSpecificAnimation(animatedObjectList.get(i).getObject(), animatedObjectList.get(i).getAnimationType(), animatedObjectList.get(i), animatedObjectList.get(i).getObject(),animatedObjectList.get(i).isLoop);
-
-                }
-                counter++;
-            }
-
-        }
-
-
+        runSpecificAnimation(animationsList.get(animationListHead));
     }
 
-    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedImage nextObject, Boolean isLoop) {
-        switch (animationType) {
+
+    public static void runSpecificAnimation(ObjectAnimation object) {
+        if (object.getExecuted()) {
+            return;
+        } else {
+            object.setExecuted(true);
+        }
+        switch (object.animationType) {
             case SLIDE:
-                animation.slideAnimation(object, nextObject, isLoop);
+                object.slideAnimation(object);
                 break;
             case ROTATE:
-                animation.rotateAnimation(object, nextObject, isLoop);
+                object.rotateAnimation(object);
                 break;
             case SCALE:
-                animation.scaleAnimation(object, nextObject, isLoop);
+                object.scaleAnimation(object);
                 break;
             case FADE:
-                animation.fadeAnimation(object, nextObject, isLoop);
+                object.fadeAnimation(object);
                 break;
         }
     }
-    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedText nextObject, Boolean isLoop) {
-        switch (animationType) {
+
+    public static void runHideAnimation(ObjectAnimation object) {
+
+
+        switch (object.animationType) {
             case SLIDE:
-                animation.slideAnimation(object, nextObject, isLoop);
+                object.slideHideAnimation(object);
                 break;
             case ROTATE:
-                animation.rotateAnimation(object, nextObject, isLoop);
+                object.rotateHideAnimation(object);
                 break;
             case SCALE:
-                animation.scaleAnimation(object, nextObject, isLoop);
+                object.scaleHideAnimation(object);
                 break;
             case FADE:
-                animation.fadeAnimation(object, nextObject, isLoop);
+                object.fadeHideAnimation(object);
                 break;
         }
     }
-    public static void runSpecificAnimation(AnimatedText object, String animationType, AnimateObject animation, AnimatedText nextObject, Boolean isLoop) {
-        Log.d(TAG, "runSpecificAnimation: text");
-        switch (animationType) {
-            case SLIDE:
-                Log.d(TAG, "runSpecificAnimation: textslide");
 
-                animation.slideAnimation(object, nextObject, isLoop);
-                break;
-            case ROTATE:
-                animation.rotateAnimation(object, nextObject, isLoop);
-                break;
-            case SCALE:
-                animation.scaleAnimation(object, nextObject, isLoop);
-                break;
-            case FADE:
-                animation.fadeAnimation(object, nextObject, isLoop);
-                break;
-
-        }
-    }
-    public static void runSpecificAnimation(AnimatedText object, String animationType, AnimateObject animation, AnimatedImage nextObject, Boolean isLoop) {
-        Log.d(TAG, "runSpecificAnimation: image");
-        switch (animationType) {
-            case SLIDE:
-                Log.d(TAG, "runSpecificAnimation: textslide");
-
-                animation.slideAnimation(object, nextObject, isLoop);
-                break;
-            case ROTATE:
-                animation.rotateAnimation(object, nextObject, isLoop);
-                break;
-            case SCALE:
-                animation.scaleAnimation(object, nextObject, isLoop);
-                break;
-            case FADE:
-                animation.fadeAnimation(object, nextObject, isLoop);
-                break;
-
-
-        }
-    }
-    public static void runSpecificAnimation(AnimatedImage object, String animationType, AnimateObject animation, AnimatedImage nextObject) {
-        switch (animationType) {
-            case SLIDE:
-                animation.slideAnimation(object,nextObject);
-                break;
-            case ROTATE:
-                animation.rotateAnimation(object,nextObject);
-                break;
-            case SCALE:
-                animation.scaleAnimation(object,nextObject);
-                break;
-            case FADE:
-                animation.fadeAnimation(object,nextObject);
-                break;
-        }
-    }
 
     public static void hide(ReactContext rc) {
         jsCalled = true;
@@ -428,46 +226,18 @@ public class Splash {
     }
 
     public static void animationhide() {
-
-        Log.d(TAG, "hidecalled: ");
         if (shouldHide == true && jsCalled == true) {
-            if (isHideOnDialogAnimation == true) {
-//                runSpecificAnimation(hideObject.getObject(),hideObject.getAnimationType(),hideObject,true);
-                for (int i = hidecounter; i < hideanimateObjectLength; i++) {
-                    if (i < hideanimateObjectLength - 1 && hideanimatedObjectList.get(hidecounter).getPriority() == hideanimatedObjectList.get(hidecounter + 1).getPriority()) {
-                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
-                        if(hideanimatedObjectList.get(i).isTextType()){
-                            runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
-
-                        }
-                        else{
-                            runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), null);
-
-                        }
-                        hidecounter++;
-                    }
-                    else if (i < hideanimateObjectLength - 1) {
-
-
-                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i), hideanimatedObjectList.get(i + 1).getObject());
-                        hidecounter++;
-                        break;
-
-                    } else {
-
-
-                        runSpecificAnimation(hideanimatedObjectList.get(i).getObject(), hideanimatedObjectList.get(i).getAnimationType(), hideanimatedObjectList.get(i),null);
-                        hidecounter++;
-                    }
-
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    dismissDialog();
                 }
-            } else dialog.dismiss();
-
+            }, hideDelay);
         }
     }
 
-    public static void dismissDialog() {
 
+    public static void dismissDialog() {
         dialog.dismiss();
     }
 
