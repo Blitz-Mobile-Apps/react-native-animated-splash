@@ -7,8 +7,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "AddImageView.h"
-@class AddImageView;
+#import "AnimatedObject.h"
+@class AnimatedObject;
+#import "ObjectAnimation.h"
+@class ObjectAnimation;
 NS_ASSUME_NONNULL_BEGIN
 //extern UIView *background;
 @interface Splash : UIViewController
@@ -18,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 @property (nonatomic) int priority;
 @property (nonatomic) int hidePriority;
-+(void)addImagetoView:(AddImageView *)object;
++(void)addImagetoView:(AnimatedObject *)object;
 //-(void)addImageView:(NSString *)name :(CGFloat)positionX :(CGFloat)positionY :(CGFloat)width :(CGFloat)height;
 
 -(void)createSplashView:UIViewController;
@@ -29,36 +31,17 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)hideSplashDialog;
 -(void)splashShow;
 
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY;
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue;
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop;
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue loop:(bool)isLoop;
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop;
--(void)performSingleAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY;
-//-(void)animateGroupObject:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toX :(CGFloat)toY :(int)groupCount;
-//-(void)animateGroupObject:(AddImageView *)object :(int)typeOfAnimation :(int)duration :(CGFloat)toValue :(int)groupCount;
-
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount loop:(bool)isLoop;
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount loop:(bool)isLoop;
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount;
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount;
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount loop:(bool)isLoop;
--(void)animateGroupObject:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount;
-
--(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY;
--(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue;
--(void)performHideSingleAnimation:(AddImageView *)object animationType:(int)typeOfAnimation duration:(float)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY;
-
-
--(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)groupCount;
--(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue :(int)groupCount;
--(void)performGroupAnimationOnHide:(AddImageView *)object animationType:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)groupCount;
+-(void)addAnimation:(AnimatedObject *)object priority:(int)priority;
 
 -(void)hide;
 -(void)runAnimation;
 +(void)setInstance:(Splash*)splashinstance;
 -(void)dismissSplashDialog;
+-(void)addImageToView:(AnimatedObject*)object;
 extern Splash *splashClassInstance;
+
+-(void)runSpecificAnimation:(ObjectAnimation*)object;
+-(void)runSpecificHideAnimation:(ObjectAnimation*)object;
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic) int splashHideDelay;
@@ -72,6 +55,7 @@ extern int animatedObjectLength;
 extern int hideanimatedObjectLength;
 extern bool jsCalled;
 extern bool shouldHide;
+extern bool allExecuted;
 extern int const SLIDE;
 extern int const ROTATE;
 extern int const SCALE;
@@ -80,14 +64,15 @@ extern int const FIT_XY;
 extern int const FIT_CENTER;
 extern int const FIT_END;
 extern int const FIT_START;
-extern int const SPLASHFADE;
-extern int const SPLASHSLIDEDOWN;
-extern int const SPLASHSLIDELEFT;
-extern int const SPLASHSLIDERIGHT;
+extern int const SPLASH_FADE;
+extern int const SPLASH_SLIDE_DOWN;
+extern int const SPLASH_SLIDE_LEFT;
+extern int const SPLASH_SLIDE_RIGHT;
 extern int splashHideAnimationType;
 
 -(CGFloat)getCenterX:(CGFloat)width;
 -(CGFloat)getCenterY:(CGFloat)height;
+-(void)hide;
 @end
 
 NS_ASSUME_NONNULL_END

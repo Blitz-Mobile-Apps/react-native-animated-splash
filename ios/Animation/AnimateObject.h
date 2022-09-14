@@ -7,15 +7,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "AddImageView.h"
+#import "AnimatedObject.h"
 #import "Splash.h"
 @class Splash;
-@class AddImageView;
+@class AnimatedObject;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AnimateObject : NSObject
 @property (nonatomic, strong) Splash *splash;
-@property (nonatomic, strong) AddImageView *imageview;
+@property (nonatomic, strong) AnimatedObject *imageview;
 @property (nonatomic) CGFloat fromXDelta;
 @property (nonatomic) CGFloat fromYDelta;
 @property (nonatomic) CGFloat fromValue;
@@ -29,23 +29,29 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) float animationDuration;
 @property (nonatomic) int priority;
 
--(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)priority;
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal :(int)priority;
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal :(int)priority;
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
--(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop :(int)priority;
 
--(void)slideAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject;
--(void)scaleAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject;
--(void)rotateAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject;
--(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject;
+-(id)initimage:(AnimatedObject *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)priority;
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal :(int)priority;
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal :(int)priority;
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)fromVal scaleY:(CGFloat)toVal loop:(bool)isLoop :(int)priority;
+-(id)initimage:(AnimatedObject *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop :(int)priority;
 
--(void)slideAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop;
--(void)scaleAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop;
--(void)rotateAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop;
--(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop;
--(AddImageView *)getObject;
+//Animations
+-(void)slideAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject;
+-(void)scaleAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject;
+-(void)rotateAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject;
+-(void)fadeAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject;
+
+//Animations With Loop
+-(void)slideAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop;
+-(void)scaleAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop;
+-(void)rotateAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop;
+-(void)fadeAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop;
+
+//Adding Hiding Animations
+
+-(AnimatedObject *)getObject;
 -(int)getAnimationtype;
 -(int)getPriority;
 -(bool)getisLoop;

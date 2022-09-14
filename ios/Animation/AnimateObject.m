@@ -6,18 +6,15 @@
 //
 
 #import "AnimateObject.h"
-#import "AddImageView.h"
+#import "AnimatedObject.h"
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "Splash.h"
 @class Splash;
-@class AddImageView;
+@class AnimatedObject;
 @implementation AnimateObject
 
-
-
-
--(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)priority{
+-(id)initimage:(AnimatedObject *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY :(int)priority{
  
     _imageview = image;
     _animationType = animationtype;
@@ -30,7 +27,7 @@
   
   return self;
 }
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal :(int)priority{
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal :(int)priority{
 
     _imageview = image;
     _animationType = animationtype;
@@ -41,7 +38,7 @@
   
   return self;
 }
--(id)initimage:(AddImageView *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop :(int)priority{
+-(id)initimage:(AnimatedObject *)image animationType:(int)animationtype duration:(float)animationDuration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop :(int)priority{
 
     _imageview = image;
     _animationType = animationtype;
@@ -55,7 +52,7 @@
   
   return self;
 }
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority{
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration fromVal:(CGFloat)fromVal toVal:(CGFloat)toVal loop:(bool)isLoop :(int)priority{
 
     _imageview = image;
     _animationType = animationtype;
@@ -68,7 +65,7 @@
   return self;
 }
 
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)priority{
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY :(int)priority{
     _imageview = image;
       _animationType = animationtype;
       _animationDuration = animationDuration/1000;
@@ -79,7 +76,7 @@
       // NSLog(@"animate object this %d",_fromValue);
     return self;
 }
--(id)initimage:(AddImageView *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop :(int)priority{
+-(id)initimage:(AnimatedObject *)image :(int) animationtype :(float)animationDuration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop :(int)priority{
     _imageview = image;
     _animationType = animationtype;
     _animationDuration = animationDuration/1000;
@@ -89,7 +86,7 @@
      _isLoop = isLoop;
        return self;
 }
--(AddImageView *)getObject{
+-(AnimatedObject *)getObject{
   return _imageview;
 }
 -(int)getAnimationtype{
@@ -101,7 +98,7 @@
 -(bool)getisLoop{
   return _isLoop;
 }
--(void)slideAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject{ 
+-(void)slideAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject{
   
   NSLog(@"priority %d",_priority);
    dispatch_async(dispatch_get_main_queue(), ^{
@@ -125,7 +122,7 @@
   }];
    });
 }
--(void)scaleAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject{
+-(void)scaleAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject{
   NSLog(@"priority %d",_priority);
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
@@ -148,7 +145,7 @@
   }];
    });
 }
--(void)rotateAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject{
+-(void)rotateAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject{
   NSLog(@"priority %d",_priority);
   NSLog(@"in perform anima %@",imageobject);
   
@@ -174,7 +171,7 @@
   }];
    });
 }
--(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject{
+-(void)fadeAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject{
 NSLog(@"in loop fade in");
   
    dispatch_async(dispatch_get_main_queue(), ^{
@@ -201,7 +198,7 @@ NSLog(@"in loop fade in");
 }
 
 // loop event
--(void)slideAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop{
+-(void)slideAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop{
   
 
    dispatch_async(dispatch_get_main_queue(), ^{
@@ -230,7 +227,7 @@ NSLog(@"in loop fade in");
   }];
    });
 }
--(void)scaleAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop{
+-(void)scaleAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop{
 
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
@@ -258,7 +255,7 @@ NSLog(@"in loop fade in");
   }];
    });
 }
--(void)rotateAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop{
+-(void)rotateAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop{
   
    dispatch_async(dispatch_get_main_queue(), ^{
   UIImageView *imagev = imageobject.getImageView;
@@ -289,7 +286,7 @@ NSLog(@"in loop fade in");
   }];
    });
 }
--(void)fadeAnimation:(AddImageView *)imageobject :(AddImageView *)nextObject :(bool)isLoop{
+-(void)fadeAnimation:(AnimatedObject *)imageobject :(AnimatedObject *)nextObject :(bool)isLoop{
   //  NSLog(@"in loop fade %f",_toValue);
   
    dispatch_async(dispatch_get_main_queue(), ^{

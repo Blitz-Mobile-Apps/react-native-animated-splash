@@ -15,22 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupAnimation : NSObject
 
-@property (nonatomic, strong) Splash *splash;
-@property (nonatomic, strong) AddImageView *imageview;
-@property (nonatomic) CGFloat toXDelta;
-@property (nonatomic) CGFloat toYDelta;
-@property (nonatomic) CGFloat toValue;
-@property (nonatomic) int animationType;
-@property (nonatomic) int animationDuration;
-extern int groupcount;
+@property (nonatomic) int priority;
 
--(instancetype) init;
--(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY;
--(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration fromValue:(CGFloat)fromValue toValue:(CGFloat)toValue;
--(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration fromX:(CGFloat)fromX toX:(CGFloat)toX fromY:(CGFloat)fromY toY:(CGFloat)toY loop:(bool)isLoop;
 
--(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY loop:(bool)isLoop;
--(void)performGroupAnimation:(AddImageView *)object typeofanimation:(int)typeOfAnimation duration:(int)duration scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY;
+-(instancetype) init:(int)priority;\
+
+-(void)addAnimation:(ObjectAnimation*)object;
+
 @end
 
 NS_ASSUME_NONNULL_END
