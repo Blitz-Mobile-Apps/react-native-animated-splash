@@ -1,228 +1,326 @@
 
-### React-Native-Animated-Splash -- Android Description
-
- #### Check Android Example Code [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/androidexample.md)
-
-### Installation
-If you prefer **npm**,
-```sh
-$ npm install react-native-animated-splash --save
-```
-
-If you prefer **yarn**,
-```sh
-$ yarn add react-native-animated-splash
-```
-
-### Methods Description
-
-* createSplashView(context)  
-  creates a view for splash
-
-  * context: determine the context of your app, give context like "MainActivity.this"
- 
-* setBackgroundColor(colorCode)  
-  sets background color on splash screen
-
-  * colorCode: determine the color for background, give color value in string like this "#FFFFFF"
-
-* setBackgroundImage(drawable)  
-  sets background image on splash screen
-
-  * drawable: determine the image for background, give any drawble image.
   
-* setSplashHideAnimation(animationType)  
-  set animation for hiding of splash
 
-  * animationType: determine the animation on hide of splash, use any constant value given in Splash Hide Animation section in this document.
   
-* setSplashHideDelay(delay)  
-  sets delay before splash hide
 
-  * delay: determine the delay value before splash hide, enter value in milliseconds.
+## React-Native-Animated-Splash -- iOS Description
+
+Check the [Example Application](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/androidexample.md) for reference.
+
   
-* splashShow()  
-  display splash and starts animations
 
-* getCenterX(widthOfImage)  
-  sets the image to center of view at x-axis
+## Usage
 
-  * widthOfImage: determines the center on splash view at x-axis with respect to width of image, enter width of image which you want to set in center.
   
-* getCenterY(heightOfImage)  
-  sets the image to center of view at y-axis
 
-  * heightOfImage: determines the center on splash view at y-axis with respect to height of image, enter height of image which you want to set in center.
-  
-### Splash Hide Animation Constants 
-| Animation | Description |
-| ------ | ------ |
-| SPLASHSLIDELEFT | hides splash while sliding to left.|
-| SPLASHSLIDERIGHT | hides splash while sliding to right.|
-| SPLASHFADE | hides splash with fade effect.|
-| SPLASHSLIDEDOWN | hides splash while sliding to down.|
-
- 
- 
-### AddImageView Method Description
-
-| Parameter | Description | Type |
-| ------ | ------ | ------- |
-| imageSource | drawable image that you need to add on splash screen| Integer(double) |
-| height | height of image drawable| Double |
-| width | width of image drawable| Double |
-| positionX | position of image drawable on x-axis on splash screen| Double |
-| positionY | position of image drawable on y-axis on splash screen| Double |
-| scaleType | scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| CONSTANTS (to be imported from AddImageView) |
-| visibility | drawable image visiblity on splash screen initially. It will get visible as the animation on that image starts| Boolean |
-| rotateDegree | drawable image initial rotate degree | Double |
-| opacity | set initial opacity for image. Value ranges from 0-1 | Double |
-
-* AddImageView(drawableImage, height, width)  
-  Adding basic image to view with default options
-
-  * drawableImage: determine the drawable image you need to add on splash view.
-  * height: determines the height of drawble image.
-  * width: determines the width of drawable image.
-
-* AddImageView(drawableImage, height, width, positionX, positionY, visibility)  
-  Adding image with position values and set initial visibility of image.
-
-  * positionX: determine position of image drawable on x-axis on splash screen.
-  * positionY determine position of image drawable on y-axis on splash screen.
-  * visibility:determine drawable image visiblity on splash screen initially. It will get visible as the animation for that image starts. Default value is true.
-
-* AddImageView(drawableImage, height, width, positionX, positionY, scaleType, visibility)  
-  Adding image with scaleType for image.
-
-  * scaleType: scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START). These CONSTANTS (to be imported from AddImageView).
-  
-* AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, scaleType, visibility)  
-  Adding image with initial rotateDegree
- 
-  * rotateDegree: determines image's initial rotate degree. Default value is 0.
- 
-* AddImageView(drawableImage, height, width, positionX, positionY, rotateDegree, opacity, scaleType, visibility)  
-  Adding image with initial opacity 
- 
-  * opacity: determines image's initial opacity value. Default value is 1.
-
-
-
-
-### Defining Animations
-
-The animations you define works sequentially.
-You can define animations of four types.
-
-#### Type1 - Group Animation
-You need to use group animation when you need to run two or more animations simultaneously.
-Sample code for defining group animations:
+MainActivity.java
 
 ```sh
-GroupAnimation group1 = new GroupAnimation();
-group1.performGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
-group1.performGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
+...
+import static com.blitzapp.animatedsplash.animation.Constants.FADE;
+import static com.blitzapp.animatedsplash.animation.Constants.SCALE;
+import static com.blitzapp.animatedsplash.animation.Constants.SPLASH_SLIDE_RIGHT;
+import static com.blitzapp.animatedsplash.animation.Splash.screenHeight;
+import static com.blitzapp.animatedsplash.animation.Splash.screenWidth;
+import com.blitzapp.animatedsplash.animation.AnimatedObject;
+import com.blitzapp.animatedsplash.animation.GroupAnimation;
+import com.blitzapp.animatedsplash.animation.ObjectAnimation;
+import com.blitzapp.animatedsplash.animation.SingleAnimation;
+import com.blitzapp.animatedsplash.animation.Splash;
+...
 ```
 
-#### Type2 - Single Animation
-Single animation can be used to run an animation in sequence.
+## Methods Description
 
-```sh
-performSingleAnimation(imageview1, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
-performSingleAnimation(imageview2, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
-```
-
-#### Type3 - Define Animation before hiding splash
-You can use animation on certain object to perform just before hiding of splash.
-This type of animation is intersting, you can use this animation to make a last glance of animation just before hiding of splash view.
- ```sh
- performHideSingleAnimation(imageview, SCALE, 980, 0.2f, 1f, 0.2f, 1f);
- ```
- 
- #### Type4 - Define Group Animation before hiding splash
-You need to use group animation when you need to run two or more animations simultaneously.
-You can use this animation to animate group of images together just before hiding of splash.
-
-```sh
-HideGroupAnimation hidegroup1 = new HideGroupAnimation();
-hidegroup1.performHideGroupAnimation(image1, SLIDE, 980, 0f, 0f, -screenHeight * 0.2f, 0f);
-hidegroup1.performHideGroupAnimation(image2, SLIDE, 980, 0f, 0f, screenHeight * 0.2f, 0f);
-```
-### Animation Methods Description
-
-| Parameter | Description | Type |
-| ------ | ------ | ------- |
-| imageview | imageview you created and placed on splash that you want to perform animation on| CreateImageObject |
-| typeofanimation | determines the type of animation you want to perform, you can read possible types CONSTANTS from Animation Type section.
-| animationDuration | animation duration for specified animation| int |
-| fromXDelta | if type is SLIDE or SCALE, initial point at x-axis to start slide from | float |
-| toXDelta | if type is SLIDE or SCALE, final point at x-axis to end slide at| float |
-| fromYDelta | if type is SLIDE or SCALE, initial point at y-axis to start slide from | float |
-| toYDelta | if type is SLIDE or SCALE, final point at y-axis to end slide at| float |
-| fromValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| toValue | if type is FADE or ROTATE, final point at y-axis to end slide at| float |
-| loop | run animation in loop or continuously | boolean |
-
-##### Defining SLIDE or SCALE animation
-
-* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta)  
-  for SLIDE or SCALE animation
-
-  * imageview: determine the image view you already added to perform animation on.
-  * typeofanimation: determines the type of animation you want to perform.
-  * animationDuration: determines animation duration.
-  * fromXDelta: initial point at x-axis to start animation.
-  * toXDelta: final point at x-axis to end animation.
-  * fromYDelta: initial point at y-axis to start animation.
-  * toYDelta: final point at y-axis to end animation.
   
-* performSingleAnimation(imageview, typeofanimation, animationDuration, fromXDelta, toXDelta, fromYDelta, toYDelta, loop)  
-  for SLIDE or SCALE animation continue looping
 
-  * loop: run animation in loop or continuously.
+### Splash
+MainActivity.java
+Run the lines in the onCreate method
+```
+// Create Splash
+    Splash splash = new Splash(getContext());
+//Set Background Color To View
+    splash.setBackgroundColor("#101010");
+//Set Hiding Animation for Splash
+    splash.setSplashHideAnimation(SPLASH_SLIDE_RIGHT);
+//Set Delay for Splash to hide
+    splash.setSplashHideDelay(1500);
+```
+> Add all the code just above the return statement in the didFinishLaunchingWithOptions method.
+
+**setBackgroundColor**
+
+| Prop | Description | Type|
+|--|--|--|
+| colorString | Background color of your splash, give color value in Hex String ("#101010") |String|
+
   
-##### Defining FADE or ROTATE animation
 
-* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue)  
-  for FADE or ROTATE animation
+**setBackgroundImage**
 
-  * imageview: determine the image view you already added to perform animation on.
-  * typeofanimation: determines the type of animation you want to perform.
-  * animationDuration: determines animation duration.
-  * fromValue: starting value for animation.
-  * toValue: final value for animation
+| Prop | Description | Type|
+|--|--|--|
+| drawable | Hiding animation of your splash, give any drawable image from resources|Int| any drawable image from resources.|
 
-* performSingleAnimation(imageview, typeofanimation,  animationDuration, fromValue, toValue, loop)  
-  for FADE or ROTATE animation continue looping
+  
 
-  * loop: run animation in loop or continuously.
+**setSplashHideAnimation**
 
-##### Note
+| Prop | Description | Type|
+|--|--|--|
+| animationType | Background Image of your splash, use constants provided in the library |Int|
 
-> The above animation mehtod description is same for all four types of animation. Either you are doing group animations, single animations or animations before hide of splash view.
+**setSplashHideDelay**
 
->
+| Prop | Description | Type|
+|--|--|--|
+| delay | Duration of the splashscreen, Provide delay time in milliseconds |Int|
 
-### Animation Types
+  
+
+**splashShow()**
+
+Renders the native splash screen and runs the animations.
+
+  
+  
+
+### Splash Hide Animation Constants
+
+  
 
 | Animation | Description |
 | ------ | ------ |
-| SLIDE | slide image object to given x and y axis.|
-| SCALE | scale image object starting from initial value to final value.|
-| FADE | fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
-| ROTATE | rotate image object starting from initial value to final value.|
+| SPLASH_SLIDE_LEFT | Hides splash sliding left.|
+| SPLASH_SLIDE_RIGHT | Hides splash sliding right.|
+| SPLASH_SLIDE_DOWN | Hides splash sliding down.|
+| SPLASH_FADE | Hides splash with fade effect.|
 
-### Hide Splash in your app
+  
 
-Call hide function of splash in your app, from react native side like this:
- 
- ```sh
- import AnimatedSplash from "react-native-animated-splash";
- 
- AnimatedSplash.hide()
- ```  
+## AnimatedObject
 
+##### Initializing new Object
+```sh
+AnimatedObject square = new AnimatedObject(R.drawable.square, screenWidth * 0.4f, screenHeight * 0.24f);
+```
+
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| imageSource | Image that you want to add on splash screen from assets in iOS| Integer |
+| height | Height of image drawable| Double |
+| width | Width of image drawable| Double |
+
+  
+
+#### Setter Functions
+```
+    logoimage.setPositionY(12);
+    logoimage.setPositionX(12);
+    logoimage.setVisibility(true);
+    logoimage.setScaleType(FIT_CENTER);
+    logoimage.setRotateDegree(180);
+    logoimage.setOpacity(0.5f);
+```
+| Method | Description | Type |
+| ------ | ------ | ------- |
+| setPositionX | Set position of image drawable on X-Axis on Splash Screen| Double |
+| setPositionY | Set position of image drawable on Y-Axis on Splash Screen| Double |
+| setScaleType | Set scaleType of image drawable. (possible options could be: FIT_XY, FIT_CENTER, FIT_END, FIT_START)| String (To be importted from Constants class) |
+| setVisibility | Set visiblity of the image on splash screen initially.| Boolean |
+| setRotateDegree | Set initial rotate degree of image| Double |
+| setOpacity | Set initial opacity of image. Value ranges from 0-1 | Double |
+
+
+
+## Animation Types
+
+| Animation | Description |
+| ------ | ------ |
+| SLIDE | Slide image object to given x and y axis.|
+| SCALE | Scale image object starting from initial value to final value.|
+| FADE | Fade image object starting from initial value to final value. Value ranges from 0 - 1 (for fade in) or 1-0 (for fade out)|
+| ROTATE | Rotate image object starting from initial value to final value.|
+
+
+## ObjectAnimation
+
+### Note
+> Looping is not available in the "setHideAnimation".
+
+
+
+#### Initializing new Animation
+```sh
+ObjectAnimation logoimageAnimation1 = new ObjectAnimation(logoimage, FADE, 1000, 0f, 1f, false);
+```
+### Slide Animation
+```sh
+//Without Loop
+ObjectAnimation image2Animation = new ObjectAnimation(image2, SLIDE, 500, 0f, 100, 0f,100);
+// With Loop
+ObjectAnimation image2Animation = new ObjectAnimation(image2, SLIDE, 500, 0f, 100, 0f,100, true);
+            
+```
+| Attribute | Description | Type
+| ------ | ------ | ------- |
+| imageSource | Add the source image itself | AnimatedObject |
+| animationType | Type of animation | Int (Constant) |
+| animationDuration | Duration of animation in milliseconds | Int |
+| fromX | Initial position of object on X-Axis| Float |
+| toX | Final position of object on X-Axis | Float|
+| fromY | Initial position of object on Y-Axis | Float|
+| toY | Final position of object on Y-Axis | Float|
+| loop | Loop the animation (Default value is false) | Boolean|
+
+  
+
+### Scale Animation
+
+```sh
+//Without Loop
+ObjectAnimation logoimageAnimation2 = new ObjectAnimation(logoimage, SCALE, 1000, 0f, 1f, 0f, 1f);
+// With Loop
+ObjectAnimation logoimageAnimation2 = new ObjectAnimation(logoimage, SCALE, 1000, 0f, 1f, 0f, 1f, true);
+```
+
+| Attribute | Description | Type
+| ------ | ------ | ------- |
+| imageSource | Add the source image itself | AnimatedObject |
+| animationType | Type of animation | Int (Constant) |
+| animationDuration | Duration of animation in milliseconds | Int |
+| scaleX | Final mulitple size of object on X-Axis | Float|
+| scaleY | Final mulitple position of object on Y-Axis | Float|
+| loop | Loop the animation (Default value is false) | Boolean|
+
+**Note:**
+> 2 means the size of image is multiplied by 2.
+
+  
+
+### Fade Animation
+
+```sh
+//Without Loop
+ObjectAnimation logoimageAnimation1 = new ObjectAnimation(logoimage, FADE, 1000, 0f, 1f, false);
+// With Loop
+ObjectAnimation logoimageAnimation1 = new ObjectAnimation(logoimage, FADE, 1000, 0f, 1f, true);
+
+```
+
+| Attribute | Description | Type
+| ------ | ------ | ------- |
+| imageSource | Add the source image itself | AnimatedObject |
+| animationType | Type of animation | Int (Constant) |
+| animationDuration | Duration of animation in milliseconds | Int |
+| fromValue | Initial opacity of object or image| Float |
+| toValue | Final opacity of object or image | Float|
+| loop | Loop the animation (Default value is false) | Boolean|
+
+### Rotate Animation
+```sh
+//Without Loop
+ObjectAnimation *squareAnimation1 = [[ObjectAnimation alloc] initimage:square animationtype:FADE animationDuration:2000 rotateDegree:180];
+// With Loop
+ObjectAnimation *squareAnimation1 = [[ObjectAnimation alloc] initimage:square animationtype:FADE animationDuration:2000 rotateDegree:180 loop:true];
+```
+| Attribute | Description | Type
+| ------ | ------ | ------- |
+| imageSource | Add the source image itself | AnimatedObject |
+| animationType | Type of animation | Int (Constant) |
+| duration | Duration of animation in milliseconds | Int |
+| fromValue | Initial rotation degree of object or image| Float |
+| toVlaue | Final rotation degree of object or image| Float |
+| loop | Loop the animation (Default value is false) | Boolean|
+  
+
+## Group Animations  
+
+> Animations added in the group will run simultaneously. Animation with lesser priority will run after all the objects in the group are done animating.
+
+
+```
+GroupAnimation group1 = new GroupAnimation(1);
+group1.addAnimation(logoimageAnimation1);
+group1.addAnimation(logoimageAnimation2);
+```
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| priority | priority or the sequence of animation | Int |
+
+
+
+| Method | Description | Type |
+| ------ | ------ | ------- |
+| addAnimation | Adds the given image or object in the group | ObjectAnimation |
+  
+
+## Single Animations
+
+> Single Animations will animate the object one at a time and the next animation will run after it's animation is completed.
+
+```
+SingleAnimation single1  = new SingleAnimation(image1Animation,2);
+```
+
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| object | Single object or image that will animate one at a time | ObjectAnimation |
+| priority | priority or the sequence of animation | Int |
+
+### Note 
+> These animations will run just before the splash starts to hide. 
+## Hiding Group Animations  
+
+> Animations added in the group will run simultaneously. Animation with lesser priority will run after all the objects in the group are done animating.
+
+
+```
+HideGroupAnimation hideGroup1 = new HideGroupAnimation(1);
+hideGroup1.addAnimation(logoimageHideAnimation1);
+hideGroup1.addAnimation(logoimageHideAnimation2);
+```
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| priority | priority or the sequence of animation | Int |
+
+
+
+| Method | Description | Type |
+| ------ | ------ | ------- |
+| addAnimation | Adds the given image or object in the group | ObjectAnimation |
+  
+
+## Hiding Single Animations
+
+> Single Animations will animate the object one at a time and the next animation will run after it's animation is completed.
+
+```
+HideSingleAnimation hideSingle1 = new HideSingleAnimation(image1HideAnimation,2);
+```
+
+| Parameter | Description | Type |
+| ------ | ------ | ------- |
+| object | Single object or image that will animate one at a time | ObjectAnimation |
+| priority | priority or the sequence of animation | Int |
+
+  
+  ## Show Splash in your app
+> After all the objects and their animations are added, add this line before return statement
+
+MainActivity.java
+```sh
+  splash.ShowSplash();
+```  
+
+## Hide Splash in your app
+> Call hide function of splash in your app, from react native like this:
+
+```sh
+import AnimatedSplash from "react-native-animated-splash";
+AnimatedSplash.hide()
+```  
 
 License
-MIT 
+MIT

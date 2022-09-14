@@ -10,7 +10,7 @@ React-Native-Animated-Splash is developed to help the react-native developers in
 ##### Objective
 The main objective or the edge of this module is that, splash animation runs in parallel with loading of javascript, which means when animation is running, javascript is being loaded in parallel behind the scenes, moreover componentDidMount can also be called for any api hits before calling hide function of splash from react-native side.
 
-### For Ios and Android
+### For iOS and Android
 
 ### Installation
 If you prefer **npm**,
@@ -41,9 +41,9 @@ pod 'RNAnimatedSplash', :path => '../node_modules/react-native-animated-splash'
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2.gif?raw=true)
 >
 >
-#### Ios Usage with Method Descriptions [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosDescription.md)
+#### iOS Usage with Method Descriptions [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosDescription.md)
 ###  Ios Examples
-#### Check Ios Example Code [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosexample.md)
+#### Check iOS Example Code [Here](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/iosexample.md)
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example1ios.gif?raw=true)
 ![](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/master/example2ios.gif?raw=true)
 
