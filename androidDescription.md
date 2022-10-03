@@ -3,7 +3,7 @@
 
   
 
-## React-Native-Animated-Splash -- iOS Description
+## React-Native-Animated-Splash -- Android Description
 
 Check the [Example Application](https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/blob/v2/androidexample.md) for reference.
 
