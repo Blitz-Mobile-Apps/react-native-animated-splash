@@ -1,7 +1,6 @@
-
 {
   "name": "react-native-animated-splash",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +11,9 @@
     "url": "https://github.com/Blitz-Mobile-Apps/react-native-animated-splash/issues"
   },
   "contributors": [
-    "alisajames048@gmail.com","mick.richard19@gmail.com","alex.evans1230@gmail.com"
+    "alisajames048@gmail.com",
+    "mick.richard19@gmail.com",
+    "alex.evans1230@gmail.com"
   ],
   "publisher": "Blitz Mobile Apps",
   "keywords": [
