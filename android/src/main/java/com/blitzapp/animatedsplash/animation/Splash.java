@@ -161,7 +161,12 @@ public class Splash {
     }
 
     public static void runAnimation() {
-        runSpecificAnimation(animationsList.get(animationListHead));
+        if(!animationsList.isEmpty()){
+            runSpecificAnimation(animationsList.get(animationListHead));
+        }else{
+            shouldHide = true;
+        }
+
     }
 
 
@@ -207,9 +212,8 @@ public class Splash {
     }
 
 
-    public static void hide(ReactContext rc) {
+    public static void hide() {
         jsCalled = true;
-        final ReactContext reactContext = rc;
         if (shouldHide == true) {
             Log.d(TAG, "hidecalled true: ");
             runOnUiThread(new Runnable() {
@@ -241,4 +245,6 @@ public class Splash {
         dialog.dismiss();
     }
 
+//    public void createSplashView(com.geoff.MainActivity mainActivity) {
+//    }
 }

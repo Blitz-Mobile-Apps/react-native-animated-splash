@@ -17,7 +17,7 @@ public class RNAnimatedSplashModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void hide(){
-    Splash.hide(reactContext);
+    Splash.hide();
 
   }
 
