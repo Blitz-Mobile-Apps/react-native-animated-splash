@@ -231,7 +231,7 @@ public class ObjectAnimation {
         }
     }
 
-    public void slideAnimation(ObjectAnimation object) {
+    public void slideAnimation(final ObjectAnimation object) {
 
         View view = object.object.getImageView();
 
@@ -271,7 +271,7 @@ public class ObjectAnimation {
 
     }
 
-    public void rotateAnimation(ObjectAnimation object) {
+    public void rotateAnimation(final ObjectAnimation object) {
         View view = object.object.getImageView();
 
         ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
@@ -303,7 +303,7 @@ public class ObjectAnimation {
         });
     }
 
-    public void fadeAnimation(ObjectAnimation object) {
+    public void fadeAnimation(final ObjectAnimation object) {
 
         View view = object.object.getImageView();
         view.setAlpha(1);
@@ -341,7 +341,7 @@ public class ObjectAnimation {
 
     }
 
-    public void scaleAnimation(ObjectAnimation object) {
+    public void scaleAnimation(final ObjectAnimation object) {
         View view = object.object.getImageView();
         ObjectAnimator scale = ObjectAnimator.ofPropertyValuesHolder(view,
                 PropertyValuesHolder.ofFloat("scaleX", fromXDelta, toXDelta),
@@ -376,7 +376,7 @@ public class ObjectAnimation {
         });
     }
 
-    public void slideHideAnimation(ObjectAnimation object) {
+    public void slideHideAnimation(final ObjectAnimation object) {
 
         View view = object.object.getImageView();
 
@@ -408,7 +408,7 @@ public class ObjectAnimation {
 
     }
 
-    public void rotateHideAnimation(ObjectAnimation object) {
+    public void rotateHideAnimation(final ObjectAnimation object) {
         View view = object.object.getImageView();
 
         ObjectAnimator rotation = ObjectAnimator.ofFloat(view, View.ROTATION, startFromValue, endToValue);
@@ -433,7 +433,7 @@ public class ObjectAnimation {
         });
     }
 
-    public void fadeHideAnimation(ObjectAnimation object) {
+    public void fadeHideAnimation(final ObjectAnimation object) {
 
         View view = object.object.getImageView();
         view.setAlpha(1);
@@ -463,7 +463,7 @@ public class ObjectAnimation {
         });
     }
 
-    public void scaleHideAnimation(ObjectAnimation object) {
+    public void scaleHideAnimation(final ObjectAnimation object) {
         View view = object.object.getImageView();
         ObjectAnimator scale = ObjectAnimator.ofPropertyValuesHolder(view,
                 PropertyValuesHolder.ofFloat("scaleX", fromXDelta, toXDelta),
